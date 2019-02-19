@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ /* サイト最下段のcopyright */
+.copyright {
+  border-top: solid 3px rgb(105, 175, 255);
+  text-align: center;
+}

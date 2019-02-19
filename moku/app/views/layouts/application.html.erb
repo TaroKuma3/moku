@@ -1,15 +1,51 @@
 <!DOCTYPE html>
+<html lang="ja">
 <html>
   <head>
-    <title>Moku</title>
+    <title>moku</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <!--   ここから下自分で追加     -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--   bootstrap     -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- fontawesome 新 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!--    fontawesomeアニメーション    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <meta name="description" content="色々な作業を記録しよう！mokuは作業を記録します。また、その作業で出来上がったものを成果物として登録、共有することもできます！">
+    <link rel="stylesheet" href="css/mypage_style.css">
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-sm navbar-light">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="moku_logo.jpg" width="100" height="50" class="d-inline-block align-top" alt="ロゴマーク">
+                    </a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="menu" class="collapse navbar-collapse">
+                        <ul class="navbar-nav">
+                          <li class="nav-item"><a class="nav-link" href="#" id="linkToAccount">アカウント情報</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#" id="linkToSetting">個人設定</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#" id="linkToLogout">ログアウト</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#" id="linkToFaq">よくある質問</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-body" id="greet">こんにちは、ながいなまえのユーザーさん!</div>
+            </div>
+        </header>
+      <%= yield %>
   </body>
 </html>

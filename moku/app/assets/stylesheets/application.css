@@ -14,7 +14,38 @@
  *= require_self
  */
 
- /* サイト最下段のcopyright */
+/* mokuアイコン */
+ .my-color-moku {
+  color: #b7e0f5;
+}
+
+/* workアイコン */
+.my-color-work {
+color:#ffe200
+}
+
+/* book_markアイコン */
+.my-color-bookmark {
+color:pink
+}
+
+/* moku_tagアイコン */
+.my-color-tag {
+color: darkcyan
+}
+
+/* ヘッダーのご挨拶 */
+#greet {
+  font-size: 20px;
+  text-align: right;
+}
+
+/* mypageへ戻るアイコン  */
+.my-color-reply {
+  color: #f472db
+  }
+
+ /* copyright */
 .copyright {
   border-top: solid 3px rgb(105, 175, 255);
   text-align: center;

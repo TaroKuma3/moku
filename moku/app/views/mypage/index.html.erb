@@ -8,21 +8,30 @@
                 <div class="card">
                   <div class="card-header text-center"><h3>何をしますか？</h3></div>
                   <div class="card-body pd-1 text-center">
-                      <span class="fas fa-cloud my-color-moku fa-6x fa-fw m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold"><%= link_to("mokuる", "/mokus/new",class: "text-secondary" )%></h5>
-                      </span>
 
-                      <span class="fas fa-bookmark my-color-bookmark fa-6x fa-fw m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold"><%= link_to("Book Mark", "/mokus/new", class: "text-secondary" )%></h5>
-                        </span><br>
+                      <%= link_to "/mokus/new", class: "text-decoration-none" do %>
+                        <span class="fas fa-cloud my-color-moku fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">mokuる</h5>
+                        </span>
+                      <% end %>
 
-                      <span class="fas fa-tag my-color-tag fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold"><%= link_to("mokuタグ", "/mokus/new", class: "text-secondary" )%></h5>
-                      </span>
+                      <%= link_to"/mokus/new" do %>
+                        <span class="fas fa-bookmark my-color-bookmark fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">Book Mark</h5>
+                        </span>
+                      <% end %>
 
-                      <span class="fas fa-crown my-color-work fa-6x fa-fw m-3å faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold"><%= link_to("成果物", "/mokus/new", class: "text-secondary" )%></h5>
-                      </span>
+                      <%= link_to"/mokus/new" do %>
+                        <span class="fas fa-tag my-color-tag fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                       </span>
+                      <% end %>
+
+                      <%= link_to"/mokus/new" do %>
+                        <span class="fas fa-crown my-color-work fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">成果物</h5>
+                        </span>
+                      <% end %>
                     </p>
                   </div>
                 </div>
@@ -270,13 +279,4 @@
               </ul>
       </section>
   </main>
-
-  <footer>
-      <p class="copyright" ><small>&copy; Copyright 2019 moku</small></p>
-  </footer>
-
-  <!-- jQuery、Popper.js、Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

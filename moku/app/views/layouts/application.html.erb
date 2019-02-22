@@ -19,7 +19,11 @@
     <!--    fontawesomeアニメーション    -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <meta name="description" content="色々な作業を記録しよう！mokuは作業を記録します。また、その作業で出来上がったものを成果物として登録、共有することもできます！">
-    <link rel="stylesheet" href="css/mypage_style.css">
+    <%
+=begin%>
+ <link rel="stylesheet" href="application.css"> 
+<%
+=end%>
   </head>
 
   <body>
@@ -47,5 +51,9 @@
             </div>
         </header>
       <%= yield %>
+      <footer>
+        <p class="copyright" ><small>&copy; Copyright 2019 moku</small></p>
+      </footer>
+
   </body>
 </html>

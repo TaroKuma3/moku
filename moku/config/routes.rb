@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get root to: 'mypage#index'
-  # get 'mypage/index'
+  devise_for :users
+  # get 'top/index'
+  get root to: 'top#index'
+  get 'top/about'
+
+  get 'mypage' => 'mypage#index'
   get 'mypage/show'
 
 

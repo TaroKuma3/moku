@@ -1,5 +1,19 @@
 module ApplicationHelper
 
+  # constants.rbで定義
+  def options_for_public
+      Constants.options_for_public
+  end
+
+  # viewで公開設定の内容をconstants.rbで決めた定数に基づき表示するためのメソッド
+  def public_to_s(value)
+    if value == Constants::PUBLIC
+      Constants::PUBLIC_VALUE
+    else
+        Constants::PRIVATE_VALUE
+    end
+  end
+
   def greeting
     now = Time.current.hour
     eary_morning = (4..6).include?(now)

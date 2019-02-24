@@ -1,6 +1,6 @@
 <body>
   <main>
-      <h1 class="font-weight-bold text-center">ながいなまえのユーザーさんのマイページ</h1>
+      <h1 class="font-weight-bold text-center"><%= "#{@user.name}さんのマイページ" %></h1>
       <div class="container-fluid pb-4">
           <div class="row">
             <div class="col-12 col-md-6 pb-4">
@@ -43,7 +43,13 @@
                       <div class="card">
                         <div class="card-header text-center"><h3>自己紹介</h3></div>
                         <div class="card-body">
-                          <p class="card-text">おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</p>
+                          <p class="card-text">
+                          <% if @user.introduce.blank? %>
+                          　<h5>︎︎︎︎画面下部の「個人設定」から、自己紹介を登録しよう！</h5>
+                          <% else %>
+                            <%= simple_format(@user.introduce) %>
+                          <% end %>
+                          </p>
                         </div>
                       </div>
                   </section>
@@ -54,7 +60,9 @@
                       <div class="card">
                         <div class="card-header text-center"><h3>公開設定</h3></div>
                         <div class="card-body">
-                          <p class="card-text">アカウントは現在公開になっています</p>
+                          <p class="card-text">
+                            <%= "現在#{public_to_s(@user.public)}になっています。"%>
+                          </p>
                         </div>
                       </div>
                   </section>
@@ -65,7 +73,13 @@
                       <div class="card">
                         <div class="card-header text-center"><h3>mokuアイテム</h3></div>
                         <div class="card-body">
-                          <p class="card-text">画面下部の「個人設定」から、使用する道具を登録しよう！simple_formatで改行も反映させる</p>
+                          <p class="card-text">
+                          <% if @user.items.blank? %>
+                            <h5>画面下部の「個人設定」から、使用する道具を登録しよう！</h5>
+                          <% else %>
+                            <%= simple_format(@user.items) %>
+                          <% end %>
+                          </p>
                         </div>
                       </div>
                   </section>

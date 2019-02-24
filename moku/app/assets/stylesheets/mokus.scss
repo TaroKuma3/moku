@@ -1,3 +1,19 @@
 // Place all the styles related to the mokus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// new.html.erbの時計画像４枚のまとまり
+#clockImage {
+  width: 300px;
+  height: 300px;
+        position: relative;
+}
+
+// new.html.erbの時計画像、１枚ずつ
+.clock {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

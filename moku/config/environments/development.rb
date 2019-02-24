@@ -61,4 +61,8 @@ Rails.application.configure do
 
   # devise mailer setting
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # 日本語化
+  config.i18n.available_locales = :ja
+  config.i18n.default_locale = :ja
 end

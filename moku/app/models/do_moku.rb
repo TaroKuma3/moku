@@ -1,0 +1,2 @@
+class DoMoku < ApplicationRecord
+end

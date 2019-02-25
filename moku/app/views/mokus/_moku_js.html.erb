@@ -1,0 +1,98 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
+
+<script>
+    //ブラウザバック・リロード時に確認メッセージを出すためのフラグ
+    let nowStarted = false;
+
+    // ストップウォッチ系
+    let timeCounter = 0;
+    let timer = null;
+    let startTime = null;
+    let endTime = null;
+
+    let time;
+    let hour = document.getElementById("hour");
+    let minute = document.getElementById("minute");
+    let second = document.getElementById("second");
+
+    function startClock() {
+      time = new Date();
+
+      hour.style.transform = "rotate("+(time.getHours()*30+time.getMinutes()*0.5)+"deg)";
+      minute.style.transform = "rotate("+(time.getMinutes()*6)+"deg)";
+      second.style.transform = "rotate("+(time.getSeconds()*6)+"deg)";
+
+      setTimeout(startClock, 1000-time.getMilliseconds());
+    }
+
+    function displayTimer() {
+        timeCounter = ++timeCounter
+        let duration = moment.duration(timeCounter, 'seconds')
+            formatDuration = moment.utc(duration.as('milliseconds')).format('HH:mm:ss')
+            $("#timer").text(formatDuration)
+            $('#mokuTime').val(timeCounter)
+
+    }
+
+    $(document).ready(function () {
+        $(window).on('beforeunload', function () {
+            if (nowStarted) {
+                return "ちょっとまって"
+            }
+        })
+        startClock();
+
+        $('#startButton').on('click', function () {
+            nowStarted = true
+            $.ajax({
+                url: '/ajax/mokus/create',
+                method: 'post',
+                data: {
+                    user_id: <%= current_user.id %>,
+                    moku_type_id: $('#moku_type').val(),
+                    mjn_public: $('#mjn_public').val(),
+                }
+            }).done(function (json) {
+                const moku = json
+                const mokuId = moku.id
+                $('#startedMokuId').val(mokuId)
+
+                const url = '/mokus/' + mokuId + '/finish'
+                $('#finishForm').attr('action', url)
+                $('#clockImage').fadeIn(1000)
+                $('#afterStartTitle, #stopButton, #pauseButton').show()
+                $('#greet, #defaultTitle, #startButton, #moku_type, #mjn_public, #selectMokuType, #selectMJN, #linkToMypage, #linkToAaacount, #linkToSetting, #linkToLogout, #linkToTaq').hide() //開始後のデフォタイトルやタートボタンなどを非表示
+
+                // moku開始時のタイマーの作業
+                timer = setInterval(displayTimer, 1000)
+                  if (startTime == null) {
+                  startTime = new Date()
+                  $('#startTimeInput').val(startTime)
+                }
+               })
+               })
+
+                // moku終了時のタイマーの作業
+                $('#stopButton').on('click', function () {
+                  endTime = new Date()
+                  $('#endTimeInput').val(endTime)
+                  nowStarted = false;
+                  clearInterval(timer)
+                  timeCounter = 0
+                })
+
+                //ここから一時停止のタイマーの作業
+                $('#pauseButton').on('click', function () {
+                  if (nowStarted) {
+                    clearInterval(timer);
+                    $('#pauseButton').val('再開！');
+                    nowStarted = false;
+                  } else {
+                    $('#pauseButton').val('一時停止！');
+                    nowStarted = true;
+                    timer = setInterval(displayTimer, 1000);
+                  };
+                 })
+    })
+</script>

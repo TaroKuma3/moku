@@ -10,7 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_094554) do
+ActiveRecord::Schema.define(version: 2019_02_25_121200) do
+
+  create_table "book_marks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "work_id"
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "do_mokus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "moku_type_id"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.integer "moku_time"
+    t.string "content"
+    t.boolean "mjn_public", default: true, null: false
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "faqs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "questions"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "moku_types", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +65,18 @@ ActiveRecord::Schema.define(version: 2019_02_24_094554) do
     t.boolean "deleted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "moku_id"
+    t.string "title"
+    t.text "comment"
+    t.boolean "comment_public", default: false, null: false
+    t.boolean "pickup_public", default: false, null: false
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -26,7 +26,6 @@ class User < ApplicationRecord
   end
 
   def inactive_message
-
     if self.deleted
       :moku_deleted #config/locales/devise.ja.ymlの自作メッセージ参照指示
     else

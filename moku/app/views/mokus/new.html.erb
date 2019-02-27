@@ -16,11 +16,11 @@
       <div class="row pt-4">
         <div class="col-12 col-md-6 pb-4">
           <section>
-            <div id="clockImage" style="margin:auto, display:none;">
-              <img src="img/dial.png" class="clock"><!--文字盤-->
-              <img src="img/hour.png" id="hour" class="clock"><!--短針-->
-              <img src="img/minute.png" id="minute" class="clock"><!--長針-->
-              <img src="img/second.png" id="second" class="clock"><!--秒針-->
+            <div id="clockImage" style="display:none;">
+              <img src="/assets/dial.png" class="clock"><!--文字盤-->
+              <img src="/assets/hour.png" id="hour" class="clock"><!--短針-->
+              <img src="/assets/minute.png" id="minute" class="clock"><!--長針-->
+              <img src="/assets/second.png" id="second" class="clock"><!--秒針-->
             </div>
           </section>
         </div>
@@ -51,13 +51,16 @@
                 <div class="card-body text-center" id="selectMokuType">
                   <h3>mokuタグを<br>選ぼう！</h3>
                 </div>
-                  <div class="form-group m-3">
-                    <%= form.collection_select :moku_type, @user.active_moku_types, :id, :name, selected: @user.moku_types %>
+                  <div class="form-group m-3" name="moku_type" id="selectMokuType">
+                    <%# <select class="form-control form-control-lg" name="moku_type" id="selectMokuType"> %>
+                    <%#= form.collection_select :moku_type, @user.active_moku_types, :id, :name, selected: @user.moku_types %>
+                    <%= form.collection_select :moku_type, @user.active_moku_types, :id, :name, {}, {:class => "form-control form-control-lg"}%>
+                    <%#/select %>
                   </div>
-              </div>
-            </section>
+                </div>
+              </section>
+            </div>
           </div>
-        </div>
 
         <div class="col-12 col-md-6 pb-4">
           <section>

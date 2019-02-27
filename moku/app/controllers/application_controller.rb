@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  # devise for:before_action
+  # devise before_action用
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end

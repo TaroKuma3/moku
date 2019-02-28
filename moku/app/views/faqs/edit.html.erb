@@ -1,2 +1,34 @@
-<h1>Faqs#edit</h1>
-<p>Find me in app/views/faqs/edit.html.erb</p>
+<h1>FAQの編集</h1>
+
+<%= form_with(model: @faq,
+              url: {controller: :faqs, action: :update, id: @faq.id},
+              method: :patch,
+              local: true) do |form| %>
+
+  <% if @faq.errors.any? %>
+    <% @faq.errors.full_messages.each do |message| %>
+      <%= message %><br>
+    <% end %>
+  <% end %><br>
+
+  <p><%= form.text_area :questions %></p>
+  <p><%= form.text_area :answer %></p>
+  <%= form.label :category_list, "タグをカンマ区切りで入力" %>
+  <%= text_field_tag 'faq[category_list]', @faq.category_list.join(',') %>
+  <p><%= form.submit "更新する" %></p>
+  <%= link_to("よくある質問一覧に戻る", faqs_path)%>
+<% end %>
+
+<% if current_user %>
+  <%= link_to "/mypage" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+    </span>
+  <% end %>
+<% else %>
+  <%= link_to "/" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">トップへ戻る</h5>
+    </span>
+  <% end %>
+<% end %>

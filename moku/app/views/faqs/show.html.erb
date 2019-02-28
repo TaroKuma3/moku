@@ -1,2 +1,30 @@
-<h1>Faqs#show</h1>
-<p>Find me in app/views/faqs/show.html.erb</p>
+<h3>カテゴリー</h3>
+<%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %>
+
+<h1><%= simple_format(@faq.questions) %></h1>
+<h3><%= simple_format(@faq.answer) %></h3>
+
+<% if current_user %>
+  <% user = User.find_by(id: current_user.id) %>
+  <% if user.admin? %>
+    <%= link_to("編集", "/faqs/#{@faq.id}/edit") %>
+    <%= link_to("削除", "/faqs/#{@faq.id}", {method: :delete}) %>
+  <% end %>
+<% end %>
+
+<p><%= link_to("よくある質問一覧に戻る", faqs_path)%></p>
+
+<% if current_user %>
+  <%= link_to "/mypage" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+    </span>
+  <% end %>
+<% else %>
+  <%= link_to "/" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">トップへ戻る</h5>
+    </span>
+  <% end %>
+<% end %>
+

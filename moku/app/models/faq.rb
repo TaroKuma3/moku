@@ -5,6 +5,7 @@ class Faq < ApplicationRecord
   validates :answer, presence: true
   validates :user_id, presence: true
 
+  # acts-as-taggable-on
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :categories
 end

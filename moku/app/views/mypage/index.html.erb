@@ -284,11 +284,17 @@
       </div>
 
       <section>
+      <% if @user.admin? %>
           <h2>管理者メニュー <span class="fa fa-cloud my-color-blue" aria-hidden="true"></span></h2>
-              <ul>
-                  <li>FAQの追加</li>
-                  <li>FAQの編集・削除</li>
-              </ul>
+          <ul>
+            <li>
+              <%= link_to("FAQの追加", faqs_new_path )%>
+            </li>
+            <li>
+              <%= link_to("FAQの編集・削除", faqs_path )%>
+            </li>
+          </ul>
+      <% end %>
       </section>
   </main>
 </body>

@@ -1,2 +1,32 @@
-<h1>Faqs#new</h1>
-<p>Find me in app/views/faqs/new.html.erb</p>
+<h1>FAQの登録</h1>
+
+<%= form_with(model: @faq,
+              url: {controller: :faqs, action: :create},
+              method: :post,
+              local: true) do |form| %>
+
+  <% if @faq.errors.any? %>
+    <% @faq.errors.full_messages.each do |message| %>
+      <%= message %><br>
+    <% end %>
+  <% end %><br>
+
+  <%= form.label :Q %>
+  <p><%= form.text_area :questions %></p>
+
+  <%= form.label :A %>
+  <p><%= form.text_area :answer %></p>
+
+  <%= form.label :category_list, "タグをカンマ区切りで入力" %>
+  <%= text_field_tag 'faq[category_list]', @faq.category_list.join(','), "data-role" => "tagsinput" %>
+
+  <p><%= form.submit "登録する" %></p>
+<% end %>
+
+<%= link_to("よくある質問一覧に戻る", faqs_path) %>
+
+<%= link_to "/mypage" do %>
+  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+  </span>
+<% end %>

@@ -1,2 +1,30 @@
-<h1>Faqs#index</h1>
-<p>Find me in app/views/faqs/index.html.erb</p>
+<h1>よくある質問</h1>
+<h2>カテゴリ一覧</h2>
+<div id="tag_cloud">
+  <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div><br>
+
+<% @faqs.each do |faq| %>
+  <ul>
+    <li>
+      <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
+      <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
+    </li>
+  </ul>
+<% end %>
+
+<% if current_user %>
+  <%= link_to "/mypage" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+    </span>
+  <% end %>
+<% else %>
+  <%= link_to "/" do %>
+    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+      <h5 class="font-weight-bold text-secondary">トップへ戻る</h5>
+    </span>
+  <% end %>
+<% end %>

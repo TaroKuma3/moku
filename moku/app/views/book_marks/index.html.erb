@@ -1,0 +1,35 @@
+<h1><%= "#{@user.name}さんのブックマーク一覧" %></h1>
+
+<% @book_marks.each do |book_mark| %>
+  <ul>
+    <% work = Work.find(book_mark.work_id) %>
+      <% if @user.id == work.user_id %>
+        【My】
+          <li>
+            <%= work.title %>
+            <%= "登録日：#{work.created_at}" %>
+            <%= link_to user_work_path(@user, work) do %>
+              <i class="fa fa-search" aria-hidden="true"></i>
+            <% end %>
+          </li>
+      <% else %>
+        <% if work.pick_up == Constants::PUBLIC %>
+        【Some One】
+          <% work_user = User.find_by(id: work.user_id)%>
+          <li>
+            <%= work.title %>
+            <%= "製作者：#{work_user.name}さん"%>
+            <%= link_to ("/users/#{work.user_id}/works/#{work.id}/public") do %>
+              <i class="fa fa-search" aria-hidden="true"></i>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+</ul>
+<% end %>
+
+<%= link_to "/mypage" do %>
+  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+  </span>
+<% end %>

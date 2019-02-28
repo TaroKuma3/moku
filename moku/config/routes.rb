@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'moku_type/check_delete'
+  get 'moku_type/edit'
+  get 'moku_type/index'
+  get 'moku_type/new'
+  get 'moku_type/show'
+  get 'book_marks/index'
   get 'faqs/edit'
   get 'faqs/index'
   get 'faqs/new'

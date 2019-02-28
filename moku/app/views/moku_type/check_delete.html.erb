@@ -1,0 +1,23 @@
+<h1>moku_type#check_delete</h1>
+
+<h1>MOKUタグを削除するときはご注意ください</h1>
+
+MOKUタグは、MOKUの管理に使われています。<br>
+そのため、この<%= "【#{@moku_type.name}】" %>が削除されると<br>
+<%= "【#{@moku_type.name}】" %>がつけられていたMOKUは<br>
+自動的に【とりあえずMOKUる】のMOKUタグがつけられます。<br>
+
+<h3><%= "#{@moku_type.name}のMOKUタグがつけられているMOKU" %></h3>
+<% @mokus.each do |moku| %>
+  <p><%= link_to("#{moku.format_created_at}のMOKU", "/users/#{moku.user_id}/mokus/#{moku.id}") %></p>
+<% end %>
+
+<h3>本当にこのMOKUタグを削除してよろしければ、削除ボタンをクリックしてください。</h3>
+<%= form_with(model: @moku_type,
+              url: {controller: :moku_type, action: :delete, user_id: current_user.id, moku_type_id:@moku_type.id},
+              method: :patch,
+              local: true) do |f| %>
+
+<%= f.submit "MOKUタグを削除する" %>
+
+<% end %>

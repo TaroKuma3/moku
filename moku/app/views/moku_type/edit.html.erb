@@ -1,0 +1,20 @@
+<h1>Moku_type#edit</h1>
+<h1>MOKUタグの編集</h1>
+
+<%= form_with(model: @moku_type,
+url: {controller: :moku_type, action: :update, user_id: current_user.id, id: @moku_type},
+method: :patch,
+local: true) do |f| %>
+
+  <% if @moku_type.errors.any? %>
+    <% @moku_type.errors.full_messages.each do |message| %>
+      <%= message %><br>
+    <% end %>
+  <% end %>
+
+  <%= "MOKUタグの新しい名前を教えてください" %>
+  <%= render "form", f:f %>
+<% end %>
+
+<p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
+<p><%= link_to("マイページへ戻る", "/mypage")%></p>

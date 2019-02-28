@@ -1,0 +1,13 @@
+
+<p><%= f.text_field :name %></p>
+<%= f.submit "登録する" %>
+
+<h3>今あるMOKUタグはこちら</h3>
+<% @moku_types = MokuType.where(user_id: current_user.id) %>
+<% @moku_types.each do |moku_type| %>
+  <ul>
+    <li>
+      <%= moku_type.name %>
+    </li>
+  </ul>
+<% end %>

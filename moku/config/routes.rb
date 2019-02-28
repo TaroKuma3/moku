@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'faqs/edit'
+  get 'faqs/index'
+  get 'faqs/new'
+  get 'faqs/show'
+  get 'accounts/edit'
+  get 'accounts/check_delete'
   get root to: 'top#index'
   get "top/about" => "top#about"
 

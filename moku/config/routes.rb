@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'moku_type/check_delete'
-  get 'moku_type/edit'
-  get 'moku_type/index'
-  get 'moku_type/new'
-  get 'moku_type/show'
-  get 'book_marks/index'
-  get 'faqs/edit'
-  get 'faqs/index'
-  get 'faqs/new'
-  get 'faqs/show'
-  get 'accounts/edit'
-  get 'accounts/check_delete'
   get root to: 'top#index'
   get "top/about" => "top#about"
 
@@ -42,7 +30,6 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/mokus/:moku_id/check' => 'mokus#check_delete'
   patch 'users/:user_id/mokus/:moku_id/delete' => 'mokus#delete'
-
 
   #moku_type
   get 'users/:user_id/moku_type/:moku_type_id/check' => 'moku_type#check_delete'

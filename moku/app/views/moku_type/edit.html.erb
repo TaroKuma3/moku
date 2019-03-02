@@ -17,4 +17,9 @@ local: true) do |f| %>
 <% end %>
 
 <p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
-<p><%= link_to("マイページへ戻る", "/mypage")%></p>
+
+<%= link_to "/mypage" do %>
+  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+  </span>
+<% end %>

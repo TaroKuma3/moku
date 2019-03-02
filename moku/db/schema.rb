@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_061845) do
+ActiveRecord::Schema.define(version: 2019_03_01_075715) do
 
   create_table "book_marks", force: :cascade do |t|
     t.integer "user_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_02_28_061845) do
     t.datetime "finished_at"
     t.integer "moku_time"
     t.string "content"
-    t.boolean "mjn_public", default: true, null: false
     t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

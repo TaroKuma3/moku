@@ -4,7 +4,7 @@
 <script>
     //ブラウザバック・リロード時に確認メッセージを出すためのフラグ
     let nowStarted = false;
-
+ 
     // ストップウォッチ系
     let timeCounter = 0;
     let timer = null;
@@ -51,7 +51,6 @@
                 data: {
                     user_id: <%= current_user.id %>,
                     moku_type_id: $('#moku_type').val(),
-                    mjn_public: $('#mjn_public').val(),
                 }
             }).done(function (json) {
                 const moku = json
@@ -62,7 +61,7 @@
                 $('#finishForm').attr('action', url)
                 $('#clockImage').fadeIn(1000)
                 $('#afterStartTitle, #stopButton, #pauseButton').show()
-                $('#greet, #defaultTitle, #startButton, #moku_type, #mjn_public, #selectMokuType, #selectMJN, #linkToMypage, #linkToAaacount, #linkToSetting, #linkToLogout, #linkToTaq').hide() //開始後のデフォタイトルやタートボタンなどを非表示
+                $('#greet, #defaultTitle, #startButton, #moku_type, #selectMokuType, #selectMJN, #linkToMypage, #linkToAaacount, #linkToSetting, #linkToLogout, #linkToTaq').hide() //開始後のデフォタイトルやタートボタンなどを非表示
 
                 // moku開始時のタイマーの作業
                 timer = setInterval(displayTimer, 1000)

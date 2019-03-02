@@ -1,2 +1,15 @@
 <h1>MokuType#show</h1>
-<p>Find me in app/views/moku_type/show.html.erb</p>
+<h1><%= "【MOKUタグ：#{@moku_type.name}】でMOKUったもの" %></h1>
+<% @mokus.each do |moku| %>
+<ul>
+  <li>
+    <%= link_to("#{moku.created_at}のMOKU", user_moku_path(moku.user_id, moku.id)) %>
+  </li>
+</ul>
+<% end %>
+
+<%= link_to "/mypage" do %>
+  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
+    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
+  </span>
+<% end %>

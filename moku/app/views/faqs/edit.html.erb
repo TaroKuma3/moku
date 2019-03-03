@@ -1,6 +1,6 @@
 <h1>FAQの編集</h1>
 
-<%= form_with(model: @faq,
+<%= bootstrap_form_with(model: @faq,
               url: {controller: :faqs, action: :update, id: @faq.id},
               method: :patch,
               local: true) do |form| %>
@@ -17,18 +17,6 @@
   <%= text_field_tag 'faq[category_list]', @faq.category_list.join(',') %>
   <p><%= form.submit "更新する" %></p>
   <%= link_to("よくある質問一覧に戻る", faqs_path)%>
-<% end %>
+<% end %><br/>
 
-<% if current_user %>
-  <%= link_to "/mypage" do %>
-    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-      <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-    </span>
-  <% end %>
-<% else %>
-  <%= link_to "/" do %>
-    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-      <h5 class="font-weight-bold text-secondary">トップへ戻る</h5>
-    </span>
-  <% end %>
-<% end %>
+<%= render 'my_shared/go_mypage'%>

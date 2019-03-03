@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <%= form_with(model: @do_moku,
+      <%= bootstrap_form_with(model: @do_moku,
                     url: {controller: :mokus, action: :create, user_id: current_user.id},
                     method: :post,
                     local: true) do |form| %>
@@ -53,7 +53,7 @@
                   <div class="form-group m-3" name="moku_type" id="selectMokuType">
                     <%# <select class="form-control form-control-lg" name="moku_type" id="selectMokuType"> %>
                     <%#= form.collection_select :moku_type, @user.active_moku_types, :id, :name, selected: @user.moku_types %>
-                    <%= form.collection_select :moku_type, @user.active_moku_types, :id, :name, {}, {:class => "form-control form-control-lg"}%>
+                    <%= form.collection_select :moku_type, @user.active_moku_types, :id, :name, {hide_label: true}, {:class => "form-control form-control-lg"}%>
                     <%#/select %>
                   </div>
                 </div>
@@ -93,18 +93,14 @@
         </div>
 
         <div class="col-4">
-          <%= form_with(url: 'dummy', method: :patch, local: true, id: 'finishForm') do |form| %>
+          <%= bootstrap_form_with(url: 'dummy', method: :patch, local: true, id: 'finishForm') do |form| %>
             <input type="hidden" name="moku_time" id="mokuTime" value=""/>
             <input class="btn btn-info btn-lg" type="submit" id="stopButton" style="display:none;" value="MOKU終了！"/>
           <% end %>
         </div>
       </div>
 
-      <%= link_to "/mypage" do %>
-        <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true" id="linkToMypage"><br>
-          <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-        </span>
-      <% end %>
+      <%= render 'my_shared/go_mypage' %>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>

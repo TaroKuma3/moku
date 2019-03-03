@@ -1,15 +1,22 @@
-<h1>MOKUってなに？</h1>
+<div class=container>
+  <h1>MOKUってなに？</h1>
 
-<h2>MOKUでできること</h2>
-<ul>
-  <li>
-    カレンダーで作業できた日が一目でわかる
-  </li>
-  <li>
-    作業した時間も記録できる
-  </li>
-</ul>
+  <h2>MOKUでできること</h2>
+  <ul>
+    <li>
+      カレンダーで作業できた日が一目でわかる
+    </li>
+    <li>
+      作業した時間も記録できる
+    </li>
+    <li>
+      制作物の記録もできるぞお
+    </li>
+  </ul>
 
-<p>MOKU JUST NOWを出す<p>
-<%= link_to 'ユーザー登録はこちら！' %>
-<p><%= link_to("TOPへ戻る", "/")%></p>
+  <p>MOKU JUST NOWを出す<p>
+  <%= link_to 'ユーザー登録はこちら！' %><br/>
+
+  <%= render 'my_shared/go_top'%>
+
+</div>

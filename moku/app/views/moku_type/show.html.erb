@@ -8,8 +8,4 @@
 </ul>
 <% end %>
 
-<%= link_to "/mypage" do %>
-  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-  </span>
-<% end %>
+<%= render 'my_shared/go_mypage' %>

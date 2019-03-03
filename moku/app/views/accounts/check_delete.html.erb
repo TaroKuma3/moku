@@ -1,23 +1,38 @@
-<h1>アカウントの削除</h1>
+<div class="container">
+  <h1 class="font-weight-bold text-center mb-4">アカウントの削除</h1>
 
-<h3><%= "#{@user.name}さん、アカウント削除に関する注意事項です。ご確認ください" %></h3>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-header text-center"><h2><%= "#{@user.name}"%>さん、ご確認ください</h2></div>
+        <div class="card-body">
+          <p class="card-text">
+            <ul>
+              <li>アカウントの復活はできません。</li>
+              <li>MOKUの記録・制作物の記録・ブックマークに保存した制作物など、すべて削除されます。</li>
+              <li>新たにアカウントを作る際、今回のメールアドレスは使うことができません。</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  <li>アカウントの復活はできません。</li>
-  <li>MOKUの記録・制作物の記録・ブックマークに保存した制作物など、すべて削除されます。</li>
-  <li>あとなんか必要があれば説明的なもの</li>
-</ul>
+  <div class="row-12 mb-3 text-center">
+    思い残しはありませんか？<br>
+    問題無いようでしたら削除ボタンをクリックしてください。
+  </div>
+  <%= bootstrap_form_with(model: @user,
+  url: {controller: :accounts, action: :delete, user_id: current_user.id},
+  method: :patch,
+  local: true) do |f| %>
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= f.submit "アカウントを削除する", class: "btn btn-info btn-warning btn-lg" %>
+      </div>
+    </div>
+  <% end %>
 
-問題無いようでしたら削除ボタンをクリックしてください☁︎
-
- <%= form_with(model: @user,
-url: {controller: :accounts, action: :delete, user_id: current_user.id},
-method: :patch,
-local: true) do |f| %>
-
-<%= f.submit "アカウントを削除する" %>
-
-<% end %>
-
-
-<p><%= link_to("マイページへ戻る", "/mypage")%></p>
+<hr/>
+  <%= render 'my_shared/go_mypage' %>
+</div>

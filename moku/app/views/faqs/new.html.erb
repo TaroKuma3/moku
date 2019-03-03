@@ -1,6 +1,6 @@
 <h1>FAQの登録</h1>
 
-<%= form_with(model: @faq,
+<%= bootstrap_form_with(model: @faq,
               url: {controller: :faqs, action: :create},
               method: :post,
               local: true) do |form| %>
@@ -25,8 +25,4 @@
 
 <%= link_to("よくある質問一覧に戻る", faqs_path) %>
 
-<%= link_to "/mypage" do %>
-  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-  </span>
-<% end %>
+<%= render 'my_shared/go_mypage'%>

@@ -13,7 +13,7 @@ MOKUタグは、MOKUの管理に使われています。<br>
 <% end %>
 
 <h3>本当にこのMOKUタグを削除してよろしければ、削除ボタンをクリックしてください。</h3>
-<%= form_with(model: @moku_type,
+<%= bootstrap_form_with(model: @moku_type,
               url: {controller: :moku_type, action: :delete, user_id: current_user.id, moku_type_id:@moku_type.id},
               method: :patch,
               local: true) do |f| %>
@@ -22,8 +22,4 @@ MOKUタグは、MOKUの管理に使われています。<br>
 
 <% end %>
 
-<%= link_to "/mypage" do %>
-  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-  </span>
-<% end %>
+<%= render 'my_shared/go_mypage' %>

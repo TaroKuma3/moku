@@ -2,7 +2,7 @@
 <h1>成果物の登録</h1>
 <h3><%= "#{@user.name}さん、#{@moku.created_at}に【#{@moku_type.name}】でMOKUった時の成果物を登録してください。" %></h3>
 
-<%= form_with(model: @work,
+<%= bootstrap_form_with(model: @work,
   url: {controller: :work, action: :create, user_id: @user.id, moku_id: @moku.id},
   method: :post,
   local: true) do |form| %>
@@ -56,7 +56,7 @@
 <% end %>
 
 <h4><%= link_to("成果物一覧へ戻る", user_work_index_path(@user)) %></h4>
-<h4><%= link_to("マイページへ戻る", "/mypage") %></h4>
+<%= render 'my_shared/go_mypage' %>
 
 <script>
 $(document).ready(function () {

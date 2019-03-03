@@ -11,20 +11,20 @@ class WorkController < ApplicationController
   def show
     @work = Work.find(params[:id])
     @user = current_user #ここでひろうuser_idは自ページ分なのでcurrent_user
-    @moku = Moku.find(@work.moku_id)
+    @do_moku = DoMoku.find(@work.moku_id)
     @bm_count = BookMark.where(work_id: @work.id).count
   end
 
   def for_public
     @work = Work.find(params[:work_id])
     @user = User.find(params[:user_id]) #ここでひろうuser_idはpick upで見つけた他者のページにいくからURLに含まれるuser_id
-    @moku = Moku.find(@work.moku_id)
+    @do_moku = DoMoku.find(@work.moku_id)
     @bm_count = BookMark.where(work_id: @work.id).count
   end
 
   def new
     @user = current_user
-    @moku = Moku.find(params[:id])
+    @do_moku = DoMoku.find(params[:id])
     @moku_type = MokuType.find(@moku.moku_type.id)
     @work = Work.new
 
@@ -34,7 +34,7 @@ class WorkController < ApplicationController
 
   def create
     @user = current_user
-    @moku = Moku.find(params[:moku_id])
+    @do_moku = DoMoku.find(params[:moku_id])
     @moku_type = MokuType.find(@moku.moku_type.id)
 
     @work = Work.new(work_params)

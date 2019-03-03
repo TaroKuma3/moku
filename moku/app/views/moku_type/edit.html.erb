@@ -1,7 +1,7 @@
 <h1>Moku_type#edit</h1>
 <h1>MOKUタグの編集</h1>
 
-<%= form_with(model: @moku_type,
+<%= bootstrap_form_with(model: @moku_type,
 url: {controller: :moku_type, action: :update, user_id: current_user.id, id: @moku_type},
 method: :patch,
 local: true) do |f| %>
@@ -18,8 +18,4 @@ local: true) do |f| %>
 
 <p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
 
-<%= link_to "/mypage" do %>
-  <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-    <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-  </span>
-<% end %>
+<%= render 'my_shared/go_mypage' %>

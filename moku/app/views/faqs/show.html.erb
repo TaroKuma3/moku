@@ -14,17 +14,5 @@
 
 <p><%= link_to("よくある質問一覧に戻る", faqs_path)%></p>
 
-<% if current_user %>
-  <%= link_to "/mypage" do %>
-    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-      <h5 class="font-weight-bold text-secondary">マイページへ戻る</h5>
-    </span>
-  <% end %>
-<% else %>
-  <%= link_to "/" do %>
-    <span class="fas fa-reply fa-4x my-color-reply pl-2" aria-hidden="true"><br>
-      <h5 class="font-weight-bold text-secondary">トップへ戻る</h5>
-    </span>
-  <% end %>
-<% end %>
 
+<%= render 'my_shared/go_top_or_mypage'%>

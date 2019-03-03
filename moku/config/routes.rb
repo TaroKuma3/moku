@@ -43,8 +43,8 @@ Rails.application.routes.draw do
   patch 'mypage/:user_id' => 'mypage#update'
 
   #work
-  get '/users/:user_id/mokus/:id/work/new' => 'work#new' #mokus→moku_idへ！
-  post '/users/:user_id/mokus/:moku_id/work' => 'work#create'
+  get '/users/:user_id/mokus/:moku_id/works/new' => 'works#new' #mokus→moku_idへ！
+  post '/users/:user_id/mokus/:moku_id/works' => 'works#create'
 
   get 'users/:user_id/works/:work_id/check' => 'work#check_delete'
   patch 'users/:user_id/works/:work_id/delete' => 'work#delete'
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   delete 'work/:id/images/:image_id' => 'work#delete_image'
 
   resources :users do
-    resources :mokus, :moku_type, :work, :book_marks
+    resources :mokus, :moku_type, :works, :book_marks
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmls
 end

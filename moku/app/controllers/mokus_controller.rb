@@ -17,7 +17,7 @@ class MokusController < ApplicationController
   def show
     @user = current_user
     @do_moku = DoMoku.find(params[:id])
-    @moku_type = MokuType.find(@moku.moku_type_id)
+    @moku_type = MokuType.find(@do_moku.moku_type_id)
     @works = Work.where(moku_id: @do_moku.id)
   end
 

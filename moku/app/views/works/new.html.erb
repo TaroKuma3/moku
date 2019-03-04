@@ -1,62 +1,76 @@
-<h1>Work#new</h1>
-<h1>成果物の登録</h1>
-<h3><%= "#{@user.name}さん、#{@moku.created_at}に【#{@moku_type.name}】でMOKUった時の成果物を登録してください。" %></h3>
+<div class="container">
+    <h1 class="font-weight-bold text-center mb-4">成果物の登録</h1>
+    <h3><%= "#{@do_moku.created_at}に【#{@moku_type.name}】でMOKUった時の成果物を登録しましょう！" %></h3>
 
-<%= bootstrap_form_with(model: @work,
-  url: {controller: :work, action: :create, user_id: @user.id, moku_id: @moku.id},
-  method: :post,
-  local: true) do |form| %>
+    <%= bootstrap_form_with(model: @work,
+      url: {controller: :works, action: :create, user_id: @user.id, moku_id: @do_moku.id},
+      method: :post,
+      local: true) do |form| %>
 
-  <% if @work.errors.any? %>
-    <% @work.errors.full_messages.each do |message| %>
-      <%= message %><br>
+      <% if @work.errors.any? %>
+        <% @work.errors.full_messages.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      <% end %>
+
+    <%# ここから一覧へ戻るまでの中身と、最下段jQueryをパーシャル化予定%>
+    <div class="row">
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>制作物タイトル</h3>
+        <%= form.text_field :title, hide_label: true %>
+      </div>
+
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>画像やテキストファイル１</h3>
+        <%= form.file_field :images, hide_label: true, multipart: true %>
+      </div>
+
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>コメント</h3>
+        <%= form.text_area :comment, hide_label: true %>
+      </div>
+
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>コメントを公開しますか？
+          <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+          <ul>
+            <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
+            <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
+          </ul>">
+          </span>
+        </h3>
+        <%= form.select :comment_public, options_for_public, selected: @work.comment_public, hide_label: true %>
+      </div>
+
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>Pick Upへ公開しますか？
+          <span class="fa fa-question-circle" aria-hidden="true" id="pickUpDescription" data-toggle="popover" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
+            <ul>
+              <li>公開にすると、Pick Upに載る事があります。</li>
+              <li>非公開にすると、Pick Upには載りません。</li>
+            </ul>
+            <b>【ブックマークについて】</b><br>
+            <ul>
+              <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
+              <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
+              <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
+            </ul>">
+          </span>
+        </h3>
+        <p><%= form.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <p><%= form.submit "登録する", class: "btn btn-info btn-lg" %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
 
-<%# ここから一覧へ戻るまでの中身と、最下段jQueryをパーシャル化予定%>
-  <h3>制作物タイトル</h3>
-  <%= form.text_field :title %>
-
-  <h3>画像やテキストファイル１</h3>
-  <%= form.file_field :images, multipart: true %>
-
-  <h3>コメント</h3>
-  <%= form.text_area :comment %>
-
-  <h3>コメントを公開しますか？
-    <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
-    <ul>
-      <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
-      <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
-    </ul>">
-    </span>
-  </h3>
-  <%= form.select :comment_public, options_for_public, selected: @work.comment_public %>
-
-
-
- <h3>Pick Upへの公開設定
-    <span class="fa fa-question-circle" aria-hidden="true" id="pickUpDescription" data-toggle="popover" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
-    <ul>
-      <li>公開にすると、Pick Upに載る事があります。</li>
-      <li>非公開にすると、Pick Upには載りません。</li>
-    </ul>
-    <b>【ブックマークについて】</b><br>
-    <ul>
-      <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
-      <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
-      <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
-    </ul>">
-    </span>
-  </h3>
-  <p><%= form.select :pick_up, options_for_public, selected: @work.pick_up %></p>
-
-  <p><%= form.submit "登録する"%>
-
-<% end %>
-
-<h4><%= link_to("成果物一覧へ戻る", user_work_index_path(@user)) %></h4>
-<%= render 'my_shared/go_mypage' %>
+  <h4><%= link_to("成果物一覧へ戻る", user_works_path(@user)) %></h4>
+  <%= render 'my_shared/go_mypage' %>
+</div>
 
 <script>
 $(document).ready(function () {

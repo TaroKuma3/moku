@@ -18,6 +18,9 @@
  *= require rails_bootstrap_forms
  */
 
+ body {
+   color: rgb(95, 95, 95) !important;
+ }
 /* mokuアイコン */
  .my-color-moku {
   color: #b7e0f5;
@@ -57,6 +60,11 @@ color:#ffe200
 
 /* 退会アイコン */
 .my-color-door {
+  color: rgb(127, 161, 236);
+}
+
+/* 削除アイコン */
+.my-color-trash {
   color: rgb(127, 161, 236);
 }
 

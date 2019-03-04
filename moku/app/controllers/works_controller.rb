@@ -24,12 +24,12 @@ class WorksController < ApplicationController
 
   def new
     @user = current_user
-    @do_moku = DoMoku.find(params[:id])
-    @moku_type = MokuType.find(@moku.moku_type.id)
+    @do_moku = DoMoku.find(params[:moku_id])
+    @moku_type = MokuType.find(@do_moku.moku_type.id)
     @work = Work.new
 
     @work.comment_public = Constants::PRIVATE
-    @work.pick_up = Constants::PRIVATE
+    @work.pickup_public = Constants::PRIVATE
   end
 
   def create

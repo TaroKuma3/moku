@@ -46,13 +46,13 @@ Rails.application.routes.draw do
   get '/users/:user_id/mokus/:moku_id/works/new' => 'works#new' #mokus→moku_idへ！
   post '/users/:user_id/mokus/:moku_id/works' => 'works#create'
 
-  get 'users/:user_id/works/:work_id/check' => 'work#check_delete'
-  patch 'users/:user_id/works/:work_id/delete' => 'work#delete'
+  get 'users/:user_id/works/:work_id/check' => 'works#check_delete'
+  patch 'users/:user_id/works/:work_id/delete' => 'works#delete'
 
 
   devise_for :users
-  get 'users/:user_id/works/:work_id/public' => 'work#for_public'
-  delete 'work/:id/images/:image_id' => 'work#delete_image'
+  get 'users/:user_id/works/:work_id/public' => 'works#for_public'
+  delete 'works/:id/images/:image_id' => 'works#delete_image'
 
   resources :users do
     resources :mokus, :moku_type, :works, :book_marks

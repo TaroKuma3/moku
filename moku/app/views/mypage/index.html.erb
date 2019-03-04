@@ -10,27 +10,33 @@
                   <div class="card-body pd-1 text-center">
 
                       <%= link_to new_user_moku_path(@user) do %>
-                        <span class="fas fa-cloud my-color-moku fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">mokuる</h5>
-                        </span>
+                        </i>
+                      <% end %>
+
+                      <%= link_to user_mokus_path(@user) do %>
+                        <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">moku一覧</h5>
+                        </i>
                       <% end %>
 
                       <%= link_to user_book_marks_path(@user) do %>
-                        <span class="fas fa-bookmark my-color-bookmark fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                        </span>
+                        </i>
                       <% end %>
 
                       <%= link_to"/mokus/new" do %>
-                        <span class="fas fa-tag my-color-tag fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
-                       </span>
+                       </i>
                       <% end %>
 
                       <%= link_to user_works_path(@user) do %>
-                        <span class="fas fa-crown my-color-work fa-6x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">成果物</h5>
-                        </span>
+                        </i>
                       <% end %>
                     </p>
                   </div>
@@ -125,7 +131,7 @@
                       <div class="simple-calendar">
                         <div class="calendar-heading">
                           <a href="/mypage?start_date=2019-01-27">Previous</a>
-                          <span class="calendar-title">2月 2019</span>
+                          <i class="calendar-title">2月 2019</i>
                           <a href="/mypage?start_date=2019-03-04">Next</a>
                         </div>
 
@@ -285,7 +291,7 @@
 
       <section>
       <% if @user.admin? %>
-          <h2>管理者メニュー <span class="fa fa-cloud my-color-blue" aria-hidden="true"></span></h2>
+          <h2>管理者メニュー <i class="fa fa-cloud my-color-blue" aria-hidden="true"></i></h2>
           <ul>
             <li>
               <%= link_to("FAQの追加", faqs_new_path )%>

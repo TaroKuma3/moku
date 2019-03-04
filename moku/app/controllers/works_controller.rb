@@ -1,4 +1,4 @@
-class WorkController < ApplicationController
+class WorksController < ApplicationController
 
   before_action :authenticate_user!
   before_action :ensure_current_user, only:[:index, :show, :edit, :update, :new, :create]

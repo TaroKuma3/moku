@@ -1,2 +1,35 @@
-<h1>Mokus#index</h1>
-<p>Find me in app/views/mokus/index.html.erb</p>
+<div class="container">
+  <h1 class="font-weight-bold text-center"><%= "#{@user.name}さんのMOKUった一覧" %></h1>
+
+  <% if true %>
+    <%= bootstrap_form_with(model: @do_moku,
+                            url: {controller: :mokus, action: :index, user_id: current_user.id, moku_type: @user.moku_types.ids},
+                            method: :get,
+                            local: true) do |form| %>
+      <h4>mokuタグで絞り込み</h4>
+        <div class="row mb-3">
+          <div class="col-8 text-center">
+            <%= form.collection_select :moku_type, @user.active_moku_types, :id, :name, {hide_label: true, selected: @user.moku_types}, {:class => "form-control form-control-lg"}%>
+          </div>
+          <div class="col-4 text-left">
+            <%= form.submit "絞り込む", class: "btn btn-info btn-lg" %>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+
+    <% @do_mokus.each do |do_moku| %>
+      <ul>
+        <li>
+          <p><%= link_to("#{do_moku.created_at} の MOKU", user_moku_path(do_moku.user_id, do_moku.id)) %>
+          <% moku_type = MokuType.find(do_moku.moku_type_id) %>
+          <%= "MOKUタグ：#{moku_type.name}" %>
+          <%= link_to("【MOKUを削除する】","/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check")%>
+          <%= link_to("【成果物の登録】", "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new") %></p>
+        </li>
+      </ul>
+    <% end %>
+
+<hr/>
+  <%= render 'my_shared/go_mypage' %>
+</div>

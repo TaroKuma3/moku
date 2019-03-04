@@ -23,20 +23,26 @@
   color: #b7e0f5;
 }
 
+/* moku一覧 */
+.my-color-mokusIndex {
+  color: rgb(243, 177, 138);
+}
+
+/* book_markアイコン */
+.my-color-bookmark {
+  color:darkcyan;
+}
+
+/* moku_tagアイコン */
+.my-color-tag {
+  color: pink;
+  }
+
 /* workアイコン */
 .my-color-work {
 color:#ffe200
 }
 
-/* book_markアイコン */
-.my-color-bookmark {
-color:pink
-}
-
-/* moku_tagアイコン */
-.my-color-tag {
-color: darkcyan
-}
 
 /* ヘッダーのご挨拶 */
 #greet {

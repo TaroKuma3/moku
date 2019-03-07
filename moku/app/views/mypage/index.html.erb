@@ -127,14 +127,25 @@
             <div class="col-12">
               <section>
                 <h1 class="text-center">カレンダー</h1>
-                  <h5><a href="mypage_index.html">これまでの全てのmoku一覧</a></h5>
                   <h5><%= link_to("【これまでの全てのMOKU一覧】", user_mokus_path(@user))%></h5>
-                  <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
-                    <%= date %><br>
-                    <% do_mokus.each do |do_moku| %>
+                    <%# md以上で月間カレンダー表示%>
+                    <div class="d-none d-md-block">
+                      <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
+                        <%= date %><br>
+                        <% do_mokus.each do |do_moku| %>
                           <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                        <% end %>
                       <% end %>
-                  <% end %>
+                    </div>
+                    <%# md未満で週間カレンダー表示%>
+                    <div class="d-md-none">
+                      <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
+                        <%= date %><br>
+                        <% do_mokus.each do |do_moku| %>
+                          <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                        <% end %>
+                      <% end %>
+                    </div>
               <section>
             </div>
           </div>

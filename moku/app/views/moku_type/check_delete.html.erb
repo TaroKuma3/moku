@@ -8,8 +8,8 @@ MOKUタグは、MOKUの管理に使われています。<br>
 自動的に【とりあえずMOKUる】のMOKUタグがつけられます。<br>
 
 <h3><%= "#{@moku_type.name}のMOKUタグがつけられているMOKU" %></h3>
-<% @mokus.each do |moku| %>
-  <p><%= link_to("#{moku.format_created_at}のMOKU", "/users/#{moku.user_id}/mokus/#{moku.id}") %></p>
+<% @do_mokus.each do |do_moku| %>
+  <p><%= link_to("#{do_moku.format_created_at}のMOKU", "/users/#{do_moku.user_id}/mokus/#{do_moku.id}") %></p>
 <% end %>
 
 <h3>本当にこのMOKUタグを削除してよろしければ、削除ボタンをクリックしてください。</h3>

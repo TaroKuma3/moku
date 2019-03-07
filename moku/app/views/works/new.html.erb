@@ -1,9 +1,32 @@
-<div class="container">
+<div class="container-fluid">
     <h1 class="font-weight-bold text-center mb-4">成果物の登録</h1>
-    <h3><%= "#{@do_moku.created_at}に【#{@moku_type.name}】でMOKUった時の成果物を登録しましょう！" %></h3>
+
+    <div class="row">
+      <div class="col-12 col-md-6 text-center">
+        <div class="card text-white bg-info mb-3" id="my-works-card">
+          <div class="card-header"><h3>日時</h3></div>
+          <div class="card-body">
+            <p class="card-text">
+              <h3><%= "#{@do_moku.created_at}" %></h3>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 text-center">
+        <div class="card text-white bg-info mb-3" id="my-works-card">
+          <div class="card-header"><h3>mokuタグ</h3></div>
+          <div class="card-body">
+            <p class="card-text">
+              <h3><%= "#{@moku_type.name}" %></h3>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <%= bootstrap_form_with(model: @work,
-      url: {controller: :works, action: :create, user_id: @user.id, moku_id: @do_moku.id},
+      url: {controller: :works, action: :create, user_id: current_user.id, moku_id: @do_moku.id},
       method: :post,
       local: true) do |form| %>
 

@@ -26,7 +26,7 @@
   <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
   <h4>制作物コメントの公開設定：<%= public_to_s(@work.comment_public) %></h4>
   <h4>PICK UP MOKUへの公開設定：<%= public_to_s(@work.pick_up) %></h4>
-  <h4> この制作物が生まれたMOKU：<%=link_to(@moku.created_at, user_moku_path(@user, @moku)) %></h4>
+  <h4> この制作物が生まれたMOKU：<%=link_to(@do_moku.created_at, user_moku_path(@user, @do_moku)) %></h4>
   <p><%= link_to("【編集】", edit_user_work_path(@user, @work) ) %><%= link_to("【削除】", "/users/#{@user.id}/works/#{@work.id}/check") %></p>
 <h4><%= link_to("成果物一覧へ戻る", user_work_index_path(@user))%></h4>
 <%= render 'my_shared/go_mypage' %>

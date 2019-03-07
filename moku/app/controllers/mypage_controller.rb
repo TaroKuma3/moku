@@ -4,7 +4,7 @@ class MypageController < ApplicationController
   def index
     @user = current_user
     # @work_randoms = Work.where(pick_up: true).where(deleted: false).order(created_at: 'desc').limit(3)
-    # @mokus = Moku.where(user_id: current_user.id).where(deleted: false) #カレンダーのために取得
+    # @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false) #カレンダーのために取得
   end
 
   def show

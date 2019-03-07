@@ -8,6 +8,7 @@
   height: 300px;
   position: relative;
   margin: auto;
+  display: none;
 }
 
 // new.html.erbの時計画像、１枚ずつ
@@ -17,4 +18,28 @@
   position: absolute;
   top: 0px;
   left: 0px;
+}
+
+#selectMokuType {
+  min-height: 70px;
+}
+
+#startButton {
+  min-height: 70px;
+}
+
+#pauseButton {
+  display: none;
+  margin: auto;
+}
+
+#stopButton {
+  display: none;
+  margin: auto;
+}
+
+#displayMokuTime {
+  display: none;
+  min-height: 156px;
+  
 }

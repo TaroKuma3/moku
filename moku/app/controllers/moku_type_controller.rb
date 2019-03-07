@@ -9,7 +9,7 @@ class MokuTypeController < ApplicationController
 
   def show
     @moku_type = MokuType.find(params[:id])
-    @mokus = Moku.where(moku_type_id: @moku_type.id)
+    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id)
   end
 
   def new
@@ -55,7 +55,7 @@ class MokuTypeController < ApplicationController
 
   def check_delete
     @moku_type = MokuType.find(params[:moku_type_id])
-    @mokus = Moku.where(moku_type_id: @moku_type.id)
+    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id)
   end
 
   def delete
@@ -66,10 +66,10 @@ class MokuTypeController < ApplicationController
     moku_type.deleted = true
     moku_type.save!
 
-    mokus = Moku.where(moku_type_id: moku_type.id)
-    mokus.each do |moku|
-      moku.moku_type_id = default_moku_type.id
-      moku.save!
+    do_mokus = DoMoku.where(moku_type_id: moku_type.id)
+    do_mokus.each do |do_moku|
+      do_moku.moku_type_id = default_moku_type.id
+      do_moku.save!
     end
 
     flash[:notice] = "MOKUタグを削除しました☁︎"

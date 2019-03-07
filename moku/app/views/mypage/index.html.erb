@@ -95,19 +95,6 @@
           <div class="row">
               <div class="col-12 col-lg-6 pb-4">
                   <section>
-                      <div class="card text-white bg-info">
-                        <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
-                        <div class="card-body">
-                              <ul>
-                                  <li>19/02/10 14:27 管理者さんがとりあえずMOKUるでMOKUを開始しました！</li>
-                              </ul>
-                        </div>
-                      </div>
-                  </section>
-              </div>
-
-              <div class="col-12 col-lg-6 pb-4">
-                  <section>
                       <div class="card text-blue bg-info text-white">
                         <h4><div class="card-header text-center"><h3>Pick UP</h3></div></h4>
                         <div class="card-body ">
@@ -117,6 +104,19 @@
                               <li><a href="/users/6/works/19/public" class="text-white">スイミー</a></li>
                               <li><a href="/users/4/works/18/public" class="text-white">画像じゃないものを貼ってみる</a></li>
                           </ul>
+                        </div>
+                      </div>
+                  </section>
+              </div>
+
+              <div class="col-12 col-lg-6 pb-4">
+                  <section>
+                      <div class="card text-white bg-info">
+                        <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
+                        <div class="card-body">
+                              <ul id="justNowUl"></ul>
+                              <%= javascript_include_tag "mypage" %>
+                              <script></script>
                         </div>
                       </div>
                   </section>

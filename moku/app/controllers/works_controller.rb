@@ -35,13 +35,21 @@ class WorksController < ApplicationController
   def create
     @user = current_user
     @do_moku = DoMoku.find(params[:moku_id])
-    @moku_type = MokuType.find(@moku.moku_type.id)
+    @moku_type = MokuType.find(@do_moku.moku_type.id)
 
     @work = Work.new(work_params)
-    @work.moku = Moku.find(params[:moku_id])
+    @work.do_moku = DoMoku.find(params[:moku_id])
     @work.user = current_user
+    # title: params[:work][:title],
+    # comment: params[:work][:comment],
+    # comment_public: params[:work][:comment_public],
+    # pickup_public: params[:work][:pickup_public],
+    # moku_id: params[:moku_id],
+    # user_id: params[:user_id],
+    # images: params[:work][:images],
+    # )
 
-    if @work.save
+    if @work.save!
       flash[:notice] = "登録しました！"
       redirect_to(user_work_index_path(@user))
     else
@@ -98,6 +106,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:comment, :title, :images, :user_id, :moku_id, :comment_public, :pick_up)
+    params.require(:work).permit(:comment, :title, :images, :user_id, :moku_id, :comment_public, :pickup_public)
   end
 end

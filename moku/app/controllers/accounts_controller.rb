@@ -30,10 +30,10 @@ class AccountsController < ApplicationController
     user.deleted = true
     user.save!
 
-    mokus = Moku.where(user_id: current_user.id)
-    mokus.each do |moku|
-      moku.deleted = true
-      moku.save!
+    do_mokus = DoMoku.where(user_id: current_user.id)
+    do_mokus.each do |do_moku|
+      do_moku.deleted = true
+      do_moku.save!
     end
 
     moku_types = MokuType.where(user_id: current_user.id)

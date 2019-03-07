@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  belongs_to :moku
+  belongs_to :do_moku
   belongs_to :user
   has_many :book_marks
 
@@ -10,5 +10,4 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :comment_public, inclusion: { in: [true, false] }
   validates :pickup_public, inclusion: { in: [true, false] }
-
 end

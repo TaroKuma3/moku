@@ -1,9 +1,9 @@
 <h1>MokuType#show</h1>
 <h1><%= "【MOKUタグ：#{@moku_type.name}】でMOKUったもの" %></h1>
-<% @mokus.each do |moku| %>
+<% @do_mokus.each do |do_moku| %>
 <ul>
   <li>
-    <%= link_to("#{moku.created_at}のMOKU", user_moku_path(moku.user_id, moku.id)) %>
+    <%= link_to("#{do_moku.created_at}のMOKU", user_moku_path(do_moku.user_id, do_moku.id)) %>
   </li>
 </ul>
 <% end %>

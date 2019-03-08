@@ -1,16 +1,8 @@
 <div class="container">
-  <h1 class="font-weight-bold text-center mb-4">よくある質問</h1>
+  <h1 class="font-weight-bold text-center mb-5">よくある質問</h1>
     <div class="row">
-      <div class="col-3">
-        <h2>カテゴリ一覧</h2>
-        <div id="tag_cloud">
-          <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-          <% end %>
-        </div>
-      </div>
-
       <div class="col-9">
+        <h2 class="text-center">Q&A</h2>
         <% @faqs.each do |faq| %>
           <ul>
             <li>
@@ -19,6 +11,15 @@
             </li>
           </ul>
         <% end %>
+      </div>
+
+      <div class="col-3">
+        <h2>カテゴリ一覧</h2>
+        <div id="tag_cloud">
+          <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
       </div>
     </div>
 

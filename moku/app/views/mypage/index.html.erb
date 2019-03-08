@@ -39,16 +39,20 @@
                     <% end %>
 
                     <% if @user.admin? %>
-                      <br><i class="fas fa-unlock-alt my-color-admin fa-2x">管理者限定</i>
-                      <span class="fa-stack">
-                          <%= link_to(faqs_new_path) do %>
+                      <hr/><br/>
+                      <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
+                        <%= link_to(faqs_new_path) do %>
+                          <i class="fas fa-question my-color-question fa-4x m-3 faa-bounce animated-hover">
+                            <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
+                          </i>
+                        <% end %>
 
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to("FAQの編集・削除", faqs_path )%>
-                        </li>
-                      </span>
+                        <%= link_to(faqs_path) do %>
+                          <i class="fas fa-edit my-color-faqedit fa-4x m-3 faa-bounce animated-hover">
+                            <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
+                          </i>
+                        <% end %>
+
                     <% end %>
                   </div>
               </div>

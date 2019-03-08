@@ -51,9 +51,19 @@
   color:#ffe200
 }
 
-/* 管理者まニューアイコン */
+/* 管理者ニューアイコン */
 .my-color-admin {
   color: rgb(255, 139, 139);
+}
+
+/* 管理者メニューFAQ追加アイコン */
+.my-color-question {
+  color: rgb(182, 109, 182);
+}
+
+/* 管理者メニューFAQ編集アイコン */
+.my-color-faqedit {
+  color: rgb(74, 211, 165);
 }
 
 /* ヘッダーのご挨拶 */
@@ -61,6 +71,11 @@
   font-size: 20px;
   text-align: right;
 }
+
+/* はてなアイコンのpop_over */
+.popover {
+  max-width: 400px !important;
+  }
 
 /* mypageへ戻るアイコン  */
 .my-color-reply {

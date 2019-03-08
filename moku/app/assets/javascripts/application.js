@@ -18,3 +18,17 @@
 
 //= require popper
 //= require bootstrap-sprockets
+
+// はてなアイコン
+$(document).ready(function () {
+    $(function() {
+      $('#commentDescription').popover({
+      trigger: 'hover',
+      html: true,
+    });
+    $('#pickUpDescription').popover({
+      trigger: 'hover',
+      html: true,
+    });
+  })
+})

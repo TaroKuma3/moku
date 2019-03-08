@@ -1,165 +1,173 @@
 <body>
   <main>
+    <div class="container-fluid pb-4">
       <h1 class="font-weight-bold text-center"><%= "#{@user.name}さんのマイページ" %></h1>
-      <div class="container-fluid pb-4">
-          <div class="row">
-            <div class="col-12 col-md-6 pb-4">
-              <section>
-                <div class="card">
-                  <div class="card-header text-center"><h3>何をしますか？</h3></div>
+        <div class="row">
+          <div class="col-12 col-md-6 pb-4">
+            <section>
+              <div class="card">
+                <div class="card-header text-center"><h3>何をしますか？</h3></div>
                   <div class="card-body pd-1 text-center">
+                    <%= link_to new_user_moku_path(@user) do %>
+                      <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <h5 class="font-weight-bold text-secondary">mokuる</h5>
+                      </i>
+                    <% end %>
 
-                      <%= link_to new_user_moku_path(@user) do %>
-                        <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">mokuる</h5>
-                        </i>
-                      <% end %>
+                    <%= link_to user_mokus_path(@user) do %>
+                      <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <h5 class="font-weight-bold text-secondary">moku一覧</h5>
+                      </i>
+                    <% end %>
 
-                      <%= link_to user_mokus_path(@user) do %>
-                        <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">moku一覧</h5>
-                        </i>
-                      <% end %>
+                    <%= link_to user_book_marks_path(@user) do %>
+                      <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <h5 class="font-weight-bold text-secondary">Book Mark</h5>
+                      </i>
+                    <% end %>
 
-                      <%= link_to user_book_marks_path(@user) do %>
-                        <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                        </i>
-                      <% end %>
+                    <%= link_to"/mokus/new" do %>
+                      <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                      </i>
+                    <% end %>
 
-                      <%= link_to"/mokus/new" do %>
-                        <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
-                       </i>
-                      <% end %>
+                    <%= link_to user_works_path(@user) do %>
+                      <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                        <h5 class="font-weight-bold text-secondary">成果物</h5>
+                      </i>
+                    <% end %>
 
-                      <%= link_to user_works_path(@user) do %>
-                        <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">成果物</h5>
-                        </i>
-                      <% end %>
-                    </p>
+                    <% if @user.admin? %>
+                      <br><i class="fas fa-unlock-alt my-color-admin fa-2x">管理者限定</i>
+                      <span class="fa-stack">
+                          <%= link_to(faqs_new_path) do %>
+
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to("FAQの編集・削除", faqs_path )%>
+                        </li>
+                      </span>
+                    <% end %>
                   </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="col-12 col-md-6 pb-4">
+            <section>
+              <div class="card">
+                <div class="card-header text-center"><h3>自己紹介</h3></div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <% if @user.introduce.blank? %>
+                    　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
+                    <% else %>
+                      <%= simple_format(@user.introduce) %>
+                    <% end %>
+                  </p>
                 </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-6 pb-4">
+              <section>
+                  <div class="card">
+                    <div class="card-header text-center"><h3>公開設定</h3></div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
+                      </p>
+                    </div>
+                  </div>
               </section>
-            </div>
-
-              <div class="col-12 col-md-6 pb-4">
-                  <section>
-                      <div class="card">
-                        <div class="card-header text-center"><h3>自己紹介</h3></div>
-                        <div class="card-body">
-                          <p class="card-text">
-                          <% if @user.introduce.blank? %>
-                          　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                          <% else %>
-                            <%= simple_format(@user.introduce) %>
-                          <% end %>
-                          </p>
-                        </div>
-                      </div>
-                  </section>
-              </div>
-
-              <div class="col-12 col-md-6 pb-4">
-                  <section>
-                      <div class="card">
-                        <div class="card-header text-center"><h3>公開設定</h3></div>
-                        <div class="card-body">
-                          <p class="card-text">
-                            <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
-                          </p>
-                        </div>
-                      </div>
-                  </section>
-              </div>
-
-              <div class="col-12 col-md-6 pb-4">
-                  <section>
-                      <div class="card">
-                        <div class="card-header text-center"><h3>mokuアイテム</h3></div>
-                        <div class="card-body">
-                          <p class="card-text">
-                          <% if @user.items.blank? %>
-                            <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
-                          <% else %>
-                            <%= simple_format(@user.items) %>
-                          <% end %>
-                          </p>
-                        </div>
-                      </div>
-                  </section>
-              </div>
           </div>
 
-          <div class="row">
-              <div class="col-12 col-lg-6 pb-4">
-                  <section>
-                      <div class="card text-blue bg-info text-white">
-                        <h4><div class="card-header text-center"><h3>Pick UP</h3></div></h4>
-                        <div class="card-body ">
-                          <h5 class="card-title">みんなの成果物を見てみよう！</h5>
-                          <ul>
-                              <li><a href="/users/7/works/20/public" class="text-white">削除テストユーザー</a></li>
-                              <li><a href="/users/6/works/19/public" class="text-white">スイミー</a></li>
-                              <li><a href="/users/4/works/18/public" class="text-white">画像じゃないものを貼ってみる</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                  </section>
-              </div>
-
-              <div class="col-12 col-lg-6 pb-4">
-                  <section>
-                      <div class="card text-white bg-info">
-                        <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
-                        <div class="card-body">
-                              <ul id="justNowUl"></ul>
-                              <%= javascript_include_tag "mypage" %>
-                              <script></script>
-                        </div>
-                      </div>
-                  </section>
-              </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12">
+          <div class="col-12 col-md-6 pb-4">
               <section>
-                <h1 class="text-center">カレンダー</h1>
-                  <h5><%= link_to("【これまでの全てのMOKU一覧】", user_mokus_path(@user))%></h5>
-                    <%# md以上で月間カレンダー表示%>
-                    <div class="d-none d-md-block">
-                      <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
-                        <%= date %><br>
-                        <% do_mokus.each do |do_moku| %>
-                          <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                  <div class="card">
+                    <div class="card-header text-center"><h3>mokuアイテム</h3></div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <% if @user.items.blank? %>
+                          <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
+                        <% else %>
+                          <%= simple_format(@user.items) %>
                         <% end %>
-                      <% end %>
+                      </p>
                     </div>
-                    <%# md未満で週間カレンダー表示%>
-                    <div class="d-md-none">
-                      <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
-                        <%= date %><br>
-                        <% do_mokus.each do |do_moku| %>
-                          <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
-                        <% end %>
-                      <% end %>
-                    </div>
-              <section>
-            </div>
+                  </div>
+              </section>
           </div>
-      <% if @user.admin? %>
-          <h2>管理者メニュー <i class="fa fa-cloud my-color-blue" aria-hidden="true"></i></h2>
-          <ul>
-            <li>
-              <%= link_to("FAQの追加", faqs_new_path )%>
-            </li>
-            <li>
-              <%= link_to("FAQの編集・削除", faqs_path )%>
-            </li>
-          </ul>
-      <% end %>
-      </section>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-lg-6 pb-4">
+            <section>
+              <div class="card text-blue bg-info text-white">
+                <h4><div class="card-header text-center"><h3>Pick UP</h3></div></h4>
+                <div class="card-body ">
+                  <h5 class="card-title">みんなの成果物を見てみよう！</h5>
+                  <ul>
+                    <% @work_pickups.each do |work_pickup| %>
+                      <li>
+                        <% work = Work.find(work_pickup.id)%>
+                        <%= link_to(work_random.title, "users/#{@user.id}/works/#{work.id}/public") %>
+                        <% if work.user_id == current_user.id%>
+                          <%= link_to(work_pickup.title, user_work_path(@user, work)) %>
+                        <% else %>
+                          <%= link_to(work_pickup.title, "/users/#{work.user_id}/works/#{work.id}/public") %>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="col-12 col-lg-6 pb-4">
+            <section>
+              <div class="card text-white bg-info">
+                <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
+                <div class="card-body">
+                  <ul id="justNowUl"></ul>
+                  <%= javascript_include_tag "mypage" %>
+                  <script></script>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <section>
+              <h1 class="text-center">カレンダー</h1>
+              <%# md以上で月間カレンダー表示%>
+              <div class="d-none d-md-block">
+                <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
+                  <%= date %><br>
+                  <% do_mokus.each do |do_moku| %>
+                    <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                  <% end %>
+                <% end %>
+              </div>
+              <%# md未満で週間カレンダー表示%>
+              <div class="d-md-none">
+                <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
+                  <%= date %><br>
+                  <% do_mokus.each do |do_moku| %>
+                    <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                  <% end %>
+                <% end %>
+              </div>
+            </section>
+          </div>
+        </div>
   </main>
 </body>

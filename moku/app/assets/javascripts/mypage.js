@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-
+// moku JUST NOW
 function getJustNowDatas() {
   $.ajax({
       type: 'get', //routesに書いたajaxのためのURLに指定したリクエストメソッドを書く
@@ -9,12 +9,9 @@ function getJustNowDatas() {
   }).done(function (response, status) { //done === うまくいったら、 response === ブラウザから返ったデーター　status === successとかのステータス
       $('#justNowUl').empty() //mypage/index.htmlに書いてあるjustNowUlの中身を空っぽに
       const mokus = response //responseは↑の第一引数。ブラウザから返ってきたデーター
-      console.log(mokus)
       for (let i = 0; i < mokus.length; i++) { //変数iを定義　mokusの要素の数より小さいうちはインクリメント
           const moku = mokus[i] //定数mokuを定義　mokusに入っている要素のi番目を取得して定数mokuへ
-          // console.log(moku.id, moku.moku_type_id)
-          // let created_time = moment(moku.created_at).fromNow()
-          const liElement = "<li>" + moku.format_created_at + "   " + moku.user.name + "さんが" + moku.moku_type.name + "でMOKUを開始しました！" + "</li>" //定数liElementを定義　moku.idをリスト形式で出力
+          const liElement = "<li>" + moku.format_created_at + "   " + moku.user.name + "さんが"  + "MOKUを開始しました！" + "</li>" //定数liElementを定義　moku.idをリスト形式で出力
           $('#justNowUl').append(liElement) //justNowUlに対してliElementを追加　
       }
   })

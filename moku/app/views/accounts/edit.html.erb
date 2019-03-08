@@ -19,18 +19,21 @@
       </div>
 
       <div class="col-12 col-md-6">
-        <h3>アカウントの公開設定</h3>
+        <h3>アカウントの公開設定
+          <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="アカウントの公開設定" data-content="<b>【公開】</b><br>
+            <ul>
+              <li>moku JUST NOWに公開されます。</li>
+              <li>他のユーザーが成果物をみた時、「作者さん」リンクから、ニックネーム・mokuアイテム・自己紹介が見えるページにジャンプできるようになります。</li>
+            </ul>
+            <b>【非公開】</b><br>
+            <ul>
+              <li>moku JUST NOWには公開されません。</li>
+              <li>他のユーザーが成果物をみた時、「作者さん」リンクが無効になります。</li>
+              <li>PICK UPにも載らなくなります。</li>
+            </ul>">
+          </span>
+        </h3>
         <%= f.select :public, options_for_public, selected: @user.public , hide_label: true%>
-        <ul>
-          <li>
-            <h3>☁︎公開にすると</h3>
-              <p>公開の説明</p>
-          </li>
-          <li>
-            <h3>☁︎非公開にすると</h3>
-              <p>非公開の説明</p>
-          </li>
-        </ul>
       </div>
     </div>
 
@@ -56,3 +59,7 @@
 
   <%= render 'my_shared/go_mypage' %>
 </div>
+
+<%# はてなアイコン %>
+<%= javascript_include_tag "application.js" %>
+<script></script>

@@ -1,18 +1,26 @@
-<h1>よくある質問</h1>
-<h2>カテゴリ一覧</h2>
-<div id="tag_cloud">
-  <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div><br>
+<div class="container">
+  <h1 class="font-weight-bold text-center mb-4">よくある質問</h1>
+    <div class="row">
+      <div class="col-3">
+        <h2>カテゴリ一覧</h2>
+        <div id="tag_cloud">
+          <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
+      </div>
 
-<% @faqs.each do |faq| %>
-  <ul>
-    <li>
-      <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
-      <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
-    </li>
-  </ul>
-<% end %>
+      <div class="col-9">
+        <% @faqs.each do |faq| %>
+          <ul>
+            <li>
+              <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
+              <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
 
 <%= render 'my_shared/go_top_or_mypage'%>
+</div>

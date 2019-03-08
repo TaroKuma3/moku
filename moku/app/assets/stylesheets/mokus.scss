@@ -20,12 +20,10 @@
   left: 0px;
 }
 
-#selectMokuType {
-  min-height: 70px;
-}
-
-#startButton {
-  min-height: 70px;
+// newのmoku開始前に並ぶ３つのcolを揃える
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #pauseButton {
@@ -41,5 +39,4 @@
 #displayMokuTime {
   display: none;
   min-height: 156px;
-  
 }

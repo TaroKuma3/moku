@@ -31,7 +31,7 @@
   color: #b7e0f5;
 }
 
-/* moku一覧 */
+/* moku一覧アイコン */
 .my-color-mokusIndex {
   color: rgb(243, 177, 138);
 }
@@ -51,6 +51,10 @@
   color:#ffe200
 }
 
+/* 管理者まニューアイコン */
+.my-color-admin {
+  color: rgb(255, 139, 139);
+}
 
 /* ヘッダーのご挨拶 */
 #greet {

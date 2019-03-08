@@ -57,7 +57,7 @@
         <h3>コメントを公開しますか？
           <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
           <ul>
-            <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
+            <li>成果物はPICK UPに乗りますが、コメントだけは非公開になります。</li>
             <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
           </ul>">
           </span>
@@ -91,21 +91,19 @@
       </div>
     <% end %>
 
-  <h4><%= link_to("成果物一覧へ戻る", user_works_path(@user)) %></h4>
+  <%= link_to user_mokus_path(@user) do %>
+    <i class="fas fa-file-alt my-color-mokusIndex text-center fa-4x m-3" aria-hidden="true">
+      <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+    </i>
+  <% end %>
+  <%= link_to user_works_path(@user) do %>
+    <i class="fas fa-crown my-color-work fa-4x m-3 text-center" aria-hidden="true">
+      <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
+    </i>
+  <% end %>
+
   <%= render 'my_shared/go_mypage' %>
 </div>
 
-<script>
-$(document).ready(function () {
-    $(function() {
-      $('#commentDescription').popover({
-      trigger: 'hover',
-      html: true,
-    });
-    $('#pickUpDescription').popover({
-      trigger: 'hover',
-      html: true,
-    });
-  })
-})
-</script>
+<%= javascript_include_tag "application.js" %>
+<script></script>

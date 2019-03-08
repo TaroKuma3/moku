@@ -1,4 +1,5 @@
-<h1>FAQの登録</h1>
+<div class="container">
+<h1 class="font-weight-bold text-center">FAQの登録</h1>
 
 <%= bootstrap_form_with(model: @faq,
               url: {controller: :faqs, action: :create},
@@ -11,12 +12,14 @@
     <% end %>
   <% end %><br>
 
-  <%= form.label :Q %>
-  <p><%= form.text_area :questions %></p>
-
-  <%= form.label :A %>
-  <p><%= form.text_area :answer %></p>
-
+<div class="row">
+  <div class="col-12 col-md-6">
+    <p><%= form.text_area :questions %></p>
+  </div>
+  <div class="col-12 col-md-6">
+    <p><%= form.text_area :answer %></p>
+  </div>
+</div>
   <%= form.label :category_list, "タグをカンマ区切りで入力" %>
   <%= text_field_tag 'faq[category_list]', @faq.category_list.join(','), "data-role" => "tagsinput" %>
 
@@ -26,3 +29,4 @@
 <%= link_to("よくある質問一覧に戻る", faqs_path) %>
 
 <%= render 'my_shared/go_mypage'%>
+</div>

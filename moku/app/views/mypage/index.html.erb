@@ -26,7 +26,7 @@
                       </i>
                     <% end %>
 
-                    <%= link_to"/mokus/new" do %>
+                    <%= link_to user_moku_type_index_path(@user) do %>
                       <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                         <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
                       </i>
@@ -49,7 +49,7 @@
 
                         <%= link_to(faqs_path) do %>
                           <i class="fas fa-edit my-color-faqedit fa-4x m-3 faa-bounce animated-hover">
-                            <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
+                            <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
                           </i>
                         <% end %>
 

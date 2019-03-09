@@ -1,25 +1,34 @@
-<div class="container">
+<div class="container-fluid">
   <h1 class="font-weight-bold text-center mb-5">よくある質問</h1>
     <div class="row">
-      <div class="col-9">
-        <h2 class="text-center">Q&A</h2>
-        <% @faqs.each do |faq| %>
-          <ul>
-            <li>
-              <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
-              <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
-            </li>
-          </ul>
-        <% end %>
+      <div class="col-8">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-body font-weight-bold text-center"><h2>Q&A</h2></div>
+        </div>
+          <% @faqs.each do |faq| %>
+            <div class="card bg-light mb-2">
+              <div class="card-body">
+                <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
+                <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
+              </div>
+            </div>
+          <% end %>
       </div>
 
-      <div class="col-3">
-        <h2>カテゴリ一覧</h2>
-        <div id="tag_cloud">
-          <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-          <% end %>
+      <div class="col-4">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-body font-weight-bold text-center"><h2>カテゴリー</h2></div>
+      </div>
+
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <div id="tag_cloud">
+            <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+                <%= link_to tag.name, tag_path(tag.name), class: css_class %><br/>
+            <% end %>
+          </div>
         </div>
+      </div>
       </div>
     </div>
 

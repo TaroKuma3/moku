@@ -77,6 +77,16 @@
   max-width: 400px !important;
   }
 
+  /* 編集するアイコン */
+  .my-color-edit {
+    color: mediumslateblue;
+  }
+
+  /* banアイコン */
+  .my-color-ban {
+    color: crimson;
+  }
+
 /* mypageへ戻るアイコン  */
 .my-color-reply {
   color: #f472db

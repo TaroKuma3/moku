@@ -1,11 +1,30 @@
-<h1>MokuType#show</h1>
-<h1><%= "【MOKUタグ：#{@moku_type.name}】でMOKUったもの" %></h1>
-<% @do_mokus.each do |do_moku| %>
-<ul>
-  <li>
-    <%= link_to("#{do_moku.created_at}のMOKU", user_moku_path(do_moku.user_id, do_moku.id)) %>
-  </li>
-</ul>
-<% end %>
+<div class="container">
+  <h1><%= "【MOKUタグ：#{@moku_type.name}】のMOKU" %></h1>
 
-<%= render 'my_shared/go_mypage' %>
+  <div class="row">
+    <div class="col-8" style="margin: auto;">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr class="table-info">
+            <th scope="col">日付</th>
+            <th scope="col">moku詳細へ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @do_mokus.each do |do_moku| %>
+            <tr>
+              <th scope="row"><%= "#{do_moku.created_at}"%></th>
+              <td>
+              <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
+                <i class="fas fa-search my-color-search fa-2x"></i>
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <%= render 'my_shared/go_mypage' %>
+</div>

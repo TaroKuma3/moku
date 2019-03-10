@@ -15,10 +15,12 @@ class MokuTypeController < ApplicationController
   def new
     @user = current_user
     @moku_type = MokuType.new
+    @moku_types = MokuType.where(user_id: current_user.id)
   end
 
   def create
     @user = current_user
+    @moku_types = MokuType.where(user_id: current_user.id)
 
     @moku_type = MokuType.new(
       name: params[:name],

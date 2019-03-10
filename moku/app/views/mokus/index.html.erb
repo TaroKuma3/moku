@@ -1,5 +1,7 @@
 <div class="container">
-  <h1 class="font-weight-bold text-center"><%= "#{@user.name}さんの"%><br class="d-inline d-sm-none"/><%= "MOKUった一覧" %></h1>
+  <h1>
+    <%= "#{@user.name}さんの"%><br class="d-inline d-sm-none"/><%= "MOKU一覧" %>
+  </h1>
 
   <% if true %>
     <%= bootstrap_form_with(model: @do_moku,
@@ -19,24 +21,31 @@
   <% end %>
 
 
-  <table class="table table-hover">
+  <table class="table table-hover text-center">
     <thead>
-      <tr class="table-info text-center">
+      <tr class="table-info">
         <th scope="col">日時</th>
         <th scope="col">mokuタグ</th>
+        <th scope="col">moku詳細へ</th>
         <th scope="col">成果物登録</th>
         <th scope="col">moku削除</th>
       </tr>
     </thead>
     <tbody>
       <% @do_mokus.each do |do_moku| %>
-        <tr class="text-center">
+        <tr>
           <th scope="row">
-            <%= link_to("#{do_moku.created_at} の MOKU", user_moku_path(do_moku.user_id, do_moku.id)) %>
+          <%= "#{do_moku.created_at} " %>
+            <%#= link_to("#{do_moku.created_at} の MOKU", user_moku_path(do_moku.user_id, do_moku.id)) %>
           </th>
           <td>
             <% moku_type = MokuType.find(do_moku.moku_type_id) %>
             <%= "#{moku_type.name}" %>
+          </td>
+          <td>
+            <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
+              <i class="fas fa-search my-color-search fa-2x"></i>
+            <% end %>
           </td>
           <td>
             <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>

@@ -1,21 +1,25 @@
-<h1>Moku_type#edit</h1>
-<h1>MOKUタグの編集</h1>
+<div class="container">
+  <h1  class="font-weight-bold text-center mb-4">MOKUタグの編集</h1>
 
-<%= bootstrap_form_with(model: @moku_type,
-url: {controller: :moku_type, action: :update, user_id: current_user.id, id: @moku_type},
-method: :patch,
-local: true) do |f| %>
+  <%= bootstrap_form_with(model: @moku_type,
+  url: {controller: :moku_type, action: :update, user_id: current_user.id, id: @moku_type},
+  method: :patch,
+  local: true) do |f| %>
 
-  <% if @moku_type.errors.any? %>
-    <% @moku_type.errors.full_messages.each do |message| %>
-      <%= message %><br>
+    <% if @moku_type.errors.any? %>
+      <% @moku_type.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
     <% end %>
+
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4">
+      <%= "MOKUタグの新しい名前を教えてください" %>
+      <%= render "form", f:f %>
+    </div>
   <% end %>
 
-  <%= "MOKUタグの新しい名前を教えてください" %>
-  <%= render "form", f:f %>
-<% end %>
+  <p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
 
-<p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
-
-<%= render 'my_shared/go_mypage' %>
+  <%= render 'my_shared/go_mypage' %>
+</div>

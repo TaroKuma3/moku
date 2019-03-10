@@ -31,6 +31,12 @@
   color: #b7e0f5;
 }
 
+h1{
+  font-weight: bold !important;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
 /* moku一覧アイコン */
 .my-color-mokusIndex {
   color: rgb(243, 177, 138);
@@ -85,6 +91,11 @@
   /* banアイコン */
   .my-color-ban {
     color: crimson;
+  }
+
+  /* 虫眼鏡アイコン */
+  .my-color-search {
+    color: plum;
   }
 
 /* mypageへ戻るアイコン  */

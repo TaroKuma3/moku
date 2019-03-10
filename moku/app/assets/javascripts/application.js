@@ -22,11 +22,7 @@
 // はてなアイコン
 $(document).ready(function () {
     $(function() {
-      $('#commentDescription').popover({
-      trigger: 'hover',
-      html: true,
-    });
-    $('#pickUpDescription').popover({
+      $('[data-toggle="popover"]').popover({
       trigger: 'hover',
       html: true,
     });

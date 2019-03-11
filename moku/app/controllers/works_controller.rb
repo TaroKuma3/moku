@@ -10,6 +10,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @works = Work.where(user_id: current_user.id).where(deleted: false)
     @user = current_user #ここでひろうuser_idは自ページ分なのでcurrent_user
     @do_moku = DoMoku.find(@work.moku_id)
     @bm_count = BookMark.where(work_id: @work.id).count

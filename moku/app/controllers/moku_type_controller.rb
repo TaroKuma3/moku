@@ -9,7 +9,7 @@ class MokuTypeController < ApplicationController
 
   def show
     @moku_type = MokuType.find(params[:id])
-    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id)
+    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id).order(created_at: 'desc')
   end
 
   def new

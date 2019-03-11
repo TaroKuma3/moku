@@ -1,2 +1,83 @@
-<h1>Mokus#show</h1>
-<p>Find me in app/views/mokus/show.html.erb</p>
+<div class="container">
+  <h1><%= "#{@do_moku.created_at}にmokuった内容"%></h1>
+
+  <div class="row mb-2">
+    <div class="col-12 col-md-6 mb-2">
+      <div class="row">
+        <div class="col-12 mb-2">
+          <div class="card text-white bg-info mb-3" style="min-width: 20rem;">
+            <div class="card-header  text-center">mokuった日時</div>
+            <div class="card-body text-dark bg-white">
+              <p class="card-text text-center">
+                <%= @do_moku.created_at %> 〜 <%= @do_moku.updated_at %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mb-2">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header text-center">moku TIME</div>
+            <div class="card-body text-dark bg-white">
+              <p class="card-text text-center">
+                <%= "#{distance_of_time_in_words(@do_moku.moku_time)}" %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mb-2">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header text-center">mokuタグ</div>
+            <div class="card-body text-dark bg-white">
+              <p class="card-text text-center">
+                <%= @moku_type.name%>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 mb-2">
+    <div class="card text-white bg-info mb-3">
+        <div class="card-header text-center">memo</div>
+        <div class="card-body text-dark bg-white">
+          <p class="card-text">
+            <%= simple_format(@do_moku.content) %>
+          </p>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 col-md-6 mb-4">
+    <h4><%= "このMOKUの成果物一覧" %></h4>
+    <% if @works.present? %>
+      <% @works.each do |work| %>
+      <ul>
+        <li>
+          <%= link_to(work.title, user_work_path(work.user_id, work.id)) %>
+        </li>
+      </ul>
+      <% end %>
+    <% else %>
+      <h5>まだ成果物の登録が内容です。<br/>ちょっとしたメモの画像などでも記録してみませんか？</h5>
+    <% end %>
+    </div>
+
+      <p><%= link_to("【編集】", edit_user_moku_path(@user, @do_moku.id)) %></p>
+    </div>
+
+  </div>
+
+<hr/>
+  <%= link_to user_mokus_path(@user) do %>
+    <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
+      <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+    </i>
+  <% end %>
+
+  <%= render "my_shared/go_mypage" %>
+</div>

@@ -19,24 +19,52 @@
   </div>
 
   <div class="row">
-    <h3>本当にこのMOKUタグを削除してよろしければ、削除ボタンをクリックしてください。</h3>
+    <div class="col-12 text-center mb-4">
+      <h5>本当にこのMOKUタグを削除してよろしければ、<br/>削除ボタンをクリックしてください。</h3>
+    </div>
+  </div>
+
     <%= bootstrap_form_with(model: @moku_type,
                   url: {controller: :moku_type, action: :delete, user_id: current_user.id, moku_type_id:@moku_type.id},
                   method: :patch,
                   local: true) do |f| %>
-
-      <%= f.submit "MOKUタグを削除する", class: "btn btn-info btn-warning btn-lg" %>
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <%= f.submit "MOKUタグを削除する", class: "btn btn-info btn-warning btn-lg" %>
+      </div>
+    </div>
     <% end %>
   </div>
 
   <div class="row">
-    <h3><%= "#{@moku_type.name}のMOKUタグがつけられているMOKU" %></h3>
-    <% @do_mokus.each do |do_moku| %>
-      <p><%= link_to("#{do_moku.format_created_at}のMOKU", "/users/#{do_moku.user_id}/mokus/#{do_moku.id}") %></p>
-    <% end %>
+    <div class="col-12 text-center mb-3">
+      <h2 class="font-weight-bold">このmokuタグのmoku一覧</h2>
+    </div>
+    <div class="col-8" style="margin: auto;">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr class="table-info">
+            <th scope="col">日付</th>
+            <th scope="col">moku詳細へ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @do_mokus.each do |do_moku| %>
+            <tr>
+              <th scope="row">
+                <%= "#{do_moku.created_at}"%>
+              </th>
+              <td>
+              <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}" do %>
+                <i class="fas fa-search my-color-search fa-2x"></i>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-
 
   <%= render 'my_shared/go_mypage' %>
 </div>

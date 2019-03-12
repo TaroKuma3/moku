@@ -1,2 +1,84 @@
-<h1>Mokus#check_delete</h1>
-<p>Find me in app/views/mokus/check_delete.html.erb</p>
+<div class="container">
+
+  <h1>mokuの削除</h1>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-header text-center"><h2><%= "#{@user.name}"%>さん、ご確認ください</h2></div>
+        <div class="card-body">
+          <p class="card-text">
+            <ul>
+              <li>MOKUを削除すると、このMOKUの【成果物】も全て消えてしまいます。</li>
+              <li>Book Markされていた成果物の場合、Book Markからも消えてしまいます。</li>
+              <li>一度削除すると、復活することはできません。</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-12 mb-3 text-center">
+    思い残しはありませんか？<br>
+    念の為、このmokuの成果物がないか調べて以下に結果をお出ししました。<br/>
+    確認してみてください。<br/>
+    問題無いようでしたら削除ボタンをクリックしてください。
+  </div>
+
+   <%= form_with(model: @do_moku,
+                url: {controller: :mokus, action: :delete, user_id: current_user.id, moku_id:@do_moku.id},
+                method: :patch,
+                local: true) do |f| %>
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= f.submit "MOKUを削除する", class: "btn btn-info btn-warning btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-12 col-md-9 text-center" style="margin: auto;">
+      <h3 class="text-center">このMOKUの成果物</h3>
+      <% if @works.any? %>
+        <table class="table table-hover">
+          <thead>
+            <tr class="table-info text-center">
+              <th scope="col">タイトル</th>
+              <th scope="col">作成日</th>
+              <th scope="col">詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @works.each do |work| %>
+              <tr>
+                <th scope="row"><%# タイトル%>
+                  <%= "#{work.title}" %>
+                </th>
+                <td><%# 日付 %>
+                  <%= "#{work.created_at}" %>
+                </td>
+                <td><%# 詳細 %>
+                  <%= link_to user_work_path(work.user_id, work.id) do %>
+                    <i class="fas fa-search my-color-search fa-2x"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h5 class="text-center">このMOKUには成果物の登録がありませんでした。</h5>
+        <hr/>
+      <% end %>
+    </div>
+  </div>
+
+
+  <%= link_to user_mokus_path(@user) do %>
+    <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
+      <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+    </i>
+  <% end %>
+
+  <%= render 'my_shared/go_mypage' %>
+</div>

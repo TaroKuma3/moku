@@ -37,6 +37,19 @@ h1{
   padding-bottom: 50px;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
+.notice {
+  font-weight: bold;
+}
+
+/* アコーディオンカードの▼ */
+.my-color-down {
+  color: darkolivegreen;
+}
+
 /* moku一覧アイコン */
 .my-color-mokusIndex {
   color: rgb(243, 177, 138);

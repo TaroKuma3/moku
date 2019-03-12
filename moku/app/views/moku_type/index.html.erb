@@ -38,7 +38,7 @@
               </td>
               <td><%# 編集 %>
                 <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
-                  <span class="fas fa-ban my-color-ban" id="commentDescription" data-toggle="popover" data-content="このmokuタグは編集できません"></span>
+                  <span class="fas fa-ban my-color-ban" data-toggle="popover" data-content="このmokuタグは編集できません"></span>
                 <% else %>
                   <%= link_to edit_user_moku_type_path(moku_type.user_id, moku_type.id) do %>
                     <i class="fas fa-edit my-color-edit fa-2x"></i>

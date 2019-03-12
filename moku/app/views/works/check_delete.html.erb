@@ -1,2 +1,39 @@
-<h1>Works#check_delete</h1>
-<p>Find me in app/views/works/check_delete.html.erb</p>
+<div class="container">
+
+  <h1>成果物の削除</h1>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-header text-center"><h2><%= "#{@user.name}"%>さん、ご確認ください</h2></div>
+        <div class="card-body">
+          <p class="card-text">
+            <ul>
+              <li>画像の削除は【編集】からどうぞ！</li>
+              <li>成果物がブックマークされている場合、ブックマークからも消えてしまいます。</li>
+              <li>一度削除すると復活させることはできません。</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row-12 mb-3 text-center">
+    思い残しはありませんか？<br>
+    問題無いようでしたら削除ボタンをクリックしてください。
+  </div>
+
+  <%= form_with(model: @work,
+                url: {controller: :works, action: :delete, user_id: current_user.id, work_id: @work.id},
+                method: :patch,
+                local: true) do |f| %>
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= f.submit "この成果物を削除する", class: "btn btn-info btn-warning btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+  <hr/>
+  <%= render 'my_shared/go_mypage' %>
+</div>

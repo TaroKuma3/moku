@@ -60,16 +60,23 @@
 
           <div class="col-12 col-md-6 pb-4">
             <section>
-              <div class="card">
-                <div class="card-header text-center"><h3>自己紹介</h3></div>
-                <div class="card-body">
-                  <p class="card-text">
-                    <% if @user.introduce.blank? %>
-                    　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                    <% else %>
-                      <%= simple_format(@user.introduce) %>
-                    <% end %>
-                  </p>
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header text-center" id="headingOne">
+                  <button class="btn bg-light text-muted btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <h3>自己紹介&emsp;<i class="fas fa-caret-down my-color-down"></i></h3>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <p class="card-text">
+                      <% if @user.introduce.blank? %>
+                      　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
+                      <% else %>
+                        <%= simple_format(@user.introduce) %>
+                      <% end %>
+                    </p>
+                  </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -113,16 +120,25 @@
             <section>
               <div class="card text-blue bg-info text-white">
                 <h4><div class="card-header text-center"><h3>Pick UP</h3></div></h4>
-                <div class="card-body ">
+                <div class="card-body">
                   <h5 class="card-title">みんなの成果物を見てみよう！</h5>
                   <ul>
                     <% @work_pickups.each do |work_pickup| %>
                       <li>
                         <% work = Work.find(work_pickup.id)%>
                         <% if work.user_id == current_user.id%>
-                          <%= link_to(work_pickup.title, user_work_path(@user, work)) %>
+                          <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
+                            <%= link_to user_work_path(@user, work) do %>
+                              <i class="fas fa-search my-color-search fa-2x"></i>
+                            <% end %>
+                          </span>
                         <% else %>
-                          <%= link_to(work_pickup.title, "/users/#{work.user_id}/works/#{work.id}/public") %>
+                        <% work_user = User.find(work.user_id) %>
+                          <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
+                            <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
+                              <i class="fas fa-search my-color-search fa-2x"></i>
+                            <% end%>
+                          </span>
                         <% end %>
                       </li>
                     <% end %>

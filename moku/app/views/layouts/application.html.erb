@@ -66,8 +66,27 @@
 		</header>
 
 		<%# devise %>
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
+		<% if notice %>
+		<h4 class="notice align-middle">
+			<div class="alert alert-info  alert-dismissible fade show" role="alert">
+				<%= notice %>
+				<button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</h4>
+		<% end %>
+
+		<% if alert %>
+		<h4 class="alert align-middle">
+			<div class="alert alert-info alert-dismissible fade show" role="alert">
+				<%= alert %>
+				<button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</h4>
+		<% end %>
 
 		<%= yield %>
 		<footer>

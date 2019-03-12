@@ -16,16 +16,7 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-          <div class="col-12 col-md-4 text-center">
-        <div class="card border-info mb-4">
-          <div class="card-body bg-info text-white">
-                <h5 class="font-weight-bold">画像だけを削除したい場合は【編集】からどうぞ（けそうかな）</h5>
-          </div>
-        </div>
-      </div>
       <div class="col-12 col-md-8 text-center" style="margin: auto;">
         <table class="table table-hover text-center">
           <thead>
@@ -55,7 +46,9 @@
                 </td>
                 <td><%# 削除 %>
                   <%= link_to "/users/#{work.user_id}/works/#{work.id}/check" do %>
-                    <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+                    <span data-toggle="popover" data-content="画像の削除は編集からどうぞ！">
+                      <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+                    </span>
                   <% end %>
                 </td>
               </tr>

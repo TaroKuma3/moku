@@ -87,6 +87,7 @@ class WorksController < ApplicationController
 
   def check_delete
     @work = Work.find(params[:work_id])
+    @user = current_user
   end
   def delete
     work = Work.find(params[:work_id])

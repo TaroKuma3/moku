@@ -73,6 +73,7 @@ class MokusController < ApplicationController
   def check_delete
     @do_moku = DoMoku.find(params[:moku_id])
     @works = Work.where(moku_id: @do_moku.id)
+    @user = current_user
   end
 
   def delete

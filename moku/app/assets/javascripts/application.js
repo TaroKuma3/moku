@@ -28,3 +28,8 @@ $(document).ready(function () {
     });
   })
 })
+
+// フラッシュ
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 3000)
+})

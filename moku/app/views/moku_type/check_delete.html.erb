@@ -9,8 +9,10 @@
         <div class="card-body">
           <p class="card-text">
             <h5>
-            mokuタグは、mokuの管理に使われています。<br>
-            この<%= "【#{@moku_type.name}】" %>が削除されると、<%= "【#{@moku_type.name}】" %>がつけられていたmokuには、自動的に<%= "【#{Constants::DEFAULT_MOKU_TYPE_NAME}】"%>がつきます。
+              <ul>
+                <li>mokuタグは、mokuの管理に使われています。</li>
+                <li>この<%= "【#{@moku_type.name}】" %>が削除されると、<%= "【#{@moku_type.name}】" %>がつけられていたmokuには、自動的に<%= "【#{Constants::DEFAULT_MOKU_TYPE_NAME}】"%>がつきます。</li>
+              </ul>
             </h5>
           </p>
         </div>

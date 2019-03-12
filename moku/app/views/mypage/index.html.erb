@@ -119,7 +119,6 @@
                     <% @work_pickups.each do |work_pickup| %>
                       <li>
                         <% work = Work.find(work_pickup.id)%>
-                        <%= link_to(work_random.title, "users/#{@user.id}/works/#{work.id}/public") %>
                         <% if work.user_id == current_user.id%>
                           <%= link_to(work_pickup.title, user_work_path(@user, work)) %>
                         <% else %>

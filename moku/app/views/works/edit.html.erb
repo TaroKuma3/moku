@@ -1,2 +1,67 @@
-<h1>Works#edit</h1>
-<p>Find me in app/views/works/edit.html.erb</p>
+<div class="container">
+<h1>Work#edit</h1>
+
+<%= bootstrap_form_with(model: @work,
+url: {controller: :works, action: :update, user_id: @user.id, id: @work.id},
+method: :patch,
+local: true) do |f| %>
+
+<% if @work.errors.any? %>
+  <% @work.errors.full_messages.each do |message| %>
+    <%= message %><br>
+  <% end %>
+<% end %>
+
+  <p>削除したい画像があればチェックしてください。</p>
+  <% @work.images.each do |image| %>
+
+    <%= link_to "削除", "/work/#{@work.id}/images/#{image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} %>
+    <%= image_tag image.variant(resize: '100x') %>
+  <% end %>
+
+
+  <h3>制作物タイトル</h3>
+  <%= f.text_field :title, hide_label: true %>
+
+  <h3>画像やテキストファイル１</h3>
+  <%= f.file_field :images, multipart: true, hide_label: true %>
+
+  <h3>コメント</h3>
+  <%= f.text_area :comment, hide_label: true %>
+
+  <h3>コメントを公開しますか？
+    <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+    <ul>
+      <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
+      <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
+    </ul>">
+    </span>
+  </h3>
+  <%= f.select :comment_public, options_for_public, selected: @work.comment_public, hide_label: true %>
+
+
+
+ <h3>Pick Upへの公開設定
+    <span class="fa fa-question-circle" aria-hidden="true" id="pickUpDescription" data-toggle="popover" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
+    <ul>
+      <li>公開にすると、Pick Upに載る事があります。</li>
+      <li>非公開にすると、Pick Upには載りません。</li>
+    </ul>
+    <b>【ブックマークについて】</b><br>
+    <ul>
+      <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
+      <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
+      <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
+    </ul>">
+    </span>
+  </h3>
+  <p><%= f.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
+
+  <p><%= f.submit "登録する", class: "btn btn-info btn-lg"%>
+
+
+<% end %>
+
+<%= render 'my_shared/go_mypage' %>
+
+</div>

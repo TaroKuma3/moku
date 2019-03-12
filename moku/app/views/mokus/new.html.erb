@@ -28,7 +28,7 @@
           <section>
             <div class="card text-white bg-info mr-3 hidden-xs" id='mjn' style="display:none;">
               <h3><div class="card-header text-center">moku JUST NOW</div></h3>
-              <div class="card-body">
+              <div class="card-body text-dark">
                 <ul>
                     <li>19/02/10 14:27 管理者さんがとりあえずMOKUるでMOKUを開始しました！</li>
                 </ul>
@@ -79,7 +79,7 @@
                 <div class="card-body text-center">
                   <h3>moku JUST NOW</h3>
                     <% if @user.public %>
-                      <div class="card bg-light">
+                      <div class="card bg-light text-dark">
                         <div class="card-body">
                           <%= "アカウントが#{public_to_s(@user.public)}なので"%><br><%="moku JUST NOWに載ります！"%>
                         </div>

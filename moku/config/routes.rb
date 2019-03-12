@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   patch 'mypage/:user_id' => 'mypage#update'
 
   #work
-  get '/users/:user_id/mokus/:moku_id/works/new' => 'works#new' #mokus→moku_idへ！
+  get '/users/:user_id/mokus/:id/works/new' => 'works#new' #mokus→moku_idにする予定だったがうまく行かないのでプロトタイプ通りに
   post '/users/:user_id/mokus/:moku_id/works' => 'works#create'
 
   get 'users/:user_id/works/:work_id/check' => 'works#check_delete'

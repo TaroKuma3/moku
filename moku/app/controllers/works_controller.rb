@@ -25,7 +25,7 @@ class WorksController < ApplicationController
 
   def new
     @user = current_user
-    @do_moku = DoMoku.find(params[:moku_id])
+    @do_moku = DoMoku.find(params[:id])
     @moku_type = MokuType.find(@do_moku.moku_type.id)
     @work = Work.new
 
@@ -39,7 +39,7 @@ class WorksController < ApplicationController
     @moku_type = MokuType.find(@do_moku.moku_type.id)
 
     @work = Work.new(work_params)
-    @work.do_moku = DoMoku.find(params[:moku_id])
+    @work.moku_id = DoMoku.find(@do_moku.id)
     @work.user = current_user
     # title: params[:work][:title],
     # comment: params[:work][:comment],
@@ -68,7 +68,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work.update(work_params)
 
-    if @work.save
+    if @work.save!
       flash[:notice] = "更新しました！"
       redirect_to(user_work_path(@user,@work))
     else
@@ -81,7 +81,7 @@ class WorksController < ApplicationController
     image = work.images.find params[:image_id]
     image.purge
 
-    redirect_to("/users/#{current_user.id}/work/#{work.id}")
+    redirect_to("/users/#{current_user.id}/works/#{work.id}")
 
   end
 

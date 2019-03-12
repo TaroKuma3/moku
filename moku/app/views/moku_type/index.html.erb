@@ -1,70 +1,69 @@
 <div class="container">
 
-<h1><%= "#{@user.name}さんのMOKUタグ"%></h1>
+  <h1><%= "#{@user.name}さんのMOKUタグ"%></h1>
 
-<div class="row">
-  <div class="col-12 col-md-4 text-center">
-    <div class="card border-info mb-4" style="width: 200px;" id="mokuTypeCard">
-      <div class="card-body">
-        <%= link_to new_user_moku_type_path(@user) do %>
-          <i class="fas fa-tag my-color-tag fa-2x m-3 text-center" aria-hidden="true">
-            <h5 class="font-weight-bold text-info text-center">mokuタグを<br>新しく作る</h5>
-          </i>
-        <% end %>
+  <div class="row">
+    <div class="col-12 col-md-4 text-center">
+      <div class="card border-info mb-4" style="width: 200px;" id="mokuTypeCard">
+        <div class="card-body">
+          <%= link_to new_user_moku_type_path(@user) do %>
+            <i class="fas fa-tag my-color-tag fa-2x m-3 text-center faa-bounce animated-hover">
+              <h5 class="font-weight-bold text-info text-center">mokuタグを<br>新しく作る</h5>
+            </i>
+          <% end %>
+        </div>
       </div>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-info text-center">
+            <th scope="col" class="align-middle">mokuタグ</th>
+            <th scope="col" class="align-middle">このmokuタグの<br/>moku一覧</th>
+            <th scope="col" class="align-middle">編集</th>
+            <th scope="col" class="align-middle">削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @moku_types.each do |moku_type| %>
+            <tr class="text-center">
+              <th scope="row"><%# name %>
+                <%= moku_type.name %>
+              </th>
+              <td><%# 一覧 %>
+                <%= link_to user_moku_type_path(moku_type.user_id, moku_type.id) do %>
+                  <i class="fas fa-file-alt my-color-mokusIndex fa-2x" aria-hidden="true"></i>
+                <% end %>
+              </td>
+              <td><%# 編集 %>
+                <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
+                  <span class="fas fa-ban my-color-ban" id="commentDescription" data-toggle="popover" data-content="このmokuタグは編集できません"></span>
+                <% else %>
+                  <%= link_to edit_user_moku_type_path(moku_type.user_id, moku_type.id) do %>
+                    <i class="fas fa-edit my-color-edit fa-2x"></i>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%# 削除 %>
+                <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
+                  <span class="fas fa-ban my-color-ban" data-toggle="popover" data-content="このmokuタグは削除できません"></span>
+                <% else %>
+                  <%= link_to "/users/#{moku_type.user_id}/moku_type/#{moku_type.id}/check" do %>
+                    <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 
 
-  <div class="col-12 col-md-8">
-    <table class="table table-hover">
-      <thead>
-        <tr class="table-info text-center">
-          <th scope="col" class="align-middle">mokuタグ</th>
-          <th scope="col" class="align-middle">このmokuタグの<br/>moku一覧</th>
-          <th scope="col" class="align-middle">編集</th>
-          <th scope="col" class="align-middle">削除</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @moku_types.each do |moku_type| %>
-          <tr class="text-center">
-            <th scope="row">
-              <%= moku_type.name %>
-            </th>
-            <td>
-              <%= link_to user_moku_type_path(moku_type.user_id, moku_type.id) do %>
-                <i class="fas fa-file-alt my-color-mokusIndex fa-2x" aria-hidden="true"></i>
-              <% end %>
-            </td>
-            <td>
-              <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
-                <span class="fas fa-ban my-color-ban" id="commentDescription" data-toggle="popover" data-content="このmokuタグは編集できません"></span>
-              <% else %>
-                <%= link_to edit_user_moku_type_path(moku_type.user_id, moku_type.id) do %>
-                  <i class="fas fa-edit my-color-edit fa-2x"></i>
-                <% end %>
-              <% end %>
-            </td>
-            <td>
-              <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
-                <span class="fas fa-ban my-color-ban" data-toggle="popover" data-content="このmokuタグは削除できません"></span>
-              <% else %>
-                <%= link_to "/users/#{moku_type.user_id}/moku_type/#{moku_type.id}/check" do %>
-                  <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
 
-
-
-<%= render 'my_shared/go_mypage' %>
+  <%= render 'my_shared/go_mypage' %>
 </div>
 
 <%# banアイコンのメッセージ %>

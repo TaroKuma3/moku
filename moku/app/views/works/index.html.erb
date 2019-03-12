@@ -1,17 +1,72 @@
-<h1><%= "#{@user.name}さんの成果物一覧" %></h1>
-<h3>★画像だけを削除したい場合は【編集】からどうぞ★</h3>
+<div class="container">
 
-  <% @works.each do |work| %>
-    <ul>
-      <li>
-        <%= link_to(work.title, user_work_path(work.user_id, work.id)) %>
-        <%= link_to("【編集】", edit_user_work_path(work.user_id, work.id))%>
-        <%= link_to("【削除】", "/users/#{work.user_id}/works/#{work.id}/check")%>
-      </li>
-    </ul>
-  <% end %>
+  <h1><%= "#{@user.name}さんの成果物一覧" %></h1>
 
-<h4><%= link_to("成果物の登録はこちらから対象のMOKUを選択！", user_mokus_path(@user))%></h4>
+    <div class="row">
+    <div class="col-12 col-md-4 text-center">
+      <div class="card border-info mb-4" style="width: 200px;">
+          <div class="card-body">
+            <%= link_to user_mokus_path(@user) do %>
+              <span data-toggle="popover" data-content="moku一覧に飛びます。</br>成果物を登録するmokuの「成果物登録」からどうぞ！">
+                <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover">
+                  <h5 class="font-weight-bold text-info text-center">成果物を<br/>登録する</h5>
+                </i>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+          <div class="col-12 col-md-4 text-center">
+        <div class="card border-info mb-4">
+          <div class="card-body bg-info text-white">
+                <h5 class="font-weight-bold">画像だけを削除したい場合は【編集】からどうぞ（けそうかな）</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 text-center" style="margin: auto;">
+        <table class="table table-hover text-center">
+          <thead>
+            <tr class="table-info text-center">
+              <th scope="col">成果物のタイトル</th>
+              <th scope="col">詳細</th>
+              <th scope="col">編集</th>
+              <th scope="col">削除</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @works.each do |work| %>
+              <tr>
+                <th scope="row"><%# タイトル %>
+                  <%= work.title %>
+                </th>
+                <td><%# 詳細 %>
+                  <%= link_to user_work_path(work.user_id, work.id) do %>
+                    <i class="fas fa-search my-color-search fa-2x"></i>
+                  <% end %>
+                </td>
+                <td><%# 編集　%>
+                  <%= link_to edit_user_work_path(work.user_id, work.id) do %>
+                    <i class="fas fa-edit my-color-edit fa-2x"></i>
+                  <% end %>
+                </td>
+                <td><%# 削除 %>
+                  <%= link_to "/users/#{work.user_id}/works/#{work.id}/check" do %>
+                    <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
-<%= render 'my_shared/go_mypage' %>
+
+
+  <%= render 'my_shared/go_mypage' %>
+</div>

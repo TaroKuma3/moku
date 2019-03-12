@@ -4,7 +4,7 @@ class BookMarksController < ApplicationController
 
   def index
     @user = current_user
-    @book_marks = BookMark.where(user_id: params[:user_id]).where(deleted: false)
+    @book_marks = BookMark.where(user_id: current_user.id).where(deleted: false)
   end
 
   def create

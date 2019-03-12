@@ -26,7 +26,7 @@
     </div>
 
     <%= bootstrap_form_with(model: @work,
-      url: {controller: :works, action: :create, user_id: current_user.id, moku_id: @do_moku.id},
+      url: {controller: :works, action: :create, user_id: @user.id, moku_id: @do_moku.id},
       method: :post,
       local: true) do |form| %>
 

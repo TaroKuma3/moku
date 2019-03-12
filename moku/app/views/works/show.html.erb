@@ -1,32 +1,34 @@
-<h1>Work#show</h1>
-<%#ここから23行目まであたりをpartial化予定%>
- <h1><%= "成果物タイトル：#{@work.title}" %></h1>
+<div class="container">
 
-  <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
-    <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-      <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
-    <% end %>
-  <% else %>
-    <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-      <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
-    <% end %>
-  <% end %>
-  <%= @bm_count %>
+    <%#ここから23行目まであたりをpartial化予定%>
+    <h1><%= "成果物タイトル：#{@work.title}" %></h1>
 
-  <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
+      <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
+        <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
+          <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
+        <% end %>
+      <% else %>
+        <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
+          <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      <%= @bm_count %>
 
-  <h3>成果物の画像やファイル</h3>
-  <% if @work.images.attached? %>
-    <% @work.images.each do |image| %>
-      <%= image_tag image%>
-    <% end %>
-  <% end %>
+      <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
+
+      <h3>成果物の画像やファイル</h3>
+      <% if @work.images.attached? %>
+        <% @work.images.each do |image| %>
+          <%= image_tag image%>
+        <% end %>
+      <% end %>
 
 
-  <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
-  <h4>制作物コメントの公開設定：<%= public_to_s(@work.comment_public) %></h4>
-  <h4>PICK UP MOKUへの公開設定：<%= public_to_s(@work.pick_up) %></h4>
-  <h4> この制作物が生まれたMOKU：<%=link_to(@do_moku.created_at, user_moku_path(@user, @do_moku)) %></h4>
-  <p><%= link_to("【編集】", edit_user_work_path(@user, @work) ) %><%= link_to("【削除】", "/users/#{@user.id}/works/#{@work.id}/check") %></p>
-<h4><%= link_to("成果物一覧へ戻る", user_work_index_path(@user))%></h4>
-<%= render 'my_shared/go_mypage' %>
+      <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
+      <h4>制作物コメントの公開設定：<%= public_to_s(@work.comment_public) %></h4>
+      <h4>PICK UP MOKUへの公開設定：<%= public_to_s(@work.pickup_public) %></h4>
+      <h4> この制作物が生まれたMOKU：<%=link_to(@do_moku.created_at, user_moku_path(@user, @do_moku)) %></h4>
+      <p><%= link_to("【編集】", edit_user_work_path(@user, @work) ) %><%= link_to("【削除】", "/users/#{@user.id}/works/#{@work.id}/check") %></p>
+    <h4><%= link_to("成果物一覧へ戻る", user_work_path(@user))%></h4>
+    <%= render 'my_shared/go_mypage' %>
+</div>

@@ -1,22 +1,42 @@
-<h1>FAQの編集</h1>
+<div class="container">
+  <h1>FAQの編集</h1>
 
-<%= bootstrap_form_with(model: @faq,
-              url: {controller: :faqs, action: :update, id: @faq.id},
-              method: :patch,
-              local: true) do |form| %>
+  <%= bootstrap_form_with(model: @faq,
+                url: {controller: :faqs, action: :update, id: @faq.id},
+                method: :patch,
+                local: true) do |form| %>
 
-  <% if @faq.errors.any? %>
-    <% @faq.errors.full_messages.each do |message| %>
-      <%= message %><br>
-    <% end %>
-  <% end %><br>
+    <% if @faq.errors.any? %>
+      <% @faq.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    <% end %><br>
 
-  <p><%= form.text_area :questions %></p>
-  <p><%= form.text_area :answer %></p>
-  <%= form.label :category_list, "タグをカンマ区切りで入力" %>
-  <%= text_field_tag 'faq[category_list]', @faq.category_list.join(',') %>
-  <p><%= form.submit "更新する" %></p>
-  <%= link_to("よくある質問一覧に戻る", faqs_path)%>
-<% end %><br/>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <p><%= form.text_area :questions, size: "20x8"  %></p>
+      </div>
 
-<%= render 'my_shared/go_mypage'%>
+      <div class="col-12 col-md-6">
+        <p><%= form.text_area :answer, size: "20x8"  %></p>
+      </div>
+    </div>
+
+    <%= form.label :category_list, "タグをカンマ区切りで入力" %>
+    <%= text_field_tag 'faq[category_list]', @faq.category_list.join(',') %>
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= form.submit "更新する", class: "btn btn-info btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to faqs_path do %>
+    <i class="fas fa-question my-color-question fa-4x pl-2 text-center">
+      <h5 class="font-weight-bold text-secondary">よくある質問へ</h5>
+    </i>
+  <% end %>
+
+  <%= render 'my_shared/go_mypage'%>
+</div>

@@ -21,9 +21,8 @@
 }
 
 // newのmoku開始前に並ぶ３つのcolを揃える
-.row-eq-height {
-  display: flex;
-  flex-wrap: wrap;
+.eq-height {
+  height: 200px;
 }
 
 #pauseButton {

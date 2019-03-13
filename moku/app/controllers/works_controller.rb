@@ -25,7 +25,7 @@ class WorksController < ApplicationController
 
   def new
     @user = current_user
-    @do_moku = DoMoku.find(params[:id])
+    @do_moku = DoMoku.find(params[:moku_id])
     @moku_type = MokuType.find(@do_moku.moku_type.id)
     @work = Work.new
 
@@ -34,12 +34,13 @@ class WorksController < ApplicationController
   end
 
   def create
+    # 以下３つはrender & redirect用
     @user = current_user
     @do_moku = DoMoku.find(params[:moku_id])
     @moku_type = MokuType.find(@do_moku.moku_type.id)
 
     @work = Work.new(work_params)
-    @work.moku_id = DoMoku.find(@do_moku.id)
+    @work.moku_id = @do_moku.id
     @work.user = current_user
     # title: params[:work][:title],
     # comment: params[:work][:comment],

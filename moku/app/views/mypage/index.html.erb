@@ -8,7 +8,7 @@
               <div class="card">
                 <div class="card-header text-center"><h3>何をしますか？</h3></div>
                   <div class="card-body pd-1 text-center">
-                    <%= link_to new_user_moku_path(@user) do %>
+                    <%= link_to "/users/#{@user.id}/mokus/new" do %>
                       <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                         <h5 class="font-weight-bold text-secondary">mokuる</h5>
                       </i>
@@ -20,7 +20,7 @@
                       </i>
                     <% end %>
 
-                    <%= link_to user_book_marks_path(@user) do %>
+                    <%= link_to "users/#{@user.id}/book_marks" do %>
                       <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                         <h5 class="font-weight-bold text-secondary">Book Mark</h5>
                       </i>
@@ -60,22 +60,24 @@
 
           <div class="col-12 col-md-6 pb-4">
             <section>
-              <div class="accordion" id="accordionExample">
+              <div class="accordion" id="accordionIntroduce">
                 <div class="card">
                   <div class="card-header text-center" id="headingOne">
-                  <button class="btn bg-light text-muted btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <h3>自己紹介&emsp;<i class="fas fa-caret-down my-color-down"></i></h3>
+                    <button class="btn bg-light text-muted btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <h3>自己紹介&emsp;<i class="fas fa-caret-down my-color-down"></i></h3>
+                    </button>
                   </div>
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <p class="card-text">
-                      <% if @user.introduce.blank? %>
-                      　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                      <% else %>
-                        <%= simple_format(@user.introduce) %>
-                      <% end %>
-                    </p>
-                  </div>
+
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionIntroduce">
+                    <div class="card-body">
+                      <p class="card-text">
+                        <% if @user.introduce.blank? %>
+                        　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
+                        <% else %>
+                          <%= simple_format(@user.introduce) %>
+                        <% end %>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

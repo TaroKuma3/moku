@@ -4,13 +4,10 @@ class MokusController < ApplicationController
   skip_before_action :verify_authenticity_token, only:[:ajax_create]
 
   def index
-    # 絞り込み用
-    if params[:moku_type]
-      @user = current_user
+    if params[:moku_type] # 絞り込みされたら
       @do_mokus = DoMoku.where(user_id: current_user.id).where(moku_type_id: params[:moku_type]).where(deleted: false).order(created_at: 'desc')
-    else
-      @user = current_user
-      @do_mokus = DoMoku.where(user_id: @user.id).where(deleted: false).order(created_at: 'desc')
+    else #絞り込みされなかったら
+      @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc')
     end
   end
 

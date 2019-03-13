@@ -1,41 +1,43 @@
-<h1>work#for_public</h1>
-<h5>成果物がpublicの時、第三者に見せるページ</h5>
+<div class="container">
+  <h5>成果物がpublicの時、第三者に見せるページ</h5>
 
-<% if @work.pickup_public %>
-  <%# ここからpartial化予定　%>
-  <h1><%= "成果物タイトル：#{@work.title}" %></h1>
+  <% if @work.pickup_public %>
+    <%# ここからpartial化予定　%>
+    <h1><%= "成果物タイトル：#{@work.title}" %></h1>
 
-  <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
-    <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-      <%#<span class="fa fa-bookmark fa-2x un-bm-btn" aria-hidden="true"></span> %>
-      <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
-    <% end %>
-  <% else %>
-    <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-      <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
-    <% end %>
-  <% end %>
-  <%= @bm_count %>
-
-  <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
-
-  <h3>成果物の画像やファイル</h3>
-  <% if @work.images.attached? %>
-    <% @work.images.each do |image| %>
-      <%= image_tag image.variant(resize: '100x') %>
-    <% end %>
-  <% end %>
-  <%# partialここまで %>
-
-    <% if @work.comment_public == true %>
-      <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
+    <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
+      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
+        <%#<span class="fa fa-bookmark fa-2x un-bm-btn" aria-hidden="true"></span> %>
+        <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
+      <% end %>
     <% else %>
-      <h3>制作物のコメント：非公開です☁︎</h3>
+      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
+        <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
+      <% end %>
     <% end %>
+    <%= @bm_count %>
 
-    <% work_owner_user = User.find(@work.user_id)%>
-    <h3>この成果物の作者さん：<%= link_to "#{work_owner_user.name}さん", "/mypage/#{work_owner_user.id}" %></h3>
-<% else %>
-  <h1>非公開です</h1>
-<% end %>
-<%= render 'my_shared/go_mypage' %>
+    <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
+
+    <h3>成果物の画像やファイル</h3>
+    <% if @work.images.attached? %>
+      <% @work.images.each do |image| %>
+        <%= image_tag image.variant(resize: '100x') %>
+      <% end %>
+    <% end %>
+    <%# partialここまで %>
+
+      <% if @work.comment_public == true %>
+        <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
+      <% else %>
+        <h3>制作物のコメント：非公開です☁︎</h3>
+      <% end %>
+
+      <% work_owner_user = User.find(@work.user_id)%>
+      <h3>この成果物の作者さん：<%= link_to "#{work_owner_user.name}さん", "/mypage/#{work_owner_user.id}" %></h3>
+  <% else %>
+    <h1>非公開です</h1>
+  <% end %>
+  <%= render 'my_shared/go_mypage' %>
+
+  </div>

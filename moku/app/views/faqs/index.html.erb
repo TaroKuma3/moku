@@ -9,7 +9,7 @@
             <div class="card bg-light mb-2">
               <div class="card-body">
                 <h3><%= link_to(faq.questions, "/faqs/#{faq.id}") %></h3>
-                <h6>カテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
+                <h6>このQAのカテゴリー：<%= raw faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></h6>
               </div>
             </div>
           <% end %>

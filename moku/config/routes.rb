@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'accounts/:user_id/delete' => 'accounts#delete'
 
   #book_mark
+  get 'users/:user_id/book_marks' => 'book_marks#index'
   post '/users/:user_id/works/:work_id/book_marks' => 'book_marks#create'
   delete '/users/:user_id/works/:work_id/book_marks' => 'book_marks#destroy'
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   delete 'faqs/:id'   => 'faqs#destroy'
 
   # moku
+  get '/users/:user_id/mokus/new' => 'mokus#new'
   get '/ajax/justnow' => 'mokus#justnow'
   post '/ajax/mokus/create' => 'mokus#ajax_create'
   patch '/mokus/:id/finish' => 'mokus#finish'
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
   patch 'mypage/:user_id' => 'mypage#update'
 
   #work
-  get '/users/:user_id/mokus/:id/works/new' => 'works#new' #mokus→moku_idにする予定だったがうまく行かないのでプロトタイプ通りに
+  get '/users/:user_id/mokus/:moku_id/works/new' => 'works#new'
   post '/users/:user_id/mokus/:moku_id/works' => 'works#create'
 
   get 'users/:user_id/works/:work_id/check' => 'works#check_delete'
@@ -55,7 +57,10 @@ Rails.application.routes.draw do
   delete 'works/:id/images/:image_id' => 'works#delete_image'
 
   resources :users do
-    resources :mokus, :moku_type, :works, :book_marks
+    resources :mokus,
+              :moku_type,
+              :works,
+              :book_marks
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmls
 end

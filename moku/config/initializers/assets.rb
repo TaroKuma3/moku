@@ -14,7 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # moku JUST NOW
-Rails.application.config.assets.precompile += %w( mypage.js )
+Rails.application.config.assets.precompile += %w( application.js )
 
 # はてなアイコン
 Rails.application.config.assets.precompile += %w( application.js )

@@ -7,7 +7,7 @@
         mokuる
       </h1>
 
-      <div class="card text-white bg-info mx-3 mb-3" id="afterStartTitle" style="display:none;">
+      <div class="card text-white bg-info mb-3" id="afterStartTitle" style="display:none;">
         <div class="card-body text-center">
           <h3>ただいまMOKUっています！</h3>
         </div>
@@ -26,12 +26,12 @@
         </div>
         <div class="col-12 col-md-6 pb-4">
           <section>
-            <div class="card text-white bg-info mr-3 hidden-xs" id='mjn' style="display:none;">
+            <div class="card text-white bg-info hidden-xs" id='mjn' style="display:none;">
               <h3><div class="card-header text-center">moku JUST NOW</div></h3>
-              <div class="card-body text-dark">
-                <ul>
-                    <li>19/02/10 14:27 管理者さんがとりあえずMOKUるでMOKUを開始しました！</li>
-                </ul>
+              <div class="card-body text-white">
+                <ul id="justNowUl"></ul>
+                  <%= javascript_include_tag "application" %>
+                  <script></script>
               </div>
             </div>
           </section>
@@ -44,10 +44,10 @@
                     local: true) do |form| %>
 
         <div class="row">
-          <div class="col-12 col-lg-4 pb-4" id="selectMokuType">
+          <div class="col-12 col-md-6 pb-4" id="selectMokuType">
             <section>
-              <div class="card text-white bg-info mb-3 eq-height">
-                <div class="card-body text-center">
+              <div class="card text-white bg-info eq-height">
+                <div class="card-body text-center pb-0">
                   <h3>mokuタグを<br>選ぼう！</h3>
                 </div>
                 <div class="form-group m-3" name="moku_type" id="selectMokuType">
@@ -57,7 +57,33 @@
             </section>
           </div>
 
-          <div class="col-12 col-lg-4 pb-4" id="startButton">
+          <div class="col-12 col-md-6 pb-4" id="userPublic">
+            <section>
+              <div class="card text-white bg-info mb-3 eq-height">
+                <div class="card-body text-center">
+                  <h3>moku JUST NOW</h3>
+                    <% if @user.public %>
+                      <div class="card bg-white text-dark mt-4">
+                        <div class="card-body">
+                          <%= "アカウントが#{public_to_s(@user.public)}なので"%><br><%="moku JUST NOWに載ります！"%>
+                        </div>
+                      </div>
+                    <% else %>
+                      <div class="card text-white bg-info">
+                        <div class="card-body">
+                          <%= "アカウントが#{public_to_s(@user.public)}なので" %><br><%= "moku JUST NOWに載りません。"%>
+                        </div>
+                      </div>
+                    <% end %>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-12 col-md-6 pb-4" id="startButton" style="margin: auto;">
             <section>
               <div class="card text-white bg-info mb-3 eq-height">
                 <div class="card-body text-center">
@@ -69,48 +95,11 @@
               </div>
             </section>
           </div>
-
-          <div class="col-12 col-lg-4 pb-4" id="userPublic">
-            <section>
-              <div class="card text-white bg-info mb-3 eq-height">
-                <div class="card-body text-center">
-                  <h3>moku JUST NOW</h3>
-                    <% if @user.public %>
-                      <div class="card bg-light text-dark mt-4">
-                        <div class="card-body">
-                          <%= "アカウントが#{public_to_s(@user.public)}なので"%><br><%="moku JUST NOWに載ります！"%>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div class="card text-dark bg-light">
-                        <div class="card-body">
-                          <%= "アカウントが#{public_to_s(@user.public)}なので" %><br><%= "moku JUST NOWに載りません。"%>
-                        </div>
-                      </div>
-                    <% end %>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
-      <% end %>
+      </div>
 
       <div class="row">
         <input type="hidden" id="startedMokuId"/>
-
-        <div class="col-6 col-md-4" style="margin: auto;">
-          <input class="btn btn-info btn-lg" type="submit" id="pauseButton" value="一時停止！"/>
-        </div>
-
-        <div class="col-6 col-md-4" style="margin: auto;">
-          <%= bootstrap_form_with(url: 'dummy', method: :patch, local: true, id: 'finishForm') do |form| %>
-            <input type="hidden" name="moku_time" id="mokuTime" value=""/>
-            <input class="btn btn-info btn-lg" type="submit" id="stopButton" value="MOKU終了！"/>
-          <% end %>
-        </div>
-
-        <div class="col-4">
+        <div class="col-12 col-md-6 order-md-3">
           <div class="card text-white bg-info mb-3" id="displayMokuTime">
             <div class="card-header text-center"><h3>moku time</h3></div>
             <div class="card-body">
@@ -118,9 +107,23 @@
             </div>
           </div>
         </div>
+
+        <div class="col-6 col-md-3 mb-5 order-md-1 text-center" style="margin: auto;">
+          <input class="btn btn-info btn-lg" type="submit" id="pauseButton" value="一時停止！"/>
+        </div>
+
+        <div class="col-6 col-md-3 mb-5 order-md-2 text-center" style="margin: auto;">
+          <%= bootstrap_form_with(url: 'dummy', method: :patch, local: true, id: 'finishForm') do |form| %>
+            <input type="hidden" name="moku_time" id="mokuTime" value=""/>
+            <input class="btn btn-info btn-lg" type="submit" id="stopButton" value="終了！"/>
+          <% end %>
+        </div>
+
       </div>
 
-      <%= render 'my_shared/go_mypage' %>
+      <div id="linkToMypage">
+        <%= render 'my_shared/go_mypage'%>
+      </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>

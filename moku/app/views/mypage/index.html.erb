@@ -156,7 +156,7 @@
                 <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
                 <div class="card-body">
                   <ul id="justNowUl"></ul>
-                  <%= javascript_include_tag "mypage" %>
+                  <%= javascript_include_tag "application" %>
                   <script></script>
                 </div>
               </div>
@@ -172,18 +172,22 @@
               <div class="d-none d-md-block">
                 <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
                   <%= date %><br>
+                  <% moku_count = [] %>
                   <% do_mokus.each do |do_moku| %>
-                    <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                    <% moku_count << 1 %>
                   <% end %>
+                  <%= "moku:#{moku_count.size}回" %>
                 <% end %>
               </div>
               <%# md未満で週間カレンダー表示%>
               <div class="d-md-none">
                 <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
                   <%= date %><br>
+                  <% moku_count = [] %>
                   <% do_mokus.each do |do_moku| %>
-                    <%= link_to(do_moku.moku_type.name, user_moku_path(do_moku.user_id, do_moku.id)) %><br>
+                    <% moku_count << 1 %>
                   <% end %>
+                  <small><%= "moku:#{moku_count.size}回" %></small>
                 <% end %>
               </div>
             </section>

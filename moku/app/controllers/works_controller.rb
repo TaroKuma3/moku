@@ -53,7 +53,7 @@ class WorksController < ApplicationController
 
     if @work.save!
       flash[:notice] = "登録しました！"
-      redirect_to(user_work_index_path(@user))
+      redirect_to(user_works_path(@user))
     else
       render "new"
     end
@@ -90,6 +90,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:work_id])
     @user = current_user
   end
+
   def delete
     work = Work.find(params[:work_id])
     work.deleted = true
@@ -102,7 +103,7 @@ class WorksController < ApplicationController
     end
 
     flash[:notice] = "成果物を削除しました☁︎"
-    redirect_to(user_work_index_path(current_user.id))
+    redirect_to(user_works_path(current_user.id))
   end
 
 

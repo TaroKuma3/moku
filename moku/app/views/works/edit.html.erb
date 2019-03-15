@@ -15,7 +15,7 @@ local: true) do |f| %>
   <p>削除したい画像があればチェックしてください。</p>
   <% @work.images.each do |image| %>
 
-    <%= link_to "削除", "/work/#{@work.id}/images/#{image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} %>
+    <%= link_to "削除", "/works/#{@work.id}/images/#{image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} %>
     <%= image_tag image.variant(resize: '100x') %>
   <% end %>
 

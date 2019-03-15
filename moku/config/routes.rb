@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   # moku
   get '/users/:user_id/mokus/new' => 'mokus#new'
+  get '/users/:user_id/mokus/day' => "mokus#day_by_index"
   get '/ajax/justnow' => 'mokus#justnow'
   post '/ajax/mokus/create' => 'mokus#ajax_create'
   patch '/mokus/:id/finish' => 'mokus#finish'
@@ -57,10 +58,7 @@ Rails.application.routes.draw do
   delete 'works/:id/images/:image_id' => 'works#delete_image'
 
   resources :users do
-    resources :mokus,
-              :moku_type,
-              :works,
-              :book_marks
+    resources :mokus,:moku_type,:works,:book_marks
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmls
 end

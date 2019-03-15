@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  belongs_to :do_moku
+  belongs_to :do_moku, optional: true
   belongs_to :user
   has_many :book_marks
 

@@ -11,6 +11,10 @@ class MokusController < ApplicationController
     end
   end
 
+  def day_by_index
+    @do_moku = DoMoku.where(params[:day])
+  end
+
   def show
     @user = current_user
     @do_moku = DoMoku.find(params[:id])

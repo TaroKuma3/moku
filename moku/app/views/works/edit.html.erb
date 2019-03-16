@@ -27,17 +27,17 @@ local: true) do |f| %>
   <%= f.file_field :images, multipart: true, hide_label: true %>
 
   <h3>コメント</h3>
-  <%= f.text_area :comment, hide_label: true %>
+  <%= f.text_area :memo, hide_label: true %>
 
   <h3>コメントを公開しますか？
-    <span class="fa fa-question-circle" aria-hidden="true" id="commentDescription" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+    <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
     <ul>
       <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
       <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
     </ul>">
     </span>
   </h3>
-  <%= f.select :comment_public, options_for_public, selected: @work.comment_public, hide_label: true %>
+  <%= f.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
 
 
 

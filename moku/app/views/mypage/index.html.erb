@@ -162,12 +162,17 @@
                     <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
                   </div>
                   <% moku_count = [] %>
+                  <% @do_moku_id = 0 %>
                   <% do_mokus.each do |do_moku| %>
                     <% moku_count << 1 %>
+                    <% do_moku_id = do_moku.id %>
                   <% end %>
                   <% if moku_count.size > 0 %>
-                    <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
-                    <%= "×#{moku_count.size}" %>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{@do_moku_id}/day" do %>
+                      <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
+                      <%= "×" %><%= "#{moku_count.size}" %>
+                    
+                    <% end %>
                   <% end %>
                 <% end %>
               </div>

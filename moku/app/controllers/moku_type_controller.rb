@@ -27,7 +27,7 @@ class MokuTypeController < ApplicationController
       user_id: params[:user_id],
     )
     if @moku_type.save
-      flash[:notice] = "新しいMOKUタグを登しました！"
+      flash[:notice] = "新しいmokuタグを登しました！"
       redirect_to(user_moku_type_index_path(@user))
     else
       render action: :new
@@ -72,7 +72,7 @@ class MokuTypeController < ApplicationController
       do_moku.save!
     end
 
-    flash[:notice] = "MOKUタグを削除しました☁︎"
+    flash[:notice] = "mokuタグを削除しました☁︎"
     redirect_to(user_moku_type_index_path(moku_type.user_id))
   end
 

@@ -27,8 +27,8 @@
     <% end %>
     <%# partialここまで %>
 
-      <% if @work.comment_public == true %>
-        <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
+      <% if @work.memo_public == true %>
+        <h3><%= "制作物のコメント：#{@work.memo}" %></h3>
       <% else %>
         <h3>制作物のコメント：非公開です☁︎</h3>
       <% end %>

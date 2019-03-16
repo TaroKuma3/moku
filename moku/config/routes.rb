@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   # moku
   get '/users/:user_id/mokus/new' => 'mokus#new'
-  get '/users/:user_id/mokus/day' => "mokus#day_by_index"
+  get '/users/:user_id/mokus/:id/day' => "mokus#day_by_index"
   get '/ajax/justnow' => 'mokus#justnow'
   post '/ajax/mokus/create' => 'mokus#ajax_create'
   patch '/mokus/:id/finish' => 'mokus#finish'

@@ -41,7 +41,7 @@ class User < ApplicationRecord
   def insert_default_moku_type
     moku_type = MokuType.new(
       user_id: self.id,
-      name: "とりあえずMOKUる",
+      name: "とりあえずmokuる",
     )
     moku_type.save!
   end

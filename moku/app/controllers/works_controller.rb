@@ -29,7 +29,7 @@ class WorksController < ApplicationController
     @moku_type = MokuType.find(@do_moku.moku_type.id)
     @work = Work.new
 
-    @work.comment_public = Constants::PRIVATE
+    @work.memo_public = Constants::PRIVATE
     @work.pickup_public = Constants::PRIVATE
   end
 
@@ -43,8 +43,8 @@ class WorksController < ApplicationController
     @work.moku_id = @do_moku.id
     @work.user = current_user
     # title: params[:work][:title],
-    # comment: params[:work][:comment],
-    # comment_public: params[:work][:comment_public],
+    # めも: params[:work][:めも],
+    # memo_public: params[:work][:memo_public],
     # pickup_public: params[:work][:pickup_public],
     # moku_id: params[:moku_id],
     # user_id: params[:user_id],
@@ -110,6 +110,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:comment, :title, :images, :user_id, :moku_id, :comment_public, :pickup_public)
+    params.require(:work).permit(:memo, :title, :images, :user_id, :moku_id, :memo_public, :pickup_public)
   end
 end

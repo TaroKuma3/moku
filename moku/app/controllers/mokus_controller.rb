@@ -58,7 +58,7 @@ class MokusController < ApplicationController
   def update
     user = current_user
     @do_moku = DoMoku.find(params[:id])
-    @do_moku.content = params[:do_moku][:content]
+    @do_moku.memo = params[:do_moku][:memo]
     moku_type = MokuType.find(params[:do_moku][:moku_type])
     @do_moku.moku_type = moku_type
 
@@ -94,7 +94,7 @@ class MokusController < ApplicationController
       end
     end
 
-    flash[:notice] = "MOKUを削除しました☁︎"
+    flash[:notice] = "mokuを削除しました☁︎"
     redirect_to(user_mokus_path)
   end
 

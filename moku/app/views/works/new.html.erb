@@ -45,8 +45,8 @@
       </div>
 
       <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>コメント</h3>
-        <%= form.text_area :comment, hide_label: true %>
+        <h3>memo</h3>
+        <%= form.text_area :memo, hide_label: true %>
       </div>
 
       <div class="col-12 col-md-7" style="margin:auto;">
@@ -58,7 +58,7 @@
           </ul>">
           </span>
         </h3>
-        <%= form.select :comment_public, options_for_public, selected: @work.comment_public, hide_label: true %>
+        <%= form.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
       </div>
 
       <div class="col-12 col-md-7" style="margin:auto;">

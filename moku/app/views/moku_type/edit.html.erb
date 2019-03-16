@@ -1,5 +1,5 @@
 <div class="container">
-  <h1  class="font-weight-bold text-center mb-4">MOKUタグの編集</h1>
+  <h1  class="font-weight-bold text-center mb-4">mokuタグの編集</h1>
 
   <%= bootstrap_form_with(model: @moku_type,
   url: {controller: :moku_type, action: :update, user_id: current_user.id, id: @moku_type},
@@ -14,12 +14,12 @@
 
     <div class="row">
       <div class="col-12 col-md-6 mb-4">
-      <%= "MOKUタグの新しい名前を教えてください" %>
+      <%= "mokuタグの新しい名前を教えてください" %>
       <%= render "form", f:f %>
     </div>
   <% end %>
 
-  <p><%= link_to("MOKUタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
+  <p><%= link_to("mokuタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
 
   <%= render 'my_shared/go_mypage' %>
 </div>

@@ -7,7 +7,7 @@
         <div class="card-header text-center"><h2><%= "#{@user.name}"%>さん、ご確認ください</h2></div>
         <div class="card-body">
             <ul>
-              <li>MOKUを削除すると、このMOKUの【成果物】も全て消えてしまいます。</li>
+              <li>mokuを削除すると、このmokuの【成果物】も全て消えてしまいます。</li>
               <li>Book Markされていた成果物の場合、Book Markからも消えてしまいます。</li>
               <li>一度削除すると、復活することはできません。</li>
             </ul>
@@ -29,14 +29,14 @@
                 local: true) do |f| %>
     <div class="row mb-4">
       <div class="col-12 text-center">
-        <%= f.submit "MOKUを削除する", class: "btn btn-info btn-warning btn-lg" %>
+        <%= f.submit "mokuを削除する", class: "btn btn-info btn-warning btn-lg" %>
       </div>
     </div>
   <% end %>
 
   <div class="row">
     <div class="col-12 col-md-9 text-center" style="margin: auto;">
-      <h3 class="text-center">このMOKUの成果物</h3>
+      <h3 class="text-center">このmokuの成果物</h3>
       <% if @works.any? %>
         <table class="table table-hover">
           <thead>
@@ -65,7 +65,7 @@
           </tbody>
         </table>
       <% else %>
-        <h5 class="text-center">このMOKUには成果物の登録がありませんでした。</h5>
+        <h5 class="text-center">このmokuには成果物の登録がありませんでした。</h5>
         <hr/>
       <% end %>
     </div>

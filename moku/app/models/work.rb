@@ -8,6 +8,6 @@ class Work < ApplicationRecord
   validates :moku_id, presence: true
   validates :user_id, presence: true
   validates :title, presence: true
-  validates :comment_public, inclusion: { in: [true, false] }
+  validates :memo_public, inclusion: { in: [true, false] }
   validates :pickup_public, inclusion: { in: [true, false] }
 end

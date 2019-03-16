@@ -11,5 +11,5 @@ class Constants
     [[PUBLIC_VALUE, PUBLIC], [PRIVATE_VALUE, PRIVATE]]
   end
 
-  DEFAULT_MOKU_TYPE_NAME = "とりあえずMOKUる"
+  DEFAULT_MOKU_TYPE_NAME = "とりあえずmokuる"
 end

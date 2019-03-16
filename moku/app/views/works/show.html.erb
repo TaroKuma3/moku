@@ -1,34 +1,79 @@
 <div class="container">
-    <h1><%= @work.title %></h1>
+  <h1><%= "タイトル：#{@work.title}" %></h1>
 
-      <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
-        <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-          <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
-        <% end %>
-      <% else %>
-        <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-          <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
-        <% end %>
+    <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
+      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
+        <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
       <% end %>
-      <%= @bm_count %>
-
-      <h4> この制作物が生まれたmoku：<%=link_to(@do_moku.created_at, user_moku_path(@user, @do_moku)) %></h4>
-      <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
-
-      <h3>画像</h3>
-      <% if @work.images.attached? %>
-        <% @work.images.each do |image| %>
-          <%= image_tag image%>
-        <% end %>
-      <% else %>
-        <h5>画像の登録はありませんでした。よかったらなにか登録してみませんか？</h5>
+    <% else %>
+      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
+        <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
       <% end %>
+    <% end %>
+    <%= @bm_count %>
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="card text-white bg-info mb-3 work-eq-height">
+          <div class="card-header text-center">
+            <h5>この制作物が<br/>生まれたmoku</h5>
+          </div>
+          <div class="card-body text-center">
+            <h5>
+              <%= "#{@do_moku.created_at}" %>&emsp;
+              <%= link_to user_moku_path(@user, @do_moku) do %>
+                <i class="fas fa-search my-color-search"></i>
+              <% end %>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4">
+        <div class="card text-white bg-info mb-3 work-eq-height">
+          <div class="card-header text-center">
+            <h5>成果物memoの<br/>公開設定</h5>
+          </div>
+          <div class="card-body text-center">
+              <h5><%= public_to_s(@work.comment_public) %></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4">
+        <div class="card text-white bg-info mb-3 work-eq-height">
+          <div class="card-header text-center">
+            <h5>pick upへの<br/>公開設定</h5>
+          </div>
+          <div class="card-body text-center">
+              <h5><%= public_to_s(@work.pickup_public) %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card text-white bg-info mb-3 ">
+          <div class="card-header text-center"><h5>成果物memo</h5></div>
+          <div class="card-body bg-white text-dark">
+            <%= simple_format(@work.comment) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>画像</h3>
+    <% if @work.images.attached? %>
+      <% @work.images.each do |image| %>
+        <%= image_tag image%>
+      <% end %>
+    <% else %>
+      <h5>画像の登録はありませんでした。よかったらなにか登録してみませんか？</h5>
+    <% end %>
 
 
-      <h3><%= "制作物のコメント：#{@work.comment}" %></h3>
-      <h4>制作物コメントの公開設定：<%= public_to_s(@work.comment_public) %></h4>
-      <h4>pick upへの公開設定：<%= public_to_s(@work.pickup_public) %></h4>
-      
+
 
 
         <%= link_to edit_user_work_path(@work.user_id, @work.id) do %>

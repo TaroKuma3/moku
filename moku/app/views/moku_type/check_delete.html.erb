@@ -7,14 +7,12 @@
       <div class="card text-white bg-info mb-3">
         <div class="card-header text-center"><h2><%= "#{@user.name}"%>さん、ご確認ください</h2></div>
         <div class="card-body">
-          <p class="card-text">
-            <h5>
-              <ul>
-                <li>mokuタグは、mokuの管理に使われています。</li>
-                <li>この<%= "【#{@moku_type.name}】" %>が削除されると、<%= "【#{@moku_type.name}】" %>がつけられていたmokuには、自動的に<%= "【#{Constants::DEFAULT_MOKU_TYPE_NAME}】"%>がつきます。</li>
-              </ul>
-            </h5>
-          </p>
+          <h5>
+            <ul>
+              <li>mokuタグは、mokuの管理に使われています。</li>
+              <li>この<%= "【#{@moku_type.name}】" %>が削除されると、<%= "【#{@moku_type.name}】" %>がつけられていたmokuには、自動的に<%= "【#{Constants::DEFAULT_MOKU_TYPE_NAME}】"%>がつきます。</li>
+            </ul>
+          </h5>
         </div>
       </div>
     </div>

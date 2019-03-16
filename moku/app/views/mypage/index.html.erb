@@ -65,13 +65,11 @@
                       <h3>自己紹介</h3>
                   </div>
                     <div class="card-body">
-                      <p class="card-text">
-                        <% if @user.introduce.blank? %>
-                        　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                        <% else %>
-                          <%= simple_format(@user.introduce) %>
-                        <% end %>
-                      </p>
+                      <% if @user.introduce.blank? %>
+                      　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
+                      <% else %>
+                        <%= simple_format(@user.introduce) %>
+                      <% end %>
                     </div>
                 </div>
             </section>
@@ -84,9 +82,7 @@
                   <div class="card">
                     <div class="card-header text-center"><h3>公開設定</h3></div>
                     <div class="card-body">
-                      <p class="card-text">
-                        <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
-                      </p>
+                      <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
                     </div>
                   </div>
               </section>
@@ -97,13 +93,11 @@
                   <div class="card">
                     <div class="card-header text-center"><h3>mokuアイテム</h3></div>
                     <div class="card-body">
-                      <p class="card-text">
-                        <% if @user.items.blank? %>
-                          <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
-                        <% else %>
-                          <%= simple_format(@user.items) %>
-                        <% end %>
-                      </p>
+                      <% if @user.items.blank? %>
+                        <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
+                      <% else %>
+                        <%= simple_format(@user.items) %>
+                      <% end %>
                     </div>
                   </div>
               </section>

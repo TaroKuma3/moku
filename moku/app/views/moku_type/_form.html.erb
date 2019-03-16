@@ -6,15 +6,13 @@
   <div class="card text-white bg-info mb-3">
     <div class="card-header text-center"><h3>今あるMOKUタグ</h3></div>
     <div class="card-body text-dark bg-white">
-      <p class="card-text">
-        <% @moku_types.each do |moku_type| %>
-          <ul>
-            <li>
-              <%= moku_type.name %>
-            </li>
-          </ul>
-        <% end %>
-      </p>
+      <% @moku_types.each do |moku_type| %>
+        <ul>
+          <li>
+            <%= moku_type.name %>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

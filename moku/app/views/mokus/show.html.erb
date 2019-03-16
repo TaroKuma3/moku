@@ -7,10 +7,8 @@
         <div class="col-12 mb-2">
           <div class="card text-white bg-info mb-3" style="min-width: 20rem;">
             <div class="card-header  text-center">mokuった日時</div>
-            <div class="card-body text-dark bg-white">
-              <p class="card-text text-center">
-                <%= @do_moku.created_at %> 〜 <%= @do_moku.updated_at %>
-              </p>
+            <div class="card-body text-dark bg-white text-center">
+              <%= @do_moku.created_at %> 〜 <%= @do_moku.updated_at %>
             </div>
           </div>
         </div>
@@ -18,10 +16,8 @@
         <div class="col-12 mb-2">
           <div class="card text-white bg-info mb-3">
             <div class="card-header text-center">moku TIME</div>
-            <div class="card-body text-dark bg-white">
-              <p class="card-text text-center">
-                <%= "#{distance_of_time_in_words(@do_moku.moku_time)}" %>
-              </p>
+            <div class="card-body text-dark bg-white text-center">
+              <%= "#{distance_of_time_in_words(@do_moku.moku_time)}" %>
             </div>
           </div>
         </div>
@@ -29,10 +25,8 @@
         <div class="col-12 mb-2">
           <div class="card text-white bg-info mb-3">
             <div class="card-header text-center">mokuタグ</div>
-            <div class="card-body text-dark bg-white">
-              <p class="card-text text-center">
-                <%= @moku_type.name%>
-              </p>
+            <div class="card-body text-dark bg-white text-center">
+              <%= @moku_type.name%>
             </div>
           </div>
         </div>
@@ -43,9 +37,7 @@
     <div class="card text-white bg-info mb-3">
         <div class="card-header text-center">memo</div>
         <div class="card-body text-dark bg-white">
-          <p class="card-text">
-            <%= simple_format(@do_moku.content) %>
-          </p>
+          <%= simple_format(@do_moku.content) %>
         </div>
       </div>
   </div>

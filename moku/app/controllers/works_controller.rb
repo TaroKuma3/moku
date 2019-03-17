@@ -102,7 +102,7 @@ class WorksController < ApplicationController
       book_mark.save!
     end
 
-    flash[:notice] = "成果物を削除しました☁︎"
+    flash[:notice] = "成果物を削除しました！"
     redirect_to(user_works_path(current_user.id))
   end
 

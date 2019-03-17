@@ -72,7 +72,7 @@ class MokuTypeController < ApplicationController
       do_moku.save!
     end
 
-    flash[:notice] = "mokuタグを削除しました☁︎"
+    flash[:notice] = "mokuタグを削除しました！"
     redirect_to(user_moku_type_index_path(moku_type.user_id))
   end
 

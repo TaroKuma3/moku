@@ -39,7 +39,7 @@
                     <% end %>
 
                     <% if @user.admin? %>
-                      <hr/><br/>
+                      <hr/>
                       <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
                         <%= link_to(faqs_new_path) do %>
                           <i class="fas fa-question my-color-question fa-4x m-3 faa-bounce animated-hover">
@@ -165,13 +165,12 @@
                   <% @do_moku_id = 0 %>
                   <% do_mokus.each do |do_moku| %>
                     <% moku_count << 1 %>
-                    <% do_moku_id = do_moku.id %>
+                    <% @do_moku_id = do_moku.id %>
                   <% end %>
                   <% if moku_count.size > 0 %>
                     <%= link_to "/users/#{current_user.id}/mokus/#{@do_moku_id}/day" do %>
                       <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
                       <%= "×" %><%= "#{moku_count.size}" %>
-                    
                     <% end %>
                   <% end %>
                 <% end %>
@@ -185,9 +184,15 @@
                   <% moku_count = [] %>
                   <% do_mokus.each do |do_moku| %>
                     <% moku_count << 1 %>
+                    <% @do_moku_id = do_moku.id %>
                   <% end %>
                   <% if moku_count.size > 0 %>
-                    <small><i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i><%= "×#{moku_count.size}" %></small>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{@do_moku_id}/day" do %>
+                      <small>
+                      <i class="fas fa-cloud my-color-moku"></i>
+                      <%= "×" %><%= "#{moku_count.size}" %>
+                    </small>
+                    <% end %>
                   <% end %>
                 <% end %>
               </div>

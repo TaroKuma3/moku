@@ -34,7 +34,7 @@
 					<% else %>
 						<%= link_to "/" do %>
 							<span class="navbar-brand">
-								<img src="/assets/moku_logo.jpg" width="100" height="50" class="d-inline-block align-top" alt="ロゴマーク">
+								<img src="/assets/moku_logo2.png" width="100" height="50" class="d-inline-block align-top" alt="ロゴマーク">
 							</span>
 						<% end %>
 					<% end %>
@@ -50,8 +50,8 @@
 										<li class="nav-item"><span class="nav-link" id="linkToLogout"><%= link_to("ログアウト", destroy_user_session_path, method: :delete) %></span></li>
 										<li class="nav-item"><span class="nav-link" id="linkToTaq"><%= link_to("よくある質問", faqs_path) %></span></li>
 									<% else %>
-										<li class="nav-item"><%= link_to 'ユーザー登録', new_user_registration_path %></li>
-										<li class="nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
+										<li class="nav-item"><span class="nav-link"><%= link_to 'ユーザー登録', new_user_registration_path %></span></li>
+										<li class="nav-item"><span class="nav-link"><%= link_to 'ログイン', new_user_session_path %></span></li>
 									<% end %>
 								</ul>
 						</div>

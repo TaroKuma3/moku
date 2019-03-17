@@ -1,3 +1,50 @@
-<% @do_mokus.each do |do_moku| %>
-<%= do_moku.created_at %>
-<% end %>
+<div class="container">
+  <h1><%= @do_moku.created_at.to_s(:date)%>のmoku</h1>
+
+  <div class="row">
+    <div class="col-12 col-xs-8">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr class="table-info">
+            <th scope="col">時間</th>
+            <th scope="col">mokuタグ</th>
+            <th scope="col">moku詳細へ</th>
+            <th scope="col">成果物登録</th>
+            <th scope="col">moku削除</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @same_day_mokus.each do |same_day_moku| %>
+          <tr>
+            <th scope="row"><%# 時間 %>
+              <%= same_day_moku.created_at.to_s(:time) %>
+            </th>
+            <td><%# mokuタグ %>
+              <%= same_day_moku.moku_type.name %>
+            </td>
+            <td><%# 詳細 %>
+              <%= link_to user_moku_path(same_day_moku.user_id, same_day_moku.id) do %>
+                <i class="fas fa-search my-color-search fa-2x"></i>
+              <% end %>
+            </td>
+            <td><%# 成果物登録 %>
+            <%= link_to "/users/#{same_day_moku.user_id}/mokus/#{same_day_moku.id}/works/new" do %>
+              <span class="fa-stack">
+                <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>
+                <i class="fas fa-pencil-alt fa-stack-1x"></i>
+              </span>
+            <% end %>
+          </td>
+          <td><%# moku削除 %>
+            <%= link_to "/users/#{same_day_moku.user_id}/mokus/#{same_day_moku.id}/check" do %>
+              <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+            <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -61,7 +61,7 @@ class FaqsController < ApplicationController
     user = current_user
 
     if user.admin == false
-      flash[:notice] = "権限がありません"
+      flash[:notice] = "権限がありません！"
       redirect_to(mypage_path)
     end
   end

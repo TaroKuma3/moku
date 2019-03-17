@@ -1,5 +1,38 @@
-<h1>moku</h1>
-<h3><%= link_to('新規ユーザー登録', new_user_registration_path) %></h3>
-<h3><%= link_to('ログイン', new_user_session_path) %></h3>
-<h3><%= link_to("moku？", "top/about") %></h3>
-<h3><%= link_to("よくある質問", faqs_path) %></h3>
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-md-6" style="text-align: center;">
+      <img src="/assets/main_logo.jpg" width="400" height="400"/>
+    </div>
+
+    <div class="col-12 col-md-6" id="topMenu">
+      <div class="row">
+        <div class="col-6">
+          <%= link_to new_user_registration_path do %>
+            <p class="bg-info text-white rounded-circle text-center p-3">新規登録</p>
+          <% end %>
+        </div>
+
+        <div class="col-6">
+          <%= link_to new_user_session_path do %>
+            <p class="bg-info text-white rounded-circle text-center p-3">ログイン</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <%= link_to "top/about" do %>
+            <p class="bg-info text-white rounded-circle text-center p-3">moku?</p>
+          <% end %>
+        </div>
+
+        <div class="col-6">
+          <%= link_to faqs_path do %>
+            <p class="bg-info text-white rounded-circle text-center p-3">よくある質問</p>
+          <% end %>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

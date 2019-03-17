@@ -12,7 +12,10 @@ class MokusController < ApplicationController
   end
 
   def day_by_index
-    @do_moku = DoMoku.where(params[:day])
+    @do_moku = DoMoku.find(params[:id])
+
+    select_day = Date.parse(@do_moku.created_at.to_s)
+    @same_day_mokus = DoMoku.where(user_id: current_user.id).where(created_at: select_day.all_day).where(deleted: false)
   end
 
   def show
@@ -94,7 +97,7 @@ class MokusController < ApplicationController
       end
     end
 
-    flash[:notice] = "mokuを削除しました☁︎"
+    flash[:notice] = "mokuを削除しました！"
     redirect_to(user_mokus_path)
   end
 

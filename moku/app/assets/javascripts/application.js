@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 // フラッシュ
 $(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 3000)
+  setTimeout("$('.alert').fadeOut('slow')", 2000)
 })
 
 // moku JUST NOW

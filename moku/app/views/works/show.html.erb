@@ -35,7 +35,7 @@
             <h5>成果物memoの<br/>公開設定</h5>
           </div>
           <div class="card-body text-center">
-              <h5><%= public_to_s(@work.comment_public) %></h5>
+              <h5><%= public_to_s(@work.memo_public) %></h5>
           </div>
         </div>
       </div>
@@ -57,7 +57,11 @@
         <div class="card text-white bg-info mb-3 ">
           <div class="card-header text-center"><h5>成果物memo</h5></div>
           <div class="card-body bg-white text-dark">
-            <%= simple_format(@work.memo) %>
+            <% if @work.memo.blank? %>
+              <h6>memoはありませんでした。</h6>
+            <% else %>
+              <%= simple_format(@work.memo) %>
+            <% end %>
           </div>
         </div>
       </div>

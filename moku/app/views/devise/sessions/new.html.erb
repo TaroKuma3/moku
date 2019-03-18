@@ -2,7 +2,7 @@
   <h1>ログイン</h1>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-12 col-md-6">
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -14,11 +14,22 @@
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
       </div>
-    </div>
 
-    <% if devise_mapping.rememberable? %>
-      <%= f.check_box :remember_me %>
-    <% end %>
+      <div class="row">
+        <div class="col-12 text-secondary font-weight-bold ml-3">
+          <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me %>
+          <% end %>
+        </div>
+
+        <div class="col-12 ml-3">
+          <%= link_to new_password_path(resource_name) do %>
+            <i class="fas fa-lock"></i>
+            <span class="text-secondary font-weight-bold">パスワードがわからなくなってしまったら</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
     <div class="text-center mb-5">
       <div class="actions">
@@ -30,11 +41,6 @@
   <div class="row text-center">
     <%= render 'my_shared/go_top' %>
 
-    <%= link_to new_password_path(resource_name) do %>
-        <i class="fas fa-lock fa-4x ml-5">
-          <h5 class="text-secondary font-weight-bold">パスワードが<br/>わからなくなってしまったら</h5>
-        </i>
-      </span>
-    <% end %>
+
   </div>
 </div>

@@ -22,7 +22,7 @@
     <h3>成果物の画像やファイル</h3>
     <% if @work.images.attached? %>
       <% @work.images.each do |image| %>
-        <%= image_tag image.variant(resize: '100x') %>
+        <%= image_tag image.variant(resize: '300x') %>
       <% end %>
     <% end %>
     <%# partialここまで %>

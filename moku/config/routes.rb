@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get root to: 'top#index'
   get "top/about" => "top#about"
+  get 'new_registration/terms_of_service' => 'top#terms_of_service'
 
   # accounts
   get 'accounts/:user_id' => 'accounts#edit'

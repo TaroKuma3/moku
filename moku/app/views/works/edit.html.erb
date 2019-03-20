@@ -57,7 +57,7 @@ local: true) do |f| %>
   </h3>
   <p><%= f.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
 
-  <p><%= f.submit "登録する", class: "btn btn-info btn-lg"%>
+  <p class="text-center"><%= f.submit "登録する", class: "btn btn-info btn-lg"%>
 
 
 <% end %>

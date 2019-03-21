@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # devise signup時nameを登録
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # ↓セ。キュリティトークンが自動で含まれる（CSRF防止）
+  protect_from_forgery with: :exception
 
   # devise　login後の表示先指定
   def after_sign_in_path_for(resource)
@@ -8,9 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  # devise before_action用
+  # deviseストロングパラメータ（name、accepted：利用規約チェックの追加）
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :name, :accepted)}
   end
 
   def ensure_current_user

@@ -40,11 +40,15 @@ li {
 
 hr {
   border-width: 2px !important;
-  border-color: rgb(145, 169, 247) !important;
+  border-color: rgb(104, 114, 145) !important;
 }
 
 .notice {
   font-weight: bold;
+}
+
+.my-color-important {
+  color: lightsalmon;
 }
 
 /* アコーディオンカードの▼ */

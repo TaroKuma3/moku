@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :public, inclusion: { in: [true, false] }
   validates :introduce, length: {maximum: 140}
 
+  validates :accepted, presence: {message: 'を入力してください'} #利用規約同意のバリデ
+
   def active_for_authentication?
     if self.deleted
       false

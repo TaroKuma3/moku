@@ -12,14 +12,14 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @works = Work.where(user_id: current_user.id).where(deleted: false)
     @user = current_user #ここでひろうuser_idは自ページ分なのでcurrent_user
-    @do_moku = DoMoku.find(@work.moku_id)
+    @do_moku = DoMoku.find(@work.do_moku_id)
     @bm_count = BookMark.where(work_id: @work.id).count
   end
 
   def for_public
     @work = Work.find(params[:work_id])
     @user = User.find(params[:user_id]) #ここでひろうuser_idはpick upで見つけた他者のページにいくからURLに含まれるuser_id
-    @do_moku = DoMoku.find(@work.moku_id)
+    @do_moku = DoMoku.find(@work.do_moku_id)
     @bm_count = BookMark.where(work_id: @work.id).count
   end
 
@@ -40,13 +40,13 @@ class WorksController < ApplicationController
     @moku_type = MokuType.find(@do_moku.moku_type.id)
 
     @work = Work.new(work_params)
-    @work.moku_id = @do_moku.id
+    @work.do_moku_id = @do_moku.id
     @work.user = current_user
     # title: params[:work][:title],
     # めも: params[:work][:めも],
     # memo_public: params[:work][:memo_public],
     # pickup_public: params[:work][:pickup_public],
-    # moku_id: params[:moku_id],
+    # do_moku_id: params[:moku_id],
     # user_id: params[:user_id],
     # images: params[:work][:images],
     # )
@@ -110,6 +110,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:memo, :title, :images, :user_id, :moku_id, :memo_public, :pickup_public)
+    params.require(:work).permit(:memo, :title, :images, :user_id, :do_moku_id, :memo_public, :pickup_public)
   end
 end

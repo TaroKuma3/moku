@@ -22,7 +22,7 @@ class MokusController < ApplicationController
     @user = current_user
     @do_moku = DoMoku.find(params[:id])
     @moku_type = MokuType.find(@do_moku.moku_type_id)
-    @works = Work.where(moku_id: @do_moku.id)
+    @works = Work.where(do_moku_id: @do_moku.id)
   end
 
   def new
@@ -76,7 +76,7 @@ class MokusController < ApplicationController
 
   def check_delete
     @do_moku = DoMoku.find(params[:moku_id])
-    @works = Work.where(moku_id: @do_moku.id)
+    @works = Work.where(do_moku_id: @do_moku.id)
     @user = current_user
   end
 
@@ -85,7 +85,7 @@ class MokusController < ApplicationController
     do_moku.deleted = true
     do_moku.save!
 
-    works = Work.where(moku_id: do_moku.id)
+    works = Work.where(do_moku_id: do_moku.id)
     works.each do |work|
       work.deleted = true
       work.save!

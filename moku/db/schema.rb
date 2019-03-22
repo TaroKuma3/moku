@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_074528) do
+ActiveRecord::Schema.define(version: 2019_03_22_074501) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_074528) do
 
   create_table "works", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "moku_id"
+    t.integer "do_moku_id"
     t.string "title"
     t.text "memo"
     t.boolean "memo_public", default: false, null: false

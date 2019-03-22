@@ -8,6 +8,8 @@ class MypageController < ApplicationController
     @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false) #カレンダーのために取得
   end
 
+  #↓current_userにしてはいけない。pick upで成果物の作者を見にくる場合もアクセスされるから。
   def show
+    @user = User.find(params[:user_id])
   end
 end

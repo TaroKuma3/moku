@@ -1,2 +1,43 @@
-<h1>Mypage#show</h1>
-<p>Find me in app/views/mypage/show.html.erb</p>
+<div class="container">
+  <% if @user.public %>
+    <h1><%= "成果物の製作者：#{@user.name}さん" %></h1>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-header"><h4><%= "#{@user.name}さんのMOKUアイテム" %></h4></div>
+          <div class="card-body bg-white text-dark">
+            <p class="card-text">
+              <% if @user.items.blank? %>
+                <p><%= "#{@user.name}さんは、MOKUアイテムを登録されていないようです。"%></p>
+              <% else %>
+                <%= simple_format(@user.items) %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-header"><h4><%= "#{@user.name}さんの自己紹介" %></h4></div>
+          <div class="card-body bg-white text-dark">
+            <p class="card-text">
+              <% if @user.introduce.blank? %>
+                <%= "#{@user.name}さんは、自己紹介を登録されていないようです。"%>
+              <% else %>
+                <%= simple_format(@user.introduce) %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <h3><%= "#{@user.name}さんは非公開ユーザーさんです" %></h3>
+  <% end %>
+
+  <%= render "my_shared/go_mypage" %>
+
+
+</div>

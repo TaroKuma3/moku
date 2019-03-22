@@ -5,56 +5,126 @@
         <div class="row">
           <div class="col-12 col-md-6 mb-4">
             <section>
-              <div class="card">
-                <div class="card-header text-center"><h3>何をしますか？</h3></div>
-                  <div class="card-body pd-1 text-center">
-                    <%= link_to "/users/#{@user.id}/mokus/new" do %>
-                      <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">mokuる</h5>
-                      </i>
-                    <% end %>
+              
+              <%# md以上で普通のカード表示%>
+              <div class="d-none d-md-block">
+                <div class="card">
+                  <div class="card-header text-center"><h3>何をしますか？</h3></div>
+                    <div class="card-body pd-1 text-center">
+                      <%= link_to "/users/#{@user.id}/mokus/new" do %>
+                        <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">mokuる</h5>
+                        </i>
+                      <% end %>
 
-                    <%= link_to user_mokus_path(@user) do %>
-                      <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">moku一覧</h5>
-                      </i>
-                    <% end %>
+                      <%= link_to user_mokus_path(@user) do %>
+                        <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">moku一覧</h5>
+                        </i>
+                      <% end %>
 
-                    <%= link_to "users/#{@user.id}/book_marks" do %>
-                      <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                      </i>
-                    <% end %>
+                      <%= link_to "users/#{@user.id}/book_marks" do %>
+                        <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">Book Mark</h5>
+                        </i>
+                      <% end %>
 
-                    <%= link_to user_moku_type_index_path(@user) do %>
-                      <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
-                      </i>
-                    <% end %>
+                      <%= link_to user_moku_type_index_path(@user) do %>
+                        <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                        </i>
+                      <% end %>
 
-                    <%= link_to user_works_path(@user) do %>
-                      <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">成果物</h5>
-                      </i>
-                    <% end %>
+                      <%= link_to user_works_path(@user) do %>
+                        <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">成果物</h5>
+                        </i>
+                      <% end %>
 
-                    <% if @user.admin? %>
-                      <hr/>
-                      <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
-                        <%= link_to(faqs_new_path) do %>
-                          <i class="fas fa-question my-color-question fa-4x m-3 faa-bounce animated-hover">
-                            <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
-                          </i>
-                        <% end %>
+                      <% if @user.admin? %>
+                        <hr/>
+                        <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
+                          <%= link_to(faqs_new_path) do %>
+                            <i class="fas fa-question my-color-question fa-4x m-3 faa-bounce animated-hover">
+                              <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
+                            </i>
+                          <% end %>
 
-                        <%= link_to(faqs_path) do %>
-                          <i class="fas fa-edit my-color-faqedit fa-4x m-3 faa-bounce animated-hover">
-                            <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
-                          </i>
-                        <% end %>
-                    <% end %>
-                  </div>
+                          <%= link_to(faqs_path) do %>
+                            <i class="fas fa-edit my-color-faqedit fa-4x m-3 faa-bounce animated-hover">
+                              <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
+                            </i>
+                          <% end %>
+                      <% end %>
+                    </div>
+                </div>
               </div>
+
+              <%# md未満でアコーディオン %>
+              <div class="d-md-none">
+                <div class="accordion" id="accordionExample">
+                  <div class="card">
+                    <div class="card-header text-center" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        何をしますか？
+                      </button>
+                    </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div class="card-body pd-1 text-center">
+                        <%= link_to "/users/#{@user.id}/mokus/new" do %>
+                          <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                            <h5 class="font-weight-bold text-secondary">mokuる</h5>
+                          </i>
+                        <% end %>
+
+                        <%= link_to user_mokus_path(@user) do %>
+                          <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                            <h5 class="font-weight-bold text-secondary">moku一覧</h5>
+                          </i>
+                        <% end %>
+
+                        <%= link_to "users/#{@user.id}/book_marks" do %>
+                          <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                            <h5 class="font-weight-bold text-secondary">Book Mark</h5>
+                          </i>
+                        <% end %>
+
+                        <%= link_to user_moku_type_index_path(@user) do %>
+                          <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                            <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                          </i>
+                        <% end %>
+
+                        <%= link_to user_works_path(@user) do %>
+                          <i class="fas fa-crown my-color-work fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                            <h5 class="font-weight-bold text-secondary">成果物</h5>
+                          </i>
+                        <% end %>
+
+                        <% if @user.admin? %>
+                          <hr/>
+                          <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
+                            <%= link_to(faqs_new_path) do %>
+                              <i class="fas fa-question my-color-question fa-4x m-3 faa-bounce animated-hover">
+                                <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
+                              </i>
+                            <% end %>
+
+                            <%= link_to(faqs_path) do %>
+                              <i class="fas fa-edit my-color-faqedit fa-4x m-3 faa-bounce animated-hover">
+                                <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
+                              </i>
+                            <% end %>
+                        <% end %>
+                      </div><%# カードbody終わり%>
+                    </div><%# collapse終わり%>
+                  </div><%# カード終わり%>
+                </div><%# アコーディオン終わり%>
+              </div><%# md未満でアコーディオン終わり%>
+
             </section>
           </div>
 

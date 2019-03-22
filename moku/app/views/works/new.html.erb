@@ -40,7 +40,7 @@
       </div>
 
       <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>画像やテキストファイル１</h3>
+        <h3>画像の追加</h3>
         <%= form.file_field :images, hide_label: true, multipart: true %>
       </div>
 
@@ -50,23 +50,12 @@
       </div>
 
       <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>コメントを公開しますか？<span style="margin-right: 3em;"></span>
-          <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
-          <ul>
-            <li>成果物はPICK UPに乗りますが、コメントだけは非公開になります。</li>
-            <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
-          </ul>">
-          </span>
-        </h3>
-        <%= form.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
-      </div>
-
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>Pick Upへ公開しますか？<span style="margin-right: 4em;"></span>
+        <h3>成果物の公開設定<span style="margin-right: 4em;"></span>
           <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
             <ul>
               <li>公開にすると、Pick Upに載る事があります。</li>
               <li>非公開にすると、Pick Upには載りません。</li>
+              <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
             </ul>
             <b>【ブックマークについて】</b><br>
             <ul>
@@ -77,6 +66,20 @@
           </span>
         </h3>
         <p><%= form.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
+      </div>
+
+
+      <div class="col-12 col-md-7" style="margin:auto;">
+        <h3>コメントを公開しますか？<span style="margin-right: 3em;"></span>
+          <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+          <ul>
+            <li>成果物はPICK UPに乗りますが、コメントだけは非公開になります。</li>
+            <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
+            <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
+          </ul>">
+          </span>
+        </h3>
+        <%= form.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
       </div>
     </div>
 

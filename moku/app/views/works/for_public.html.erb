@@ -1,43 +1,88 @@
 <div class="container">
-  <h5>成果物がpublicの時、第三者に見せるページ</h5>
-
   <% if @work.pickup_public %>
-    <%# ここからpartial化予定　%>
-    <h1><%= "成果物タイトル：#{@work.title}" %></h1>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="pb-1"><%= "タイトル：#{@work.title}" %></h1>
+      </div>
+      <div class="col-12 text-right pb-3">
+        <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
+          <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
+            <i class="fas fa-bookmark fa-4x un-bm-btn" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
+            <i class="fas fa-bookmark fa-4x bm-btn" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+        <%= @bm_count %>
+      </div>
+    </div>
 
-    <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
-      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-        <%#<span class="fa fa-bookmark fa-2x un-bm-btn" aria-hidden="true"></span> %>
-        <i class="fa fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
-      <% end %>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-header text-center">
+            <h5>この成果物の作者さん</h5>
+          </div>
+          <div class="card-body text-center">
+            <% work_owner_user = User.find(@work.user_id)%>
+            <h5><%= "#{work_owner_user.name}さん" %>&emsp;
+              <%= link_to "/mypage/#{work_owner_user.id}" do %>
+                <i class="fas fa-search my-color-search"></i>
+              <% end %>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-header text-center">
+            <h5>成果物登録日時</h5>
+          </div>
+          <div class="card-body text-center">
+              <h5><%= @work.created_at %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if @work.memo_public == true %>
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="card text-white bg-info mb-3 ">
+              <div class="card-header text-center"><h5>成果物memo</h5></div>
+              <div class="card-body bg-white text-dark">
+                <% if @work.memo.blank? %>
+                  <h6>memoはありませんでした。</h6>
+                <% else %>
+                  <%= simple_format(@work.memo) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
     <% else %>
-      <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-        <i class="fa fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
-      <% end %>
+      <h3>制作物のコメントは非公開です</h3>
     <% end %>
-    <%= @bm_count %>
 
-    <h3><%= "成果物登録日時：#{@work.created_at}" %></h3>
-
-    <h3>成果物の画像やファイル</h3>
-    <% if @work.images.attached? %>
-      <% @work.images.each do |image| %>
-        <%= image_tag image.variant(resize: '300x') %>
-      <% end %>
-    <% end %>
-    <%# partialここまで %>
-
-      <% if @work.memo_public == true %>
-        <h3><%= "制作物のコメント：#{@work.memo}" %></h3>
+    <h2 class="text-center">画像</h2>
+    <div class="row">
+      <% if @work.images.attached? %>
+        <% @work.images.each do |image| %>
+          <div class="col-12 col-md-6 mb-4 text-center">
+            <%= image_tag image.variant(resize: '300x') %>
+          </div>
+        <% end %>
       <% else %>
-        <h3>制作物のコメント：非公開です☁︎</h3>
+        <h5>画像の登録はありませんでした。</h5>
       <% end %>
-
-      <% work_owner_user = User.find(@work.user_id)%>
-      <h3>この成果物の作者さん：<%= link_to "#{work_owner_user.name}さん", "/mypage/#{work_owner_user.id}" %></h3>
+    </div>
   <% else %>
     <h1>非公開です</h1>
   <% end %>
+
+  <hr/>
   <%= render 'my_shared/go_mypage' %>
 
   </div>

@@ -115,19 +115,21 @@
                     <% @work_pickups.each do |work_pickup| %>
                       <li>
                         <% work = Work.find(work_pickup.id)%>
-                        <% if work.user_id == current_user.id%>
-                          <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
-                            <%= link_to user_work_path(@user, work) do %>
-                              <i class="fas fa-search my-color-search fa-2x"></i>
-                            <% end %>
-                          </span>
-                        <% else %>
-                        <% work_user = User.find(work.user_id) %>
-                          <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
-                            <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
-                              <i class="fas fa-search my-color-search fa-2x"></i>
-                            <% end%>
-                          </span>
+                        <% if work.user.public == true %>
+                          <% if work.user_id == current_user.id %>
+                            <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
+                              <%= link_to user_work_path(@user, work) do %>
+                                <i class="fas fa-search my-color-search fa-2x"></i>
+                              <% end %>
+                            </span>
+                          <% else %>
+                          <% work_user = User.find(work.user_id) %>
+                            <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
+                              <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
+                                <i class="fas fa-search my-color-search fa-2x"></i>
+                              <% end%>
+                            </span>
+                          <% end %>
                         <% end %>
                       </li>
                     <% end %>

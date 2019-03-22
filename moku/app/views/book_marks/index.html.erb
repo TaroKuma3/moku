@@ -66,22 +66,21 @@
 
           <tbody>
             <% @book_marks.each do |book_mark| %>
-              <% work = Work.find(book_mark.work_id) %>
-              <% unless work.user_id == current_user.id %>
-                <% if work.pickup_public == Constants::PUBLIC %>
-                  <% work_user = User.find_by(id: work.user_id)%>
+              <% unless book_mark.work.user_id == current_user.id %>
+                <% if book_mark.work.user.public == true && book_mark.work.pickup_public == Constants::PUBLIC %>
+                  <% work_user = User.find_by(id: book_mark.work.user_id)%>
                   <tr>
                     <th scope="row"><%# タイトル %>
-                      <%= work.title %>
+                      <%= book_mark.work.title %>
                     </th>
                     <td><%# 作成日 %>
-                      <%= work.created_at %>
+                      <%= book_mark.work.created_at %>
                     </td>
                     <td><%# 作成者 %>
                       <%= "#{work_user.name}さん"%>
                     </td>
                     <td><%# 詳細 %>
-                      <%= link_to ("/users/#{work.user_id}/works/#{work.id}/public") do %>
+                      <%= link_to ("/users/#{book_mark.work.user_id}/works/#{book_mark.work.id}/public") do %>
                         <i class="fas fa-search my-color-search fa-2x"></i>
                       <% end %>
                     </td>

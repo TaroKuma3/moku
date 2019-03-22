@@ -1,9 +1,10 @@
 <div class="container">
+
   <div class="row">
     <div class="col-12">
-      <h1 class="pb-1"><%= "タイトル：#{@work.title}" %>
+      <h1 class="pb-1"><%= "タイトル：#{@work.title}" %></h1>
     </div>
-    <div class="col-12 text-right pb-3"></h1>
+    <div class="col-12 text-right pb-3">
       <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
         <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
           <i class="fas fa-bookmark fa-4x un-bm-btn" aria-hidden="true"></i>
@@ -16,7 +17,6 @@
       <%= @bm_count %>
     </div>
   </div>
-
 
   <div class="row">
     <div class="col-12 col-md-4">

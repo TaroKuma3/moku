@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <h1>個人設定</h1>
 
   <% if @user.errors.any? %>
@@ -23,13 +23,13 @@
           <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="アカウントの公開設定" data-content="<b>【公開】</b><br>
             <ul>
               <li>moku JUST NOWに公開されます。</li>
-              <li>他のユーザーが成果物をみた時、「作者さん」リンクから、ニックネーム・mokuアイテム・自己紹介が見えるページにジャンプできるようになります。</li>
+              <li>成果物はで個別に公開・非公開の設定ができます。</li>
             </ul>
             <b>【非公開】</b><br>
             <ul>
               <li>moku JUST NOWには公開されません。</li>
-              <li>他のユーザーが成果物をみた時、「作者さん」リンクが無効になります。</li>
-              <li>PICK UPにも載らなくなります。</li>
+              <li>成果物(及びpick up)、Book Markも非公開となります。</li>
+              <li>成果物登録時に公開にしても、アカウントが非公開だと公開されません。</li>
             </ul>">
           </span>
         </h3>

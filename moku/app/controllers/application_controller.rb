@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   # devise signup時nameを登録
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # ↓セ。キュリティトークンが自動で含まれる（CSRF防止）
-  protect_from_forgery with: :exception
+  # ↓セキュリティトークンが自動で含まれる（CSRF防止）
+  #protect_from_forgery with: :exception
 
   # devise　login後の表示先指定
   def after_sign_in_path_for(resource)

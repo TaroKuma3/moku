@@ -1,7 +1,7 @@
 class MokusController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_current_user, only:[:index, :show, :new, :create, :edit, :update]
-  skip_before_action :verify_authenticity_token, only:[:ajax_create]
+  skip_before_action :verify_authenticity_token, only:[:ajax_create, :finish]
 
   def index
     if params[:moku_type] # 絞り込みされたら

@@ -12,7 +12,6 @@
 //
 //= require jquery3
 
-//= require rails-ujs
 //= require activestorage
 //= require_tree .
 
@@ -31,7 +30,7 @@ $(document).ready(function () {
 
 // フラッシュ
 $(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 2000)
+  setTimeout("$('.alert').fadeOut('slow')", 1000)
 })
 
 // moku JUST NOW

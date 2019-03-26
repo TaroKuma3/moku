@@ -14,7 +14,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # moku JUST NOW
-Rails.application.config.assets.precompile += %w( application.js )
+Rails.application.config.assets.precompile += %w( moku_just_now.js )
 
-# はてなアイコン
-Rails.application.config.assets.precompile += %w( application.js )
+# popover
+Rails.application.config.assets.precompile += %w( popover.js )
+

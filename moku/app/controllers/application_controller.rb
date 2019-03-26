@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # devise　login後の表示先指定
   def after_sign_in_path_for(resource)
-    "/mypage"
+    mypage_path
   end
 
   private

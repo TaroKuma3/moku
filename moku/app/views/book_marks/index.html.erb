@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h1><%= "#{@user.name}さんのブックマーク一覧" %></h1>
 
   <ul>
@@ -6,13 +6,13 @@
       <li class="nav-item">
         <a href="#tab1" class="nav-link active text-info" data-toggle="tab">
           <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover" aria-hidden="true"></i>
-          <%= "#{current_user.name}さん自身の成果物"%>
+          自分の成果物
         </a>
       </li>
         <li class="nav-item">
           <a href="#tab2" class="nav-link text-info" data-toggle="tab">
             <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover" aria-hidden="true"></i>
-            他のユーザーさんの成果物
+            他ユーザーの成果物
           </a>
       </li>
     </ul>

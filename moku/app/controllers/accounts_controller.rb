@@ -54,8 +54,7 @@ class AccountsController < ApplicationController
       end
     end
 
-  flash[:notice] = "ご利用ありがとうございました！またいつでも戻ってきてください！"
   reset_session
-  redirect_to ("/")
+  redirect_to ("/bye")
   end
 end

@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require jquery3
-
+//= require jquery_ujs
 //= require activestorage
-//= require_tree .
-
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-tagsinput.min
+//= require_tree .
 
 // はてなアイコン
 $(document).ready(function () {
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 // フラッシュ
 $(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 1000)
+  setTimeout("$('.alert').fadeOut('slow')", 2000)
 })
 
 // moku JUST NOW

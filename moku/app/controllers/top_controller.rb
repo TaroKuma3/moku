@@ -4,4 +4,7 @@ class TopController < ApplicationController
 
   def about
   end
+
+  def bye
+  end
 end

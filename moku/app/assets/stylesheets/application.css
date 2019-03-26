@@ -100,27 +100,27 @@ hr {
 /* はてなアイコンのpop_over */
 .popover {
   max-width: 400px !important;
-  }
+}
 
-  /* 編集するアイコン */
-  .my-color-edit {
-    color: mediumslateblue;
-  }
+/* 編集するアイコン */
+.my-color-edit {
+  color: mediumslateblue;
+}
 
-  /* banアイコン */
-  .my-color-ban {
-    color: crimson;
-  }
+/* banアイコン */
+.my-color-ban {
+  color: crimson;
+}
 
-  /* 虫眼鏡アイコン */
-  .my-color-search {
-    color: plum;
-  }
+/* 虫眼鏡アイコン */
+.my-color-search {
+  color: plum;
+}
 
 /* mypageへ戻るアイコン  */
 .my-color-reply {
   color: #f472db
-  }
+}
 
 /* 退会アイコン */
 .my-color-door {
@@ -132,7 +132,7 @@ hr {
   color: rgb(127, 161, 236);
 }
 
- /* copyright */
+/* copyright */
 .copyright {
   border-top: solid 3px rgb(105, 175, 255);
   text-align: center;

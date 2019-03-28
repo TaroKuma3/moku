@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= "#{@do_moku.created_at}にmokuった内容"%></h1>
+  <h1><%= "#{@do_moku.created_at}" %>に<br class="d-inline d-sm-none" />mokuった内容</h1>
 
   <div class="row mb-2">
     <div class="col-12 col-md-6 mb-2">
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-12 mb-4">
     <% if @works.blank?%>
-      <h5 class="text-center">成果物の登録はありませんでした。何か登録してみませんか？
+      <h5 class="text-center">成果物の登録はありませんでした。<br class="d-inline d-sm-none" />何か登録してみませんか？<br class="d-inline d-sm-none" />
       <%= link_to "/users/#{@do_moku.user_id}/mokus/#{@do_moku.id}/works/new" do %>
         <span class="fa-stack">
           <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>

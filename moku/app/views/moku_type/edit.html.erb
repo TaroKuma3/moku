@@ -19,7 +19,12 @@
     </div>
   <% end %>
 
-  <p><%= link_to("mokuタグ一覧へ戻る", user_moku_type_index_path(@user))%></p>
+<hr/>
+  <%= link_to user_moku_type_index_path(@user) do %>
+    <i class="fas fa-tag my-color-tag fa-4x m-3 text-center">
+      <h5 class="font-weight-bold text-secondary">mokuタグ一覧へ</h5>
+    </i>
+  <% end %>
 
   <%= render 'my_shared/go_mypage' %>
 </div>

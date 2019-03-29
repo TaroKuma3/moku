@@ -1,2 +1,41 @@
-<h1>Mokus#edit</h1>
-<p>Find me in app/views/mokus/edit.html.erb</p>
+<div class="container">
+  <h1><%= "#{@do_moku.created_at}"%>に<br class="d-inline d-sm-none" />MOKUった内容</h1>
+
+  <%= bootstrap_form_with(model: @do_moku,
+                url: {controller: :mokus, action: :update, user_id: @user.id, id: @do_moku.id},
+                method: :patch,
+                local: true) do |f| %>
+
+    <% if @do_moku.errors.any? %>
+      <% @do_moku.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h4>MOKUタグ</h4>
+        <%= f.collection_select :moku_type, @user.active_moku_types, :id, :name, selected: @do_moku.moku_type_id, hide_label: true %>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h4>memo</h4>
+        <%= f.text_area :memo, hide_label: true, size: "20x8" %>
+      </div>
+    </div>
+    <p class="text-center"><%= f.submit '保存', class:"btn bg-info text-white btn-lg" %></p>
+
+  <% end %>
+　
+  <hr/>
+  <%= link_to user_mokus_path(@user) do %>
+    <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
+      <h5 class="font-weight-bold text-secondary ">moku一覧へ</h5>
+    </i>
+  <% end %>
+
+<%= render "my_shared/go_mypage" %>
+
+
+
+</div>

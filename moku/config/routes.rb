@@ -59,6 +59,11 @@ Rails.application.routes.draw do
   get 'users/:user_id/works/:work_id/public' => 'works#for_public'
   delete 'works/:id/images/:image_id' => 'works#delete_image'
 
+  # regstrations/editでrootではなくmypageへ戻るための記述
+  as :user do
+    get 'mypage', :to => 'devise/registrations#edit', :as => :user_root
+  end
+
   resources :users do
     resources :mokus,:moku_type,:works,:book_marks
   end

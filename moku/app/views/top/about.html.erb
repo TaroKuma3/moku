@@ -1,65 +1,78 @@
 <div class=container>
-  <h1>はじめまして </h1>
 
-  <div class="row mb-5">
-    <div class="col-12 col-md-6">
-    <h2>moku?</h2>
-      もくもく会ってご存知ですか？
-      ひたすら、ただ黙々と作業をするだけの会。
-      最近色々なところで開催されています。
-      でも、どんな人がいるのかな…。
-      人見知りだしな…。
-      家を空けられないしな…。
-      色々な事情で、参加したくても参加できない。そんなあなたへ。
-      moku -もく- は、他者との繋がりは非常に薄く、でも確かに繋がりがある世界です。
-      mokuを使って、自分のペースで作業してみませんか。
+  <div class="cover text-info py-5">
+    <div class="display-3 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
+    <span style="margin-right: 4em;"></span>
+    <button type="button" class="btn btn-info btn-lg">
+      <%= link_to new_user_registration_path do %>
+        <h4 class="text-white font-weight-bold">さっそく始めよう！</h4>
+      <% end %>
+    </button>
+    </div>
+
+  <div class="row py-5">
+    <div class="col-12 col-md-6 mb-3 pl-5">
+      <h2 class="mb-3 font-weight-bold">moku?</h2>
+        もくもく会ってご存知ですか？<br/>
+        ひたすら、黙々と作業をするだけの会。<br/>
+        最近色々なところで開催されています。<br/>
+        でも、どんな人がいるのかな…。<br/>
+        人見知りだしな…。<br/>
+        家を空けられないしな…。<br/>
+        ○○をしたいけれどいいのかな…。<br/>
+        色々な事情で、参加したくても参加できない。<br/>
+        そんなあなたへ。<br/>
+        moku -もく- は、他者との繋がりは非常に薄く、<br/>
+        でも確かに繋がりがある世界です。<br/>
+        mokuを使って、自分のペースで作業してみませんか。<br/>
     </div>
 
     <div class="col-12 col-md-6 mt-2 px-0" style="text-align: center;">
-      <img src="/assets/moku_logo2.png" class="img-fluid" heigt="300"/>
+      <img src="/assets/sagyou459-201.jpg" class="img-fluid"/>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <h2>mokuで、作業を記録しよう！</h2>
-      読書、宿題、作品作り…。
-      色々な作業を記録してみませんか。
-      mokuは、作業をするとその作業時間を計測できます。
-      タグごとに分けて管理ができます。
-      その本を読了するまで、
-      その宿題が完了するまで、
-      その作品が完成するまで、
-      どのくらいの時間を要したかあとで振り返ってみませんか。
+  <div class="row py-5">
+    <div class="col-12 col-md-6 order-md-2 mb-3 pl-5">
+      <h2 class="mb-3 font-weight-bold font-weight-bold">mokuで作業を記録しよう</h2>
+      読書、宿題、作品作り…。<br/>
+      色々な作業を記録してみませんか。<br/>
+      mokuは、作業をするとその作業時間を記録します。<br/>
+      タグごとに分けて管理ができます。<br/>
+      その本を読了するまで、<br/>
+      その宿題が完了するまで、<br/>
+      その作品が完成するまで、<br/>
+      どのくらいの時間を要したかあとで振り返ってみませんか。<br/>
+      メモやちょっとした画像を残すこともできます。<br/>
     </div>
-
-    <div class="col-12 col-md-6">
-      <img src="/assets/books.jpg" class="img-fluid" width="300"/>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <h2>作品やメモの記録</h2>
-      各mokuの作業でできたものや、メモなどを記録しましょう。
-      画像が残せるので、毎作業ごとに記録しておけば、
-      完成までの流れを振り返ることができます。
+    <div class="col-12 col-md-6 mt-2 px-0 order-md-1" style="text-align: center;">
+      <img src="/assets/desk459-201.jpg" class="img-fluid" />
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <h2>繋がりすぎない繋がり moku JUST NOWとブックマーク</h2>
-      SNSやWEBサービスの普及で、他者との繋がりは十分すぎるほど。
-      だから、mokuは他のユーザーとの関わりを「繋がっていると言えない程度の薄い繋がり」だけにしました。
-      どこの誰だかはわからない。メッセージを送ることもできない。
-      だけど、moku JUST NOWをみると、どこかの誰かが作業をしている。
-      参考になったり、素敵だなと思う成果物にはブックマークを。
-      きっと、それだけで十分だとmokuは考えます。
+  <div class="row py-5">
+    <div class="col-12 col-md-6 mb-3 pl-5">
+      <h2 class="mb-3 font-weight-bold">繋がりすぎない繋がり</h2>
+      SNSやWEBサービスの普及で、<br class="d-inline d-sm-none" />他者との繋がりは十分すぎるほど。<br/>
+      だから、mokuは他のユーザーとの関わりを敢えて希薄にしました。<br/>
+      どこの誰だかはわからない。<br/>
+      メッセージを送ることもできない。<br/>
+      だけど、moku JUST NOWをみると、誰かが作業をしている。<br/>
+      参考になったり、素敵だなと思う成果物はブックマークを。<br/>
+      きっと、それだけで十分だとmokuは考えます。<br/>
+    </div>
+      <div class="col-12 col-md-6 mt-2 px-0" style="text-align: center;">
+      <img src="/assets/friends459-201.jpg" class="img-fluid" />
     </div>
   </div>
 
-  <%= link_to 'ユーザー登録はこちら！' %><br/>
+  <div class="text-center">
+  <button type="button" class="btn btn-info btn-lg">
+    <%= link_to new_user_registration_path do %>
+      <h4 class="text-white font-weight-bold">さっそく始めよう！</h4>
+    <% end %>
+  </button>
+</div>
 
   <%= render 'my_shared/go_top'%>
 

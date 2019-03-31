@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  #top
   get root to: 'top#index'
   get "top/about" => "top#about"
   get 'terms_of_service' => 'top#terms_of_service'
   get 'bye' => 'top#bye'
+  get 'thanks' => 'top#thanks'
 
   # accounts
   get 'accounts/:user_id' => 'accounts#edit'

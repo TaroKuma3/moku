@@ -1,14 +1,39 @@
 <div class="container">
   <h1>Special Thanks</h1>
 
-  <div class="row">
-    <h2>画像</h2>
-    <%= link_to("https://www.photo-ac.com/", target: :_blank) do %>
-      photo AC
-    <% end %>
-    <h2>ロゴ</h2>
-    <%= link_to("https://www.designevo.com/jp/", target: :_blank) do %>
-     Design Evo
-    <% end %>
+  <div class="row mb-5">
+    <div class="col-12 col-md-4 mb-5 text-center">
+      <div class="card border-info">
+        <div class="card-body">
+          <h2>Images&ensp;<i class="fas fa-images"></i></h2>
+          <%= link_to("https://www.photo-ac.com/", target: :_blank) do %>
+            <hr />
+            <h4>photo AC</h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-5 text-center">
+    <div class="card border-info">
+      <div class="card-body">
+        <h2>Logo&ensp;<i class="fas fa-cloud"></i></h2>
+        <%= link_to("https://www.designevo.com/jp/", target: :_blank) do %>
+          <hr />
+          <h4>Design Evo</h4>
+        <% end %>
+      </div>
+    </div>
+
+    </div>
+    <div class="col-12 col-md-4 mb-5 text-center">
+      <div class="card border-info">
+        <div class="card-body">
+          <h2>Adviser&ensp;<i class="far fa-smile"></i></h2>
+          <hr />
+          <h4>Takehito Tanabe</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

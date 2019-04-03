@@ -1,5 +1,5 @@
 class TopController < ApplicationController
-  before_action :forbid_login_user
+  before_action :forbid_login_user, only:[:index, :about, :bye]
   
   def index
   end

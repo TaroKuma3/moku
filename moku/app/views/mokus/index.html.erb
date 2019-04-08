@@ -20,12 +20,22 @@
     <% end %>
   <% end %>
 
+  <%
+=begin%> カレンダー同様、合計がうまく行かない件。。
+ <% @moku_time_sum = 0 %>
+  <% @do_mokus.each do |do_moku| %>
+    <% @moku_time_sum =+ do_moku.moku_time %>
+  <% end %>
+  <%= "moku TIME合計:#{distance_of_time_in_words(@moku_time_sum)}" %> 
+<%
+=end%>
 
   <table class="table table-hover text-center">
     <thead>
       <tr class="table-info">
         <th scope="col" class="align-middle">日時</th>
-        <th scope="col" class="align-middle">mokuタグ</th>
+        <th scope="col" class="align-middle">moku TIME</th>
+        <th scope="col" class="align-middle">moku<br class="d-inline d-sm-none" />タグ</th>
         <th scope="col" class="align-middle">moku詳細へ</th>
         <th scope="col" class="align-middle">成果物登録</th>
         <th scope="col" class="align-middle">moku削除</th>
@@ -37,6 +47,9 @@
           <th scope="row"><%# 日時 %>
             <%= "#{do_moku.created_at} " %>
           </th>
+          <td><%# moku TIME %>
+            <%= "#{distance_of_time_in_words(do_moku.moku_time)} " %>
+          </td>
           <td><%# mokuタグ名 %>
             <% moku_type = MokuType.find(do_moku.moku_type_id) %>
             <%= "#{moku_type.name}" %>

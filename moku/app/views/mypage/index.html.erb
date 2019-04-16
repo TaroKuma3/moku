@@ -342,16 +342,21 @@
                   <div class="font-weight-bold">
                     <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
                   </div>
-                  <% moku_count = [] %>
+                  <%
+=begin%>
+ <% moku_count = [] %>
                   <% @do_moku_id = 0 %>
                   <% do_mokus.each do |do_moku| %>
                     <% moku_count << 1 %>
                     <% @do_moku_id = do_moku.id %>
-                  <% end %>
-                  <% if moku_count.size > 0 %>
-                    <%= link_to "/users/#{current_user.id}/mokus/#{@do_moku_id}/day" do %>
+                  <% end %> 
+<%
+=end%>
+                  <%# if moku_count.size > 0 %>
+                  <% if do_mokus.size > 0 %>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
                       <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
-                      <%= "×" %><%= "#{moku_count.size}" %>
+                      <%= "×" %><%= "#{do_mokus.size}" %>
                     <% end %>
                   <% end %>
                 <% end %>
@@ -362,16 +367,20 @@
                   <div class="font-weight-bold">
                     <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
                   </div>
-                  <% moku_count = [] %>
+                  <%
+=begin%>
+ <% moku_count = [] %>
                   <% do_mokus.each do |do_moku| %>
                     <% moku_count << 1 %>
                     <% @do_moku_id = do_moku.id %>
-                  <% end %>
-                  <% if moku_count.size > 0 %>
-                    <%= link_to "/users/#{current_user.id}/mokus/#{@do_moku_id}/day" do %>
+                  <% end %> 
+<%
+=end%>
+                  <% if do_mokus.size > 0 %>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
                       <small>
                       <i class="fas fa-cloud my-color-moku"></i>
-                      <%= "×" %><%= "#{moku_count.size}" %>
+                      <%= "×" %><%= "#{do_mokus.size}" %>
                     </small>
                     <% end %>
                   <% end %>

@@ -1,13 +1,18 @@
 class MokusController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_current_user, only:[:index, :show, :new, :create, :edit, :update]
-  skip_before_action :verify_authenticity_token, only:[:ajax_create, :finish]
+  skip_before_action :verify_authenticity_token, only:[:ajax_create]
 
   def index
     if params[:moku_type] # 絞り込みされたら
       @do_mokus = DoMoku.where(user_id: current_user.id).where(moku_type_id: params[:moku_type]).where(deleted: false).order(created_at: 'desc')
     else #絞り込みされなかったら
       @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc')
+    end
+
+    @moku_time_sum = 0
+    @do_mokus.each do |do_moku|
+      @moku_time_sum += do_moku.moku_time
     end
   end
 
@@ -35,6 +40,7 @@ class MokusController < ApplicationController
     do_moku.user_id = params[:user_id]
     do_moku.moku_type_id = params[:moku_type_id]
     do_moku.started_at = DateTime.now
+    do_moku.moku_time = 0
 
     if do_moku.save!
       render json: do_moku

@@ -8,7 +8,7 @@ class DoMoku < ApplicationRecord
   validates :started_at, presence: true
 
   #update == moku終了時以降
-  validates :finished_at, presence: true, on: :update
+  # validates :finished_at, presence: true, on: :update(このせいで削除する時にもバリデーションエラーが出る)
   validates :moku_time, presence: true, on: :update
 
   def format_created_at

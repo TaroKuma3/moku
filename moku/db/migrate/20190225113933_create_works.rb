@@ -5,7 +5,7 @@ class CreateWorks < ActiveRecord::Migration[5.2]
       t.integer "moku_id"
       t.string "title"
       t.text "comment"
-      t.integer "comment_public"
+      t.boolean "comment_public", default: false, null: false
       t.boolean "pickup_public", default: false, null: false
       t.boolean "deleted", default: false, null: false
 

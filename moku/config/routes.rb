@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'terms_of_service' => 'top#terms_of_service'
   get 'bye' => 'top#bye'
   get 'thanks' => 'top#thanks'
+  get 'privacy' => 'top#privacy'
 
   # accounts
   get 'accounts/:user_id' => 'accounts#edit'

@@ -6,7 +6,11 @@
       <div class="row">
         <div class="col-12 mb-4">
           <h4 class="bg-info text-white text-center rounded-top py-2 mb-0" style="min-width: 20rem;">mokuの日時</h4>
-          <h6 class="bg-white text-secondary text-center rounded-bottom p-3 border border-info" style="min-width: 20rem;"><%= @do_moku.started_at %> 〜 <%= @do_moku.finished_at %></h6>
+          <% if @do_moku.finished_at.blank? %>
+            <h6 class="bg-white text-secondary text-center rounded-bottom p-3 border border-info" style="min-width: 20rem;"><%= @do_moku.started_at %> 〜 ?????<br /> まだmokuっている途中か、正常に終了しなかったようです。</h6>
+          <% else %>
+            <h6 class="bg-white text-secondary text-center rounded-bottom p-3 border border-info" style="min-width: 20rem;"><%= @do_moku.started_at %> 〜 <%= @do_moku.finished_at %></h6>
+          <% end %>
         </div>
 
         <div class="col-12 mb-4">

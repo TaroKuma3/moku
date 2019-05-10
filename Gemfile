@@ -71,3 +71,4 @@ gem 'devise-i18n'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem "simple_calendar", "~> 2.0"
 gem "mini_magick"
+gem "aws-sdk-s3"

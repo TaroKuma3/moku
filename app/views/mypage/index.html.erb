@@ -3,7 +3,7 @@
     <div class="container-fluid pb-4">
       <h1><%= "#{@user.name}さんのマイページ" %></h1>
         <div class="row">
-          <div class="col-12 col-md-6 mb-4">
+          <div class="col-12 col-md-5 mb-4">
             <section>
               <%# md以上で普通のカード表示 メニュー %>
               <div class="d-none d-md-block">
@@ -58,7 +58,6 @@
                     </div>
                 </div>
               </div>
-
               <%# md未満でアコーディオン メニュー %>
               <div class="d-md-none">
                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
@@ -122,121 +121,46 @@
                 </div><%# /acordion %>
               </div><%# /d-md-none %>
             </section>
+          </div><%# /col %>
+
+          <div class="col-12 col-md-7 mb-4">
+            <section>
+              <%# md以上で月間カレンダー表示%>
+              <div class="d-none d-lg-block">
+                <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
+                  <div class="font-weight-bold">
+                    <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
+                  </div>
+
+                  <% if do_mokus.size > 0 %>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
+                      <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
+                      <%= "×" %><%= "#{do_mokus.size}" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <%# md未満で週間カレンダー表示%>
+              <div class="d-lg-none">
+                <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
+                  <div class="font-weight-bold">
+                    <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
+                  </div>
+
+                  <% if do_mokus.size > 0 %>
+                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
+                      <small>
+                      <i class="fas fa-cloud my-color-moku"></i>
+                      <%= "×" %><%= "#{do_mokus.size}" %>
+                    </small>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div><%# /d-md-none%>
+            </section>
           </div><%# /col%>
 
-          <%# md以上で普通のカード表示 自己紹介 %>
-          <div class="col-12 col-md-6 pb-4">
-            <section>
-              <div class="d-none d-md-block">
-                <div class="card">
-                  <div class="card-header text-center"><h3>自己紹介</h3></div>
-                  <div class="card-body">
-                    <% if @user.introduce.blank? %>
-                    　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                    <% else %>
-                      <%= simple_format(@user.introduce) %>
-                    <% end %>
-                  </div><%# /card-body %>
-                </div><%# /card %>
-              </div><%# /d-none d-md-block %>
-
-              <%# md未満でアコーディオン %>
-              <div class="d-md-none">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                  <div class="card">
-                    <div class="card-header text-center" role="tab" id="headingTwo">
-                      <a class="collapsed text-body" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                        <h3 class="text-secondary font-weight-bold">自己紹介</h3>
-                      </a>
-                    </div>
-                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                      <% if @user.introduce.blank? %>
-                      　<h5>︎︎︎︎画面上部のメニュー「個人設定」から、自己紹介を登録しよう！</h5>
-                      <% else %>
-                        <%= simple_format(@user.introduce) %>
-                      <% end %>
-                    </div><%# /card-body %>
-                    </div><%# /collapse%>
-                  </div><%# /card %>
-                </div><%# /accordion %>
-              </div><%# /d-md-none %>
-            </section>
-          </div><%# /col %>
         </div><%# /row %>
-
-        <div class="row">
-          <div class="col-12 col-md-6 pb-4">
-            <section>
-              <%# md以上で普通のカード表示 公開設定 %>
-              <div class="d-none d-md-block">
-                <div class="card">
-                  <div class="card-header text-center"><h3>公開設定</h3></div>
-                  <div class="card-body">
-                    <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
-                  </div>
-                </div>
-              </div><%# /d-none d-md-block %>
-
-              <%# md未満でアコーディオン 公開設定 %>
-              <div class="d-md-none">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="card">
-                  <div class="card-header text-center"  role="tab" id="headingThree">
-                    <a class="collapsed text-body" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
-                      <h3 class="text-secondary font-weight-bold">公開設定</h3>
-                    </a>
-                  </div>
-                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                      <h5><%= "現在#{public_to_s(@user.public)}になっています。"%></h5>
-                    </div><%# /card-body% %>
-                  </div><%# /collapse%>
-                </div><%# /card %>
-              </div><%# /d-md-none %>
-            </section>
-          </div><%# /col %>
-
-          <div class="col-12 col-md-6 pb-4">
-            <section>
-              <%# md以上で普通のカード表示　mokuアイテム %>
-              <div class="d-none d-md-block">
-                <div class="card">
-                  <div class="card-header text-center"><h3>mokuアイテム</h3></div>
-                  <div class="card-body">
-                    <% if @user.items.blank? %>
-                      <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
-                    <% else %>
-                      <%= simple_format(@user.items) %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-
-              <%# md未満でアコーディオン mokuアイテム %>
-              <div class="d-md-none">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                  <div class="card">
-                    <div class="card-header text-center"  role="tab" id="headingFour">
-                      <a class="collapsed text-body" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
-                        <h3 class="text-secondary font-weight-bold">mokuアイテム</h3>
-                      </a>
-                    </div>
-                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
-                      <div class="card-body">
-                        <% if @user.items.blank? %>
-                          <h5>画面上部のメニュー「個人設定」から、使用する道具を登録しよう！</h5>
-                        <% else %>
-                          <%= simple_format(@user.items) %>
-                        <% end %>
-                      </div><%# /card-body %>
-                    </div><%# /collapse%>
-                  </div><%# /card %>
-                </div><%# /accordion %>
-              </div><%# /d-md-none %>
-            </section>
-          </div>
-        </div>
 
         <div class="row mb-4">
           <div class="col-12 col-lg-6 pb-4">
@@ -317,6 +241,7 @@
               </div><%# /d-md-none %>
             </section>
           </div>
+        
 
           <div class="col-12 col-lg-6 pb-4">
           <section>
@@ -332,45 +257,6 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-12">
-            <section>
-              <h1 class="text-center">カレンダー</h1>
-              <%# md以上で月間カレンダー表示%>
-              <div class="d-none d-md-block">
-                <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
-                  <div class="font-weight-bold">
-                    <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
-                  </div>
-
-                  <% if do_mokus.size > 0 %>
-                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
-                      <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
-                      <%= "×" %><%= "#{do_mokus.size}" %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </div>
-              <%# md未満で週間カレンダー表示%>
-              <div class="d-md-none">
-                <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
-                  <div class="font-weight-bold">
-                    <%= "#{date.to_formatted_s(:only_date)} 日" %><br>
-                  </div>
-
-                  <% if do_mokus.size > 0 %>
-                    <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
-                      <small>
-                      <i class="fas fa-cloud my-color-moku"></i>
-                      <%= "×" %><%= "#{do_mokus.size}" %>
-                    </small>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </div>
-            </section>
-          </div>
-        </div>
   </main>
 
 

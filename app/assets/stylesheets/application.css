@@ -51,6 +51,11 @@ hr {
   color: lightsalmon;
 }
 
+.my-color-lock {
+  color: #fcc6f1;
+}
+
+
 /* アカウント情報アイコン */
 .my-color-key {
   color: rgb(255, 236, 96);

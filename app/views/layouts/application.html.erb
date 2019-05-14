@@ -46,7 +46,6 @@
 						<div id="menu" class="collapse navbar-collapse">
 								<ul class="navbar-nav">
 									<% if user_signed_in? %>
-										<li class="nav-item"><span class="nav-link" id="linkToAaacount"><%= link_to("アカウント情報", edit_user_registration_path) %></span></li>
 										<li class="nav-item"><span class="nav-link" id="linkToSetting"><%= link_to("個人設定", "/accounts/#{current_user.id}")%></span></li>
 										<li class="nav-item"><span class="nav-link" id="linkToLogout"><%= link_to("ログアウト", destroy_user_session_path, method: :delete) %></span></li>
 										<li class="nav-item"><span class="nav-link" id="linkToTaq"><%= link_to("よくある質問", faqs_path) %></span></li>

@@ -50,6 +50,7 @@
           <%= f.text_area :introduce, hide_label: true, size: "20x7"  %>
       </div>
     </div>
+
     <div class="row">
       <div class="col-12 text-center">
         <%= f.submit "登録する", class: "btn btn-info btn-lg" %>
@@ -57,7 +58,31 @@
     </div>
   <% end %>
 
-  <%= render 'my_shared/go_mypage' %>
+  <div class="row md-3">
+    <div class="col-6">
+      <%= render 'my_shared/go_mypage' %>
+    </div>
+
+    <div class="col-6">
+      <div class="row text-right">
+        <div class="col-7 text-right pr-0">
+          <%= link_to edit_user_registration_path do %>
+            <i class="fas fa-key fa-4x my-color-key text-center">
+              <h5 class="font-weight-bold text-secondary">アカウント<br class="d-inline d-md-none" />情報</h5>
+            </i>
+          <% end %>
+        </div>
+
+        <div class="col-5">
+          <%= link_to "/accounts/#{current_user.id}/check" do %>
+            <i class="fas fa-door-open fa-4x my-color-door text-center"><br/>
+              <h5 class="font-weight-bold text-secondary">mokuを<br class="d-inline d-sm-none" />退会</h5>
+            </i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%# はてなアイコン %>

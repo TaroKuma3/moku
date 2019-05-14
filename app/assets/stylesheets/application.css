@@ -51,6 +51,11 @@ hr {
   color: lightsalmon;
 }
 
+/* アカウント情報アイコン */
+.my-color-key {
+  color: rgb(255, 236, 96);
+}
+
 /* アコーディオンカードの▼ */
 .my-color-down {
   color: darkolivegreen;

@@ -1,14 +1,19 @@
 <div class=container>
 
   <div class="cover text-info py-5">
-    <div class="display-3 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
+    <div class="d-none d-md-block"><%# md以上で以下の通り表示 %>
+      <div class="display-2 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
+    </div><%# /d-md-block%>
+    <div class="d-md-none"><%# m未満で以下の通り表示 %>
+      <div class="display-4 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
+    </div>
     <span style="margin-right: 4em;"></span>
     <button type="button" class="btn btn-info btn-lg">
       <%= link_to new_user_registration_path do %>
         <h4 class="text-white font-weight-bold">さっそく始めよう！</h4>
       <% end %>
     </button>
-    </div>
+  </div><%# /cover %>
 
   <div class="row py-5">
     <div class="col-12 col-md-6 mb-3 pl-5">
@@ -22,7 +27,7 @@
         ○○をしたいけれどいいのかな…。<br/>
         色々な事情で、参加したくても参加できない。<br/>
         そんなあなたへ。<br/>
-        moku -もく- は、他者との繋がりは非常に薄く、<br/>
+        moku&#8194;-もく-&#8194;は、他者との繋がりは非常に薄く、<br/>
         でも確かに繋がりがある世界です。<br/>
         mokuを使って、自分のペースで作業してみませんか。<br/>
     </div>
@@ -34,7 +39,7 @@
 
   <div class="row py-5">
     <div class="col-12 col-md-6 order-md-2 mb-3 pl-5">
-      <h2 class="mb-3 font-weight-bold font-weight-bold">mokuで作業を記録しよう</h2>
+      <h2 class="mb-3 font-weight-bold font-weight-bold">mokuで<br class="d-inline d-sm-none" />作業を記録しよう</h2>
       読書、宿題、作品作り…。<br/>
       色々な作業を記録してみませんか。<br/>
       mokuは、作業をするとその作業時間を記録します。<br/>

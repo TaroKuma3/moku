@@ -1,7 +1,7 @@
 <div class=container>
 
   <div class="cover text-info py-5">
-    <div class="d-none d-md-block"><%# md以上で文字をdisplay-2＋ボタンlg %>
+    <div class="d-none d-md-block"><%# md以上で文字をdisplay-2＋ボタン左4em+ボタンlg %>
       <div class="display-2 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
       <span style="margin-right: 4em;"></span>
       <button type="button" class="btn btn-info btn-lg">
@@ -10,12 +10,12 @@
         <% end %>
       </button>
     </div><%# /d-md-block%>
-    <div class="d-md-none"><%# m未満で文字をh2+ボタン通常サイズ %>
+    <div class="d-md-none"><%# m未満で文字をh2+ボタン左2em+ボタンsm %>
       <div class="font-weight-bold mb-4"><h2>&emsp;はじめまして<br/>&emsp;mokuです</h2></div>
       <span style="margin-right: 2em;"></span>
-      <button type="button" class="btn btn-info">
+      <button type="button" class="btn btn-info btn-sm">
         <%= link_to new_user_registration_path do %>
-          <h4 class="text-white font-weight-bold text-enter">さっそく始めよう！</h4>
+          <h5 class="text-white font-weight-bold text-enter">さっそく始めよう！</h5>
         <% end %>
       </button>
     </div>

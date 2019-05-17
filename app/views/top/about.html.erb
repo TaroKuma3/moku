@@ -35,14 +35,12 @@
   </div>
 
   <div class="row py-5"><%# mokuで作業を記録しよう %>
-    <div class="col-12 col-md-6 mb-3 pl-5 d-none d-md-block"><%# md以上でpl-5 %>
+    <div class="col-12 col-md-6 mb-3 pl-5 order-md-2 d-none d-md-block"><%# md以上でpl-5 %>
       <%= render "about_message2" %>
     </div><%# /d-none d-md-block%>
-    <div class="col-12 col-md-6 mb-3 ml-3 d-md-none"><%# md未満でml-3%>
+    <div class="col-12 col-md-6 mb-3 ml-3 order-md-2 d-md-none"><%# md未満でml-3%>
       <%= render "about_message2" %>
     </div><%# /d-md-none %>
-
-
     <div class="col-12 col-md-6 mt-2 px-2 order-md-1" style="text-align: center;">
       <img src="/assets/desk459-201.jpg" class="img-fluid" />
     </div>

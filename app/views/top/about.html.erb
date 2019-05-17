@@ -35,34 +35,26 @@
   </div>
 
   <div class="row py-5"><%# mokuで作業を記録しよう %>
-    <div class="col-12 col-md-6 order-md-2 mb-3 pl-5">
-      <h2 class="mb-3 font-weight-bold font-weight-bold">mokuで<br class="d-inline d-sm-none" />作業を記録しよう</h2>
-      読書、宿題、作品作り…。<br/>
-      色々な作業を記録してみませんか。<br/>
-      mokuは、作業をするとその作業時間を記録します。<br/>
-      タグごとに分けて管理ができます。<br/>
-      その本を読了するまで、<br/>
-      その宿題が完了するまで、<br/>
-      その作品が完成するまで、<br/>
-      どのくらいの時間を要したかあとで振り返ってみませんか。<br/>
-      メモやちょっとした画像を残すこともできます。<br/>
-    </div>
+    <div class="col-12 col-md-6 mb-3 pl-5 d-none d-md-block"><%# md以上でpl-5 %>
+      <%= render "about_message2" %>
+    </div><%# /d-none d-md-block%>
+    <div class="col-12 col-md-6 mb-3 ml-3 d-md-none"><%# md未満でml-3%>
+      <%= render "about_message2" %>
+    </div><%# /d-md-none %>
+
+
     <div class="col-12 col-md-6 mt-2 px-2 order-md-1" style="text-align: center;">
       <img src="/assets/desk459-201.jpg" class="img-fluid" />
     </div>
   </div>
 
-  <div class="row py-5">
-    <div class="col-12 col-md-6 mb-3 pl-5">
-      <h2 class="mb-3 font-weight-bold">繋がりすぎない繋がり</h2>
-      SNSやWEBサービスの普及で、<br class="d-inline d-sm-none" />他者との繋がりは十分すぎるほど。<br/>
-      だから、mokuは他のユーザーとの関わりを敢えて希薄にしました。<br/>
-      どこの誰だかはわからない。<br/>
-      メッセージを送ることもできない。<br/>
-      だけど、moku JUST NOWをみると、誰かが作業をしている。<br/>
-      参考になったり、素敵だなと思う成果物はブックマークを。<br/>
-      きっと、それだけで十分だとmokuは考えます。<br/>
-    </div>
+  <div class="row py-5"><%# 繋がりすぎない繋がり %>
+    <div class="col-12 col-md-6 mb-3 pl-5 d-none d-md-block"><%# md以上でpl-5 %>
+      <%= render "about_message3" %>
+    </div><%# /d-none d-md-block%>
+    <div class="col-12 col-md-6 mb-3 ml-3 d-md-none"><%# md未満でml-3%>
+      <%= render "about_message3" %>
+    </div><%# /d-md-none %>
       <div class="col-12 col-md-6 mt-2 px-2" style="text-align: center;">
       <img src="/assets/friends459-201.jpg" class="img-fluid" />
     </div>

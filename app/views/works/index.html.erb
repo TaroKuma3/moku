@@ -7,11 +7,10 @@
       <div class="card border-info mb-4" style="width: 200px;" id="worksIndexCard">
           <div class="card-body">
             <%= link_to user_mokus_path(@user) do %>
-              <span data-toggle="popover" data-content="moku一覧に飛びます。</br>成果物を登録するmokuの<br/>「成果物登録」からどうぞ！">
-                <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover">
-                  <h5 class="font-weight-bold text-info text-center">成果物を<br/>登録する</h5>
-                </i>
-              </span>
+              <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover">
+                <h5 class="font-weight-bold text-info text-center">成果物を<br/>登録する</h5>
+                <h6 class="text-info text-center">※moku一覧に<br/>飛びます</h6>
+              </i>
             <% end %>
           </div>
         </div>

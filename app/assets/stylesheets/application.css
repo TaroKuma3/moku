@@ -23,6 +23,7 @@
  body {
    color: rgb(95, 95, 95) !important;
  }
+
 /* mokuアイコン */
  .my-color-moku {
   color: #b7e0f5;
@@ -108,9 +109,9 @@ hr {
 }
 
 /* はてなアイコンのpop_over */
-.popover {
+/* .popover {
   max-width: 400px !important;
-}
+} */
 
 /* 編集するアイコン */
 .my-color-edit {

@@ -2,7 +2,7 @@
 $(document).ready(function () {
   $(function() {
     $('[data-toggle="popover"]').popover({
-    trigger: 'hover',
+    // trigger: 'hover',
     html: true,
   });
 })

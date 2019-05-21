@@ -21,8 +21,9 @@
           </div>
 
           <div class="col-12 col-md-6">
-              <h3>アカウントの公開設定<span style="margin-right: 4em;"></span>
-              <a class="btn btn-lg btn-info text-white" data-toggle="popover" title="アカウントの公開設定" data-content="<b>【公開】</b><br>
+              <%#<h3>アカウントの<br class="d-inline d-lg-none"/>公開設定<span style="margin-right: 4em;"></span> %>
+              <h3>アカウントの<br class="d-inline d-lg-none"/>公開設定&emsp;
+              <a class="btn btn-sm btn-info text-white" data-toggle="popover" title="アカウントの公開設定" data-content="<b>【公開】</b><br>
                   <ul>
                     <li>moku JUST NOWに公開されます。</li>
                     <li>成果物では個別に公開・非公開の設定ができます。</li>
@@ -33,24 +34,6 @@
                     <li>成果物(及びpick up)、Book Markも非公開となります。</li>
                     <li>成果物登録時に公開にしても、アカウントが非公開だと公開されません。</li>
                   </ul>">?</a>
-
-
-                <%
-=begin%>
- <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="アカウントの公開設定" data-content="<b>【公開】</b><br>
-                  <ul>
-                    <li>moku JUST NOWに公開されます。</li>
-                    <li>成果物では個別に公開・非公開の設定ができます。</li>
-                  </ul>
-                  <b>【非公開】</b><br>
-                  <ul>
-                    <li>moku JUST NOWには公開されません。</li>
-                    <li>成果物(及びpick up)、Book Markも非公開となります。</li>
-                    <li>成果物登録時に公開にしても、アカウントが非公開だと公開されません。</li>
-                  </ul>">
-                </span> 
-<%
-=end%>
               </h3>
 
             <%= f.select :public, options_for_public, selected: @user.public , hide_label: true%>

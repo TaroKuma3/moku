@@ -60,15 +60,17 @@
               </div>
               <%# md未満でアコーディオン メニュー %>
               <div class="d-md-none">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="accordion" id="accordion">
                   <div class="card">
-                    <div class="card-header text-center" role="tab" id="headingOne">
-                      <a class="collapsed text-body" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
+                    <div class="card-header text-center" id="headingOne">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <%# <a class="collapsed text-body" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne"> %>
                         <h3 class="text-secondary font-weight-bold">何をしますか？ </h3>
-                      </a>
+                      <%# /a %>
+                    </button>
                     </div><%# /card-header %>
 
-                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="card-body pd-1 text-center">
                         <%= link_to "/users/#{@user.id}/mokus/new" do %>
                           <i class="fas fa-cloud my-color-moku fa-4x m-3 faa-bounce animated-hover">
@@ -168,7 +170,7 @@
               <%# md以上で普通のカード表示 pick up%>
               <div class="d-none d-md-block">
                 <div class="card text-blue bg-info text-white">
-                  <h4><div class="card-header text-center"><h3>Pick UP</h3></div></h4>
+                  <h4><div class="card-header text-center font-weight-bold"><h3>Pick UP</h3></div></h4>
                   <div class="card-body">
                     <h5 class="card-title">みんなの成果物を見てみよう！</h5>
                     <ul>
@@ -200,7 +202,7 @@
 
               <%# md未満でアコーディオン pick up%>
               <div class="d-md-none">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="accordion" id="accordion2" role="tablist" aria-multiselectable="true">
                   <div class="card text-blue bg-info text-white">
                     <div class="card-header text-center" role="tab" id="headingFive">
                       <a class="collapsed text-body" data-toggle="collapse" href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFIve">
@@ -208,7 +210,7 @@
                       </a>
                     </div>
 
-                    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFIve" data-parent="#accordion">
+                    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFIve" data-parent="#accordion2">
                       <div class="card-body">
                         <h5 class="card-title">みんなの成果物を見てみよう！</h5>
                         <ul>
@@ -245,7 +247,7 @@
           <div class="col-12 col-lg-6 pb-4">
           <section>
               <div class="card text-white bg-info">
-                <h4><div class="card-header text-center"><h3>moku Just Now<h3></div></h4>
+                <h4><div class="card-header text-center font-weight-bold"><h3>moku Just Now<h3></div></h4>
                 <div class="card-body">
                   <ul id="justNowUl"></ul>
                   <%= javascript_include_tag "moku_just_now.js" %>

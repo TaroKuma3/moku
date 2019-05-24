@@ -63,7 +63,7 @@
       <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">成果物memo</h4>
       <h6 class="bg-white text-secondary rounded-bottom p-3 border border-info" style="min-width: 20rem;">
         <% if @work.memo.blank? %>
-          <h6>memoはありませんでした。</h6>
+          memoはありませんでした。
         <% else %>
           <%= simple_format(@work.memo) %>
         <% end %>

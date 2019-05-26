@@ -4,6 +4,7 @@ class MokuTypeController < ApplicationController
 
   def index
     @user = current_user
+    @moku_type = MokuType.new
     @moku_types = MokuType.where(user_id: @user.id).where(deleted: false)
   end
 

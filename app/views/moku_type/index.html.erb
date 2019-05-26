@@ -1,21 +1,25 @@
 <div class="container">
-
   <h1><%= "#{@user.name}さんのmokuタグ"%></h1>
-
   <div class="row">
-    <div class="col-12 col-md-4 text-center">
-      <div class="card border-info mb-4" style="width: 200px;" id="mokuTypeCard">
-        <div class="card-body">
-          <%= link_to new_user_moku_type_path(@user) do %>
-            <i class="fas fa-tag my-color-tag fa-2x m-3 text-center faa-bounce animated-hover">
-              <h5 class="font-weight-bold text-info text-center">mokuタグを<br>新しく作る</h5>
-            </i>
+    <div class="col-12 col-md-6 mb-4">
+      <%= bootstrap_form_with(model: @MokuType,
+                              url: {controller: :moku_type, action: :create, user_id: current_user.id},
+                              method: :post,
+                              local: true) do |f| %>
+
+        <% if  @moku_type.errors.any? %>
+          <% @moku_type.errors.full_messages.each do |message| %>
+            <%= message %>
           <% end %>
-        </div>
-      </div>
+        <% end %>
+
+        <h4 class="font-weight-bold">あたらしいmokuタグをつくる</h4>
+        <p><%= f.text_field :name, hide_label: true %></p>
+        <%= f.submit "登録する", class: "btn btn-info btn-lg"%>
+      <% end %>
     </div>
 
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-6">
       <table class="table table-hover">
         <thead>
           <tr class="table-info text-center">
@@ -62,6 +66,7 @@
   </div>
 
 
+  
 
   <%= render 'my_shared/go_mypage' %>
 </div>

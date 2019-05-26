@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'thanks' => 'top#thanks'
   get 'privacy' => 'top#privacy'
   get 'check' => 'top#mailcheck'
+  get 'how_to' => 'top#how_to'
 
   # accounts
   get 'accounts/:user_id' => 'accounts#edit'

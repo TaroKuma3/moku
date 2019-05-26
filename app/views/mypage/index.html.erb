@@ -16,6 +16,12 @@
                         </i>
                       <% end %>
 
+                      <%= link_to user_moku_type_index_path(@user) do %>
+                        <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
+                          <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                        </i>
+                      <% end %>
+
                       <%= link_to user_mokus_path(@user) do %>
                         <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">moku一覧</h5>
@@ -25,12 +31,6 @@
                       <%= link_to "users/#{@user.id}/book_marks" do %>
                         <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                        </i>
-                      <% end %>
-
-                      <%= link_to user_moku_type_index_path(@user) do %>
-                        <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover" aria-hidden="true">
-                          <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
                         </i>
                       <% end %>
 
@@ -78,6 +78,12 @@
                           </i>
                         <% end %>
 
+                        <%= link_to user_moku_type_index_path(@user) do %>
+                          <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover">
+                            <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
+                          </i>
+                        <% end %>
+
                         <%= link_to user_mokus_path(@user) do %>
                           <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 faa-bounce animated-hover">
                             <h5 class="font-weight-bold text-secondary">moku一覧</h5>
@@ -87,12 +93,6 @@
                         <%= link_to "users/#{@user.id}/book_marks" do %>
                           <i class="fas fa-bookmark my-color-bookmark fa-4x m-3 faa-bounce animated-hover">
                             <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                          </i>
-                        <% end %>
-
-                        <%= link_to user_moku_type_index_path(@user) do %>
-                          <i class="fas fa-tag my-color-tag fa-4x m-3 faa-bounce animated-hover">
-                            <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
                           </i>
                         <% end %>
 
@@ -259,6 +259,4 @@
         </div>
 
   </main>
-
-
 </body>

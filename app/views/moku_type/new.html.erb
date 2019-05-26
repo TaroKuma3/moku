@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1>あたらしいmnokuタグを追加</h1>
+  <h1>あたらしいmokuタグを追加</h1>
 
   <%= bootstrap_form_with(model: @MokuType,
   url: {controller: :moku_type, action: :create, user_id: current_user.id},
@@ -20,7 +20,6 @@
     </div>
   <% end %>
 
-  <hr/>
   <%= link_to user_moku_type_index_path(@user) do %>
     <i class="fas fa-tag my-color-tag fa-4x m-3 text-center">
       <h5 class="font-weight-bold text-secondary">mokuタグ一覧へ</h5>

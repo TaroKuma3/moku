@@ -13,12 +13,6 @@ class MokuTypeController < ApplicationController
     @do_mokus = DoMoku.where(moku_type_id: @moku_type.id).order(created_at: 'desc')
   end
 
-  def new
-    @user = current_user
-    @moku_type = MokuType.new
-    @moku_types = MokuType.where(user_id: current_user.id)
-  end
-
   def create
     @user = current_user
     @moku_types = MokuType.where(user_id: current_user.id)
@@ -31,7 +25,7 @@ class MokuTypeController < ApplicationController
       flash[:notice] = "新しいmokuタグを登しました！"
       redirect_to(user_moku_type_index_path(@user))
     else
-      render action: :new
+      render action: :index
     end
   end
 

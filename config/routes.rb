@@ -60,9 +60,22 @@ Rails.application.routes.draw do
   patch 'users/:user_id/works/:work_id/delete' => 'works#delete'
 
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
+    :passwords => 'users/passwords',
+    :confirmations => 'users/confirmations'
+   }
+
+
+  # devise_for :users, controllers: { confirmations: 'confirmations' }
   get 'users/:user_id/works/:work_id/public' => 'works#for_public'
   delete 'works/:id/images/:image_id' => 'works#delete_image'
+
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_out", :to => "users/sessions#destroy"
+  end
 
   # regstrations/editでrootではなくmypageへ戻るための記述
   as :user do

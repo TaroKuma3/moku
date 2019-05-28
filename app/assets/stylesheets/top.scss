@@ -32,3 +32,13 @@
 .carousel-control-prev {
   filter: invert(100%);
 }
+.carousel-indicators {
+  background-color: #999;
+  background-color: rgba(5, 155, 210, 0.283);
+  height: 25px;
+  margin-bottom: 0px;
+}
+
+.carousel-indicators .active {
+  background-color: rgb(82, 80, 79);
+}

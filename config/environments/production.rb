@@ -72,6 +72,7 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = { host: 'moku-moku-moku.herokuapp.com', protocol: "https" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

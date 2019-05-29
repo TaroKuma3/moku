@@ -12,6 +12,6 @@ class DoMoku < ApplicationRecord
   validates :moku_time, presence: true, on: :update
 
   def format_created_at
-    self.created_at.strftime('%y/%m/%d  %H:%M')
+    self.created_at.strftime('%y/%m/%d  %H:%M ')
   end
 end

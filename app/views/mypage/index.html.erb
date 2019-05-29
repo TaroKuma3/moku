@@ -58,7 +58,7 @@
                     </div>
                 </div>
               </div>
-              <%# md未満でアコーディオン メニュー %>
+              <%# md未満でアコーディオン メニュー＊＊＊＊けす＊＊＊＊＊ %>
               <div class="d-md-none">
                 <div class="accordion pb-4" id="accordion">
                   <div class="card">
@@ -248,7 +248,11 @@
               <div class="card text-white bg-info">
                 <h4><div class="card-header text-center font-weight-bold"><h3>moku Just Now<h3></div></h4>
                 <div class="card-body">
-                  <ul id="justNowUl"></ul>
+                  <ul id="justNowUl">
+                    <% @default_mjns.each do |mjn| %>
+                      <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
+                    <% end %>
+                  </ul>
                   <%= javascript_include_tag "moku_just_now.js" %>
                   <script></script>
                 </div>

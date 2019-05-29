@@ -67,8 +67,6 @@ Rails.application.routes.draw do
     :confirmations => 'users/confirmations'
    }
 
-
-  # devise_for :users, controllers: { confirmations: 'confirmations' }
   get 'users/:user_id/works/:work_id/public' => 'works#for_public'
   delete 'works/:id/images/:image_id' => 'works#delete_image'
 

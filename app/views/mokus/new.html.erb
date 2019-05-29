@@ -127,7 +127,6 @@
       <div id="linkToMypage">
         <%= render 'my_shared/go_mypage'%>
       </div>
-<%= render "moku_js" %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
 
@@ -181,7 +180,6 @@
                 data: {
                     user_id: <%= current_user.id %>,
                     moku_type_id: $('#moku_type').val(),
-                    moku_time: 0,
                 }
             }).done(function (json) {
                 const moku = json

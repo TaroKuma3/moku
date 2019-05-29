@@ -29,7 +29,11 @@
             <div class="card text-white bg-info hidden-xs" id='mjn' style="display:none;">
               <h3><div class="card-header text-center">moku JUST NOW</div></h3>
               <div class="card-body text-white">
-                <ul id="justNowUl"></ul>
+                <ul id="justNowUl">
+                  <% @default_mjns.each do |mjn| %>
+                    <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
+                  <% end %>
+                </ul>
                   <%= javascript_include_tag "application" %>
                   <script></script>
               </div>
@@ -103,7 +107,7 @@
           <div class="card text-white bg-info mb-3" id="displayMokuTime">
             <div class="card-header text-center"><h3>moku Time</h3></div>
             <div class="card-body">
-              <h3 class="card-text text-center" id="timer"></h3>
+              <h3 class="card-text text-center" id="timer">00:00:00</h3>
             </div>
           </div>
         </div>
@@ -118,13 +122,12 @@
             <input class="btn btn-info btn-lg" type="submit" id="stopButton" value="moku終了！"/>
           <% end %>
         </div>
-
       </div>
 
       <div id="linkToMypage">
         <%= render 'my_shared/go_mypage'%>
       </div>
-
+<%= render "moku_js" %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
 
@@ -178,6 +181,7 @@
                 data: {
                     user_id: <%= current_user.id %>,
                     moku_type_id: $('#moku_type').val(),
+                    moku_time: 0,
                 }
             }).done(function (json) {
                 const moku = json

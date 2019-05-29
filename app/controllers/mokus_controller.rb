@@ -33,6 +33,8 @@ class MokusController < ApplicationController
   def new
     @user = current_user
     @moku_types = MokuType.where(user_id: @user.id)
+    public_users = User.where(public: true)
+    @default_mjns = DoMoku.where(user_id: public_users.ids).where(deleted: false).order(created_at: 'desc').limit(5)
   end
 
   def ajax_create

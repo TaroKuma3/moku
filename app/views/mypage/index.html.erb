@@ -7,35 +7,36 @@
             <section>
               <%# md以上でアイコンサイズ大 メニュー %>
               <div class="d-none d-md-block">
-                <div class="card">
+                <div class="card text-white bg-info">
                   <div class="card-header text-center"><h3>メニュー</h3></div>
                     <div class="card-body pd-1 text-center">
+                    <div class="card-body bg-white">
                       <%= link_to "/users/#{@user.id}/mokus/new" do %>
-                        <i class="fas fa-cloud fa-4x faa-bounce animated-hover my-color-moku pcMenuIconSize" aria-hidden="true">
+                        <i class="fas fa-cloud fa-3x faa-bounce animated-hover my-color-moku pcMenuIconSize" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">mokuる</h5>
                         </i>
                       <% end %>
 
                       <%= link_to user_moku_type_index_path(@user) do %>
-                        <i class="fas fa-tag fa-4x faa-bounce animated-hover my-color-tag pcMenuIconSize" aria-hidden="true">
+                        <i class="fas fa-tag fa-3x faa-bounce animated-hover my-color-tag pcMenuIconSize" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
                         </i>
                       <% end %>
 
                       <%= link_to user_mokus_path(@user) do %>
-                        <i class="fas fa-file-alt fa-4x faa-bounce animated-hover my-color-mokusIndex pcMenuIconSize" aria-hidden="true">
+                        <i class="fas fa-file-alt fa-3x faa-bounce animated-hover my-color-mokusIndex pcMenuIconSize" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">moku一覧</h5>
                         </i>
                       <% end %>
 
                       <%= link_to "users/#{@user.id}/book_marks" do %>
-                        <i class="fas fa-bookmark fa-4x faa-bounce animated-hover my-color-bookmark pcMenuIconSize" aria-hidden="true">
+                        <i class="fas fa-bookmark fa-3x faa-bounce animated-hover my-color-bookmark pcMenuIconSize" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">Book Mark</h5>
                         </i>
                       <% end %>
 
                       <%= link_to user_works_path(@user) do %>
-                        <i class="fas fa-crown fa-4x faa-bounce animated-hover my-color-work pcMenuIconSize" aria-hidden="true">
+                        <i class="fas fa-crown fa-3x faa-bounce animated-hover my-color-work pcMenuIconSize" aria-hidden="true">
                           <h5 class="font-weight-bold text-secondary">成果物</h5>
                         </i>
                       <% end %>
@@ -44,58 +45,60 @@
                         <hr/>
                         <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
                           <%= link_to(faqs_new_path) do %>
-                            <i class="fas fa-question fa-4x faa-bounce animated-hover my-color-question pcMenuIconSize" aria-hidden="true">
+                            <i class="fas fa-question fa-3x faa-bounce animated-hover my-color-question pcMenuIconSize" aria-hidden="true">
                               <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
                             </i>
                           <% end %>
 
                           <%= link_to(faqs_path) do %>
-                            <i class="fas fa-edit my-color-faqedit fa-4x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
+                            <i class="fas fa-edit my-color-faqedit fa-3x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
                               <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
                             </i>
                           <% end %>
                       <% end %>
                     </div>
+                  </div>
                 </div>
               </div>
               <%# md未満でアイコンサイズ小 メニュー %>
               <div class="d-md-none">
-                <div class="accordion" id="menuAccordion">
-                  <div class="card">
-                    <div class="card-header text-center" id="headingOne">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <h4 class="text-secondary">メニュー&ensp;<i class="fas fa-caret-down"></i></h4>
-                    </button>
-                    </div><%# /card-header %>
+                <div class="card text-white bg-info mb-3">
+                  <div class="card-header text-center">
+                    <a class="btn btn-info border-0" data-toggle="collapse" href="#menuCollapse" role="button" aria-expanded="false" aria-controls="menuCollapse">
+                      メニュー <i class="fas fa-caret-down"></i>
+                    </a>
+                  </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#menuAccordion">
-                      <div class="card-body pd-1 text-center">
+                  <div class="card-body">
+                    <div class="collapse show" id="menuCollapse">
+                      <div class="card-body bg-white text-center">
+                      <span class="card-text">
                         <%= link_to "/users/#{@user.id}/mokus/new" do %>
-                          <i class="fas fa-cloud fa-2x faa-bounce animated-hover my-color-moku menuIconSize" aria-hidden="true">
+                          <i class="fas fa-cloud fa-2x faa-bounce animated-hover my-color-moku mobileMenuIconSize" aria-hidden="true">
                             <h6 class="font-weight-bold text-secondary">mokuる</h6>
                           </i>
                         <% end %>
 
                         <%= link_to user_moku_type_index_path(@user) do %>
-                          <i class="fas fa-tag fa-2x faa-bounce animated-hover my-color-tag menuIconSize" aria-hidden="true">
+                          <i class="fas fa-tag fa-2x faa-bounce animated-hover my-color-tag mobileMenuIconSize" aria-hidden="true">
                             <h6 class="font-weight-bold text-secondary">mokuタグ</h6>
                           </i>
                         <% end %>
 
                         <%= link_to user_mokus_path(@user) do %>
-                          <i class="fas fa-file-alt fa-2x faa-bounce animated-hover my-color-mokusIndex menuIconSize" aria-hidden="true">
+                          <i class="fas fa-file-alt fa-2x faa-bounce animated-hover my-color-mokusIndex mobileMenuIconSize" aria-hidden="true">
                             <h6 class="font-weight-bold text-secondary">moku一覧</h6>
                           </i>
                         <% end %>
 
                         <%= link_to "users/#{@user.id}/book_marks" do %>
-                          <i class="fas fa-bookmark fa-2x faa-bounce animated-hover my-color-bookmark menuIconSize" aria-hidden="true">
+                          <i class="fas fa-bookmark fa-2x faa-bounce animated-hover my-color-bookmark mobileMenuIconSize" aria-hidden="true">
                             <h6 class="font-weight-bold text-secondary">Book Mark</h6>
                           </i>
                         <% end %>
 
                         <%= link_to user_works_path(@user) do %>
-                          <i class="fas fa-crown fa-2x faa-bounce animated-hover my-color-work menuIconSize" aria-hidden="true">
+                          <i class="fas fa-crown fa-2x faa-bounce animated-hover my-color-work mobileMenuIconSize" aria-hidden="true">
                             <h6 class="font-weight-bold text-secondary">成果物</h6>
                           </i>
                         <% end %>
@@ -103,22 +106,23 @@
                         <% if @user.admin? %>
                           <hr/>
                           <h5><i class="fas fa-unlock-alt my-color-admin">管理者menu</i></h5>
-                            <%= link_to(faqs_new_path) do %>
-                              <i class="fas fa-question fa-2x faa-bounce animated-hover my-color-question menuIconSize" aria-hidden="true">
-                                <h6 class="font-weight-bold text-secondary">FAQ追加</h6>
-                              </i>
-                            <% end %>
+                          <%= link_to(faqs_new_path) do %>
+                            <i class="fas fa-question fa-2x faa-bounce animated-hover my-color-question mobileMenuIconSize" aria-hidden="true">
+                              <h6 class="font-weight-bold text-secondary">FAQ追加</h6>
+                            </i>
+                          <% end %>
 
-                            <%= link_to(faqs_path) do %>
-                              <i class="fas fa-edit fa-2x faa-bounce animated-hover my-color-faqedit menuIconSize" aria-hidden="true">
-                                <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
-                              </i>
-                            <% end %>
+                          <%= link_to(faqs_path) do %>
+                            <i class="fas fa-edit fa-2x faa-bounce animated-hover my-color-faqedit mobileMenuIconSize" aria-hidden="true">
+                              <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
+                            </i>
+                          <% end %>
                         <% end %>
-                      </div><%# /card-body %>
-                    </div><%# /collapse %>
-                  </div><%# /card %>
-                </div><%# /acordion %>
+                      </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div><%# /d-md-none %>
             </section>
           </div><%# /col %>
@@ -189,17 +193,17 @@
                 </div>
               </div><%# /d-none d-md-block %>
 
-              <%# md未満でアコーディオン pick up%>
+              <%# md未満でアコーディオン pick up %>
               <div class="d-md-none">
                 <div class="card text-white bg-info mb-3">
-                  <div class="card-header">
-                    <a class="btn btn-info border-0" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      pick up - みんなの成果物 -
+                  <div class="card-header text-center">
+                    <a class="btn btn-info border-0" data-toggle="collapse" href="#pickUpCollapse" role="button" aria-expanded="false" aria-controls="pickUpCollapse">
+                      pick up - みんなの成果物 - <i class="fas fa-caret-down"></i>
                     </a>
                   </div>
 
                   <div class="card-body">
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" id="pickUpCollapse">
                       <p class="card-text">
                         <ul>
                           <% @work_pickups.each do |work_pickup| %>
@@ -267,5 +271,10 @@
             </section>
           </div>
         </div>
+
+  
+  
+
   </main>
 </body>
+

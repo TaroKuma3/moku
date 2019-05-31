@@ -20,5 +20,5 @@ Rails.application.config.assets.precompile += %w( moku_just_now_mobile.js )
 # popover
 Rails.application.config.assets.precompile += %w( popover.js )
 
-#フラッシュ
-# Rails.application.config.assets.precompile += %w( flash.js )
+#toast
+Rails.application.config.assets.precompile += %w( toast.js )

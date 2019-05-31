@@ -16,5 +16,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-tagsinput.min
-//= require flash
 //= require_tree .

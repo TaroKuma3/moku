@@ -41,11 +41,13 @@ li {
 
 hr {
   border-width: 2px !important;
-  border-color: rgb(104, 114, 145) !important;
+  border-color: rgb(70, 116, 254) !important;
 }
 
-.notice {
+.toast {
+  border-color: green !important;
   font-weight: bold;
+  width: 250px;
 }
 
 .my-color-important {
@@ -60,11 +62,6 @@ hr {
 /* アカウント情報アイコン */
 .my-color-key {
   color: rgb(255, 236, 96);
-}
-
-/* アコーディオンカードの▼ */
-.my-color-down {
-  color: darkolivegreen;
 }
 
 /* moku一覧アイコン */

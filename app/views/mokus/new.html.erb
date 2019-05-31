@@ -140,11 +140,13 @@
     let startTime = null;
     let endTime = null;
 
+    // 時計表示系
     let time;
     let hour = document.getElementById("hour");
     let minute = document.getElementById("minute");
     let second = document.getElementById("second");
 
+    // 時計の表示
     function startClock() {
       time = new Date();
 
@@ -161,13 +163,12 @@
             formatDuration = moment.utc(duration.as('milliseconds')).format('HH:mm:ss')
             $("#timer").text(formatDuration)
             $('#mokuTime').val(timeCounter)
-
     }
 
     $(document).ready(function () {
         $(window).on('beforeunload', function () {
             if (nowStarted) {
-                return "ちょっとまって"
+                return "mokuの途中ですがこの画面から離れますか？"
             }
         })
         startClock();
@@ -189,7 +190,9 @@
                 const url = '/mokus/' + mokuId + '/finish'
                 $('#finishForm').attr('action', url)
                 $('#clockImage').fadeIn(1000)
-                $('#afterStartTitle, #stopButton, #pauseButton, #mjn, #displayMokuTime').show()
+                // $('#afterStartTitle, #stopButton, #pauseButton, #mjn, #displayMokuTime').show()
+                $('#afterStartTitle, #mjn, #displayMokuTime').show()
+                $('#stopButton, #pauseButton').slideDown(1000)
                 $('#greet, #defaultTitle, #startButton, #moku_type, #selectMokuType, #userPublic, #linkToMypage, #linkToAaacount, #linkToSetting, #linkToLogout, #linkToTaq').hide() //開始後のデフォタイトルやタートボタンなどを非表示
 
                 // moku開始時のタイマーの作業

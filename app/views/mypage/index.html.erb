@@ -253,18 +253,25 @@
             </div>
 
             <div class="d-md-none"><%# md未満でアコーディオン %>
-              <div class="card text-white bg-info">
-                <div class="card-header text-center font-weight-bold"><h3>moku Just Now<h3></div>
+              <div class="card text-white bg-info mb-3">
+                <div class="card-header text-center">
+                  <a class="btn btn-info border-0" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    moku Just Now <i class="fas fa-caret-down"></i>
+                  </a>
+                </div>
+
                 <div class="card-body">
-                  <ul id="justNowUl2">
-                    <% @default_mjns.each do |mjn| %>
-                      <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
-                    <% end %>
-                  </ul>
-                  <%= javascript_include_tag "moku_just_now_pc.js" %>
-                  <script></script>
-                  <%= javascript_include_tag "moku_just_now_mobile.js" %>
-                  <script></script>
+                  <div class="collapse" id="collapseExample">
+                    <ul id="justNowUl2">
+                      <% @default_mjns.each do |mjn| %>
+                        <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
+                      <% end %>
+                    </ul>
+                    <%= javascript_include_tag "moku_just_now_pc.js" %>
+                    <script></script>
+                    <%= javascript_include_tag "moku_just_now_mobile.js" %>
+                    <script></script>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,6 +280,8 @@
         </div>
 
   
+    
+
   
 
   </main>

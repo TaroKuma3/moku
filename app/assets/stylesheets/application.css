@@ -45,9 +45,9 @@ hr {
 }
 
 .toast {
-  border-color: green !important;
+  background-color: rgb(252, 231, 2) !important;
   font-weight: bold;
-  width: 250px;
+  width: 350px;
 }
 
 .my-color-important {

@@ -69,7 +69,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work.update(work_params)
 
-    if @work.save!
+    if @work.save
       flash[:notice] = "更新しました！"
       redirect_to(user_work_path(@user,@work))
     else

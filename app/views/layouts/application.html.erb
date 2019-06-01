@@ -77,9 +77,9 @@
 		<%# devise %>
 		<% if notice %>
 		<div aria-live="polite" aria-atomic="true" style="position: relative;">
-			<div class="toast" style="position: absolute;">
+			<div class="toast" style="position: absolute; top: 10px; left: 20px;">
 				<div class="toast-header">
-				<img class="rounded mr-2" src="/assets/moku_logo3.png" width="25" height="20" alt="mokuのロゴ">
+				<img class="rounded mr-2" src="/assets/moku_logo3.png" width="10" height="15" alt="mokuのロゴ">
 					<strong class="mr-auto">moku</strong>
 					<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="閉じる"><%# toast close %>
 						<span aria-hidden="true">&times;</span><%# toast closeのアイコンエスケープに必要 %>
@@ -93,16 +93,18 @@
 		<% end %>
 
 		<% if alert %>
-			<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header">
-				<img class="rounded mr-2" src="/assets/moku_logo3.png" width="25" height="20" alt="mokuのロゴ">
-					<strong class="mr-autot">moku</strong>
-					<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="閉じる"><%# toast close %>
-						<span aria-hidden="true">&times;</span><%# toast closeのアイコンエスケープに必要 %>
-					</button>
-				</div>
-				<div class="toast-body">
-					<%= alert %>
+			<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: relative;">
+				<div class="toast" style="position: absolute; top: 20;px left: 30px;">
+					<div class="toast-header">
+					<img class="rounded mr-2" src="/assets/moku_logo3.png" width="20" height=15" alt="mokuのロゴ">
+						<strong class="mr-autot">moku</strong>
+						<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="閉じる"><%# toast close %>
+							<span aria-hidden="true">&times;</span><%# toast closeのアイコンエスケープに必要 %>
+						</button>
+					</div>
+					<div class="toast-body">
+						<%= alert %>
+					</div>
 				</div>
 			</div>
 		</div>

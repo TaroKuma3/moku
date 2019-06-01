@@ -6,11 +6,24 @@
   method: :patch,
   local: true) do |f| %>
 
-    <% if @work.errors.any? %>
-      <% @work.errors.full_messages.each do |message| %>
-        <%= message %><br>
-      <% end %>
-    <% end %>
+        <% if  @work.errors.any? %>
+          <div aria-live="polite" aria-atomic="true" style="position: relative;">
+            <div class="toast" style="position: absolute; top: 0x; left: 0px;">
+              <div class="toast-header">
+              <img class="rounded mr-2" src="/assets/moku_logo3.png" width="25" height="20" alt="mokuのロゴ">
+                <strong class="mr-auto">moku</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="toast-body">
+                <% @work.errors.full_messages.each do |message| %>
+                  <div class="text-danger font-weight-bold"><%= message %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
 
     <div class="row mb-5">
       <% @work.images.each do |image| %>

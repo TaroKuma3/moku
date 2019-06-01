@@ -7,19 +7,9 @@
                               method: :post,
                               local: true) do |f| %>
 
-        <%
-=begin%>
- <% if  @moku_type.errors.any? %>
-          <% @moku_type.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        <% end %> 
-<%
-=end%>
-
         <% if  @moku_type.errors.any? %>
           <div aria-live="polite" aria-atomic="true" style="position: relative;">
-            <div class="toast" style="position: absolute; top: 0; right: 0;">
+            <div class="toast" style="position: absolute; top: 10px; left: 20px;">
               <div class="toast-header">
               <img class="rounded mr-2" src="/assets/moku_logo3.png" width="25" height="20" alt="mokuのロゴ">
                 <strong class="mr-auto">moku</strong>

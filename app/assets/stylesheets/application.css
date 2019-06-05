@@ -33,6 +33,7 @@ h1{
   font-weight: bold !important;
   text-align: center;
   padding-bottom: 30px;
+  padding-top: 24px;
 }
 
 li {
@@ -47,7 +48,7 @@ hr {
 .toast {
   background-color: rgb(252, 231, 2) !important;
   font-weight: bold;
-  width: 350px;
+  width: 250px;
 }
 
 .my-color-important {

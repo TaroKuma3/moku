@@ -25,7 +25,7 @@ class MokuTypeController < ApplicationController
       flash[:notice] = "新しいmokuタグを登しました！"
       redirect_to(user_moku_type_index_path(@user))
     else
-      render action: :index
+      render :index
     end
   end
 

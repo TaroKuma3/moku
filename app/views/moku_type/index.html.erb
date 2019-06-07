@@ -1,4 +1,6 @@
-<div class="container-fluid">
+<%
+=begin%>
+ <div class="container-fluid">
   <% if  @moku_type.errors.any? %>
     <div aria-live="polite" aria-atomic="true" style="position: relative;">
       <div class="toast" style="position: absolute; top: 10px; left: 20px;">
@@ -18,19 +20,25 @@
     </div>
   <% end %>
 </div>
+<%
+=end%>
 
 <div class="container">
   <h1><%= "#{@user.name}さんのmokuタグ"%></h1>
   <div class="row">
     <div class="col-12 col-md-6 mb-4">
-
-      <%= bootstrap_form_with(model: @MokuType,
+      <%= bootstrap_form_with(model: @MokuYype,
                               url: {controller: :moku_type, action: :create, user_id: current_user.id},
                               method: :post,
                               local: true) do |f| %>
 
         <h4 class="font-weight-bold mt-2">あたらしいmokuタグをつくる</h4>
-        <p><%= f.text_field :name, hide_label: true %></p>
+        <%= f.text_field :name, hide_label: true %>
+          <% if @moku_type.errors.any? %>
+            <% @moku_type.errors.full_messages.each do |message| %>
+              <small class="text-danger"><%= message %></small></br>
+            <% end %>
+          <% end %>
         <%= f.submit "登録する", class: "btn btn-info btn-lg"%>
       <% end %>
     </div>
@@ -80,9 +88,6 @@
       </table>
     </div>
   </div>
-
-
-  
 
   <%= render 'my_shared/go_mypage' %>
 </div>

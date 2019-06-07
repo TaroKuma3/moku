@@ -6,12 +6,6 @@
                 method: :patch,
                 local: true) do |f| %>
 
-    <% if @do_moku.errors.any? %>
-      <% @do_moku.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-    <% end %>
-
     <div class="row">
       <div class="col-12 col-md-6">
         <h4>MOKUタグ</h4>

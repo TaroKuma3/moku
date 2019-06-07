@@ -26,13 +26,6 @@
       method: :post,
       local: true) do |form| %>
 
-      <% if @work.errors.any? %>
-        <% @work.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %>
-      <% end %>
-
-    <%# ここから一覧へ戻るまでの中身と、最下段jQueryをパーシャル化予定%>
     <div class="row">
       <div class="col-12 col-md-7" style="margin:auto;">
         <h3>成果物タイトル</h3>

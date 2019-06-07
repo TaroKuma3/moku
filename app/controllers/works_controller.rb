@@ -51,7 +51,7 @@ class WorksController < ApplicationController
     # images: params[:work][:images],
     # )
 
-    if @work.save!
+    if @work.save
       flash[:notice] = "登録しました！"
       redirect_to(user_works_path(@user))
     else

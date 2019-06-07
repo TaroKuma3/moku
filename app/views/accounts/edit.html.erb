@@ -3,12 +3,6 @@
     <div class="container">
       <h1>個人設定</h1>
 
-      <% if @user.errors.any? %>
-        <% @user.errors.full_messages.each do |message| %>
-          <%= message %>
-        <% end %>
-      <% end %>
-
       <%= bootstrap_form_with(model: @user,
       url: {controller: :accounts, action: :update, user_id: current_user.id},
       method: :patch,

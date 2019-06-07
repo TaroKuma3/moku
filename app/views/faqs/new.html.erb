@@ -6,12 +6,6 @@
                 method: :post,
                 local: true) do |form| %>
 
-    <% if @faq.errors.any? %>
-      <% @faq.errors.full_messages.each do |message| %>
-        <%= message %><br>
-      <% end %>
-    <% end %><br>
-
     <div class="row">
       <div class="col-12 col-md-6">
         <p><%= form.text_area :questions, size: "20x8" %></p>

@@ -5,9 +5,10 @@ class FaqsController < ApplicationController
 
   def index
     if  params[:tag]
-      @faqs = Faq.tagged_with(params[:tag])
+      @faqs = Faq.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 5)
     else
-      @faqs = Faq.all
+      # @faqs = Faq.all
+      @faqs = Faq.paginate(page: params[:page], per_page: 5)
     end
   end
 

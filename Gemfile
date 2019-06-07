@@ -72,3 +72,5 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem "simple_calendar", "~> 2.0"
 gem "mini_magick"
 gem "aws-sdk-s3"
+gem 'will_paginate', '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'

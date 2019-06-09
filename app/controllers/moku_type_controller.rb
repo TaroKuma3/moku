@@ -35,7 +35,7 @@ class MokuTypeController < ApplicationController
   end
 
  def update
-    @moku_types = MokuType.where(user_id: current_user.id)
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
     @moku_type = MokuType.find(params[:id])
     @moku_type.name = params[:moku_type][:name]
     @moku_type.user_id = current_user.id

@@ -8,6 +8,9 @@ ja:
         email: メールアドレス
         accepted: 利用規約に同意する
 
+      moku_type:
+          name: タグのなまえ
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

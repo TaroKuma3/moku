@@ -146,3 +146,8 @@ hr {
   border-top: solid 3px rgb(105, 175, 255);
   text-align: center;
 }
+
+/* スマホ向けページリンクボタン */
+.my-mobile-btn-size {
+  width: 52px;
+}

@@ -36,24 +36,36 @@
     </div>
 
     <div class="col-6 col-md-4">
-      <div class="card text-white bg-info mb-3 work-eq-height">
-        <div class="card-header text-center">
+      <div class="card mb-3 work-eq-height">
+        <div class="card-header text-center bg-info text-white ">
           <h5>成果物memoの<br/>公開設定</h5>
         </div>
-        <div class="card-body text-center">
-            <h5><%= public_to_s(@work.memo_public) %></h5>
-        </div>
+        <% if @work.memo_public == Constants::PUBLIC %>
+          <div class="card-body text-center bg-info text-white">
+              <h5><%= public_to_s(@work.memo_public) %></h5>
+          </div>
+        <% else %>
+          <div class="card-body text-center bg-light text-dark">
+              <h5><%= public_to_s(@work.memo_public) %></h5>
+          </div>
+        <% end %>
       </div>
     </div>
 
     <div class="col-6 col-md-4">
-      <div class="card text-white bg-info mb-3 work-eq-height">
-        <div class="card-header text-center">
+      <div class="card mb-3 work-eq-height">
+        <div class="card-header text-center bg-info text-white">
           <h5>pick upへの<br/>公開設定</h5>
         </div>
-        <div class="card-body text-center">
-            <h5><%= public_to_s(@work.pickup_public) %></h5>
-        </div>
+        <% if @work.pickup_public == Constants::PUBLIC %>
+          <div class="card-body text-center bg-info text-white">
+              <h5><%= public_to_s(@work.pickup_public) %></h5>
+          </div>
+        <% else %>
+          <div class="card-body text-center bg-light text-dark">
+              <h5><%= public_to_s(@work.pickup_public) %></h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

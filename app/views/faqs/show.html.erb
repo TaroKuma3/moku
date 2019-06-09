@@ -6,7 +6,7 @@
       <div class="card bg-light mb-3">
         <div class="card-body">
           <h3>A:<%= simple_format(@faq.answer) %></h3>
-          <%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %><br/><hr/>
+          <small>カテゴリー：<%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></small><br/><hr/>
             <% if current_user %>
               <% user = User.find_by(id: current_user.id) %>
               <% if user.admin? %>
@@ -26,7 +26,6 @@
         </div>
       </div>
 
-      <%# このQAにつけられたタグ %>
       <div class="card bg-light mb-3">
         <div class="card-body">
           <div id="tag_cloud">

@@ -36,6 +36,7 @@
     <% end %>
   </div>
 
+  <% if @do_mokus.any? %>
   <div class="row">
     <div class="col-12 text-center mb-3">
       <h2 class="font-weight-bold">このmokuタグのmoku一覧</h2>
@@ -65,6 +66,7 @@
       </table>
     </div>
   </div>
+  <% end %>
 
   <div class="row ml-2 my-2">
     <%= render 'my_shared/go_mypage' %>

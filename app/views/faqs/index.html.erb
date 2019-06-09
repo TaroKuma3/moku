@@ -4,15 +4,16 @@
   <div class="row">
     <div class="col-12 col-md-4 order-md-1">
       <div class="d-none d-md-block"><%# md以上でカードのカテゴリー%>
-        <div class="card my-3 border-info text-info font-wheight-bold"> 
-          <div class="card-body text-info text-center p-3">
-            <h2>カテゴリー</h2>
-            <hr />
-              <div class="text-dark" id="tag_cloud">
-                <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-                    <%= link_to tag.name, tag_path(tag.name), class: css_class %><br /> <%# ensp;&frasl;&ensp; %>
-                <% end %>
-              </div>
+        <div class="card text-dark bg-light my-3">
+          <div class="card-header text-center font-weight-bold">カテゴリー</div>
+          <div class="card-body">
+            <p class="card-text">
+            <div class="text-dark" id="tag_cloud">
+              <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+                  <%= link_to tag.name, tag_path(tag.name), class: css_class %><br />
+              <% end %>
+            </div>
+            </p>
           </div>
         </div>
       </div>
@@ -24,7 +25,7 @@
           <div class="card card-body mb-3 border-info">
             <div class="text-dark" id="tag_cloud">
               <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-                  <%= link_to tag.name, tag_path(tag.name), class: css_class %><br /> <%# &ensp;&frasl;&ensp; %>
+                  <%= link_to tag.name, tag_path(tag.name), class: css_class %><br />
               <% end %>
             </div><%# /tag_cloud %>
           </div><%# /card card-body%>
@@ -32,7 +33,7 @@
       </div><%# /d-md-none%>
     </div><%# /col%>
 
-    <div class="col-12 col-md-8 order-md-0 mt-2">
+    <div class="col-12 col-md-8 order-md-0 mt-3">
       <% @faqs.each do |faq| %>
         <div class="card bg-light mb-2">
           <div class="card-body m-0 p-2">

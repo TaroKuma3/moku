@@ -22,54 +22,107 @@
 
   <%= "moku TIME合計:#{distance_of_time_in_words(@moku_time_sum)}" %>
 
-
-  <table class="table table-hover text-center">
-    <thead>
-      <tr class="table-info">
-        <th scope="col" class="align-middle">日時</th>
-        <th scope="col" class="align-middle">moku TIME</th>
-        <th scope="col" class="align-middle">moku<br class="d-inline d-sm-none" />タグ</th>
-        <th scope="col" class="align-middle">moku詳細へ</th>
-        <th scope="col" class="align-middle">成果物登録</th>
-        <th scope="col" class="align-middle">moku削除</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @do_mokus.each do |do_moku| %>
-        <tr>
-          <th scope="row"><%# 日時 %>
-            <%= "#{do_moku.created_at} " %>
-          </th>
-          <td><%# moku TIME %>
-            <%= "#{distance_of_time_in_words(do_moku.moku_time)} " %>
-          </td>
-          <td><%# mokuタグ名 %>
-            <% moku_type = MokuType.find(do_moku.moku_type_id) %>
-            <%= "#{moku_type.name}" %>
-          </td>
-          <td><%# moku詳細 %>
-            <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
-              <i class="fas fa-search my-color-search fa-2x"></i>
-            <% end %>
-          </td>
-          <td><%# 成果物登録 %>
-            <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
-              <span class="fa-stack">
-                <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>
-                <i class="fas fa-pencil-alt fa-stack-1x"></i>
-              </span>
-            <% end %>
-          </td>
-          <td><%# moku削除 %>
-            <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check" do %>
-              <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
-            <% end %>
+  <div class="d-none d-md-block"><%# md以上で普通のテーブル%>
+    <table class="table table-hover text-center">
+      <thead>
+        <tr class="table-info">
+          <th scope="col" class="align-middle">日時</th>
+          <th scope="col" class="align-middle">moku TIME</th>
+          <th scope="col" class="align-middle">moku<br class="d-inline d-sm-none" />タグ</th>
+          <th scope="col" class="align-middle">moku詳細へ</th>
+          <th scope="col" class="align-middle">成果物登録</th>
+          <th scope="col" class="align-middle">moku削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @do_mokus.each do |do_moku| %>
+          <tr>
+            <th scope="row"><%# 日時 %>
+              <%= "#{do_moku.created_at}" %>
+            </th>
+            <td><%# moku TIME %>
+              <%= "#{distance_of_time_in_words(do_moku.moku_time)} " %>
             </td>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <td><%# mokuタグ名 %>
+              <% moku_type = MokuType.find(do_moku.moku_type_id) %>
+              <%= "#{moku_type.name}" %>
+            </td>
+            <td><%# moku詳細 %>
+              <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
+                <i class="fas fa-search my-color-search fa-2x"></i>
+              <% end %>
+            </td>
+            <td><%# 成果物登録 %>
+              <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
+                <span class="fa-stack">
+                  <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>
+                  <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                </span>
+              <% end %>
+            </td>
+            <td><%# moku削除 %>
+              <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check" do %>
+                <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
+              <% end %>
+              </td>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div><%# /d-none d-md-block %>
+  <div class="d-md-none"><%# md未満でスマホ向けテーブル %>
+    <table class="table table-hover text-center">
+      <thead>
+        <tr class="table-info">
+          <th scope="col" class="align-middle"><small><i class="far fa-calendar-alt"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-stopwatch"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-tag"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-search"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-crown"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-trash-alt"></i><small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @do_mokus.each do |do_moku| %>
+          <tr>
+            <th scope="row"><%# 日時 %>
+              <small><%= "#{do_moku.created_at}" %></small>
+            </th>
+            <td><%# moku TIME %>
+              <small><%= "#{distance_of_time_in_words(do_moku.moku_time)} " %></small>
+            </td>
+            <td><%# mokuタグ名 %>
+              <% moku_type = MokuType.find(do_moku.moku_type_id) %>
+              <% moku_type_initial = moku_type.name[0] %>
+              <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" data-content="<%= moku_type.name %>">
+                <span class="font-weight-bold" ><%= "#{moku_type_initial}" %></span>
+              </a>
+            </td>
+            <td><%# moku詳細 %>
+              <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
+                <i class="fas fa-search my-color-search"></i>
+              <% end %>
+            </td>
+            <td><%# 成果物登録 %>
+              <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
+               <span class="fa-stack">
+                  <small><small><i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i></small></small>
+                  <small><small><i class="fas fa-pencil-alt fa-stack-1x"></i></small></small>
+              </span>
+              <% end %>
+            </td>
+            <td><%# moku削除 %>
+              <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check" do %>
+                <i class="fas fa-trash-alt my-color-trash"></i>
+              <% end %>
+              </td>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
   <%= render 'my_shared/go_mypage' %>

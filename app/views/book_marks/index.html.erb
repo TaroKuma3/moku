@@ -1,17 +1,18 @@
 <div class="container">
   <h1><%= "#{@user.name}さんのブックマーク一覧" %></h1>
 
+<div class="d-none d-md-block">
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a href="#tab1" class="nav-link active text-info" data-toggle="tab">
-        <i class="fas fa-crown my-color-work faa-bounce animated-hover" aria-hidden="true"></i>
-        <small class="font-weight-bold">自分の成果物</small>
+        <i class="fas fa-crown my-color-work fa-2x faa-bounce animated-hover" aria-hidden="true"></i>
+        <span class="font-weight-bold">自分の成果物</span>
       </a>
     </li>
       <li class="nav-item">
         <a href="#tab2" class="nav-link text-info" data-toggle="tab">
-          <i class="fas fa-crown my-color-work faa-bounce animated-hover" aria-hidden="true"></i>
-          <small class="font-weight-bold">他ユーザーの成果物</small>
+          <i class="fas fa-crown my-color-work fa-2x faa-bounce animated-hover" aria-hidden="true"></i>
+          <span class="font-weight-bold">他ユーザーの成果物</span>
         </a>
     </li>
   </ul>
@@ -40,7 +41,7 @@
                 </td>
                 <td>
                   <%= link_to user_work_path(@user, work) do %>
-                    <i class="fas fa-search my-color-search"></i>
+                    <i class="fas fa-search fa-2x my-color-search"></i>
                   <% end %>
                 </td>
               </tr>
@@ -79,6 +80,100 @@
                   </td>
                   <td><%# 詳細 %>
                     <%= link_to ("/users/#{book_mark.work.user_id}/works/#{book_mark.work.id}/public") do %>
+                      <i class="fas fa-search fa-2x my-color-search"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="d-md-none">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#tab3" class="nav-link active text-info" data-toggle="tab">
+        <i class="fas fa-crown my-color-work faa-bounce animated-hover" aria-hidden="true"></i>
+        <small class="font-weight-bold">自分の成果物</small>
+      </a>
+    </li>
+      <li class="nav-item">
+        <a href="#tab4" class="nav-link text-info" data-toggle="tab">
+          <i class="fas fa-crown my-color-work faa-bounce animated-hover" aria-hidden="true"></i>
+          <small class="font-weight-bold">他ユーザーの成果物</small>
+        </a>
+    </li>
+  </ul>
+
+  <div class="tab-content py-4">
+    <%# 自分の制作物ブクマ %>
+    <div id="tab3" class="tab-pane active">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr class="table-info">
+            <th scope="col"><small>title<i class="fas fa-signature"></i></small></th>
+            <th scope="col"><small><i class="far fa-calendar-alt"></i><small></th>
+            <th scope="col"><small><i class="fas fa-search"></i></small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @book_marks.each do |book_mark| %>
+            <% work = Work.find(book_mark.work_id) %>
+            <% if work.user_id == current_user.id %>
+              <tr>
+                <th scope="row">
+                  <small><%= work.title %></small>
+                </th>
+                <td>
+                  <small><%= work.created_at %></small>
+                </td>
+                <td>
+                  <%= link_to user_work_path(@user, work) do %>
+                    <i class="fas fa-search my-color-search"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%# 他者の制作物ブクマ %>
+    <div id="tab4" class="tab-pane">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr class="table-info">
+            <th scope="col"><small>title<i class="fas fa-signature"></i></small></th>
+            <th scope="col"><small><i class="far fa-calendar-alt"></i><small></th>
+            <th scope="col"><i class="far fa-smile"></i></th>
+            <th scope="col"><small><i class="fas fa-search"></i></small></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @book_marks.each do |book_mark| %>
+            <% unless book_mark.work.user_id == current_user.id %>
+              <% if book_mark.work.user.public == true && book_mark.work.pickup_public == Constants::PUBLIC %>
+                <% work_user = User.find_by(id: book_mark.work.user_id)%>
+                <tr>
+                  <th scope="row"><%# タイトル %>
+                    <small><%= book_mark.work.title %></small>
+                  </th>
+                  <td><%# 作成日 %>
+                    <small><%= book_mark.work.created_at %></small>
+                  </td>
+                  <td><%# 作成者 %>
+                    <small><%= "#{work_user.name}さん"%></small>
+                  </td>
+                  <td><%# 詳細 %>
+                    <%= link_to ("/users/#{book_mark.work.user_id}/works/#{book_mark.work.id}/public") do %>
                       <i class="fas fa-search my-color-search"></i>
                     <% end %>
                   </td>
@@ -90,6 +185,8 @@
       </table>
     </div>
   </div>
+</div>
+
 
 <div class="row ml-2 my-2">
   <%= render 'my_shared/go_mypage' %>

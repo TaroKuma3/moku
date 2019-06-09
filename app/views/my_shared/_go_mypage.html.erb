@@ -8,10 +8,12 @@
   <% end %>
 </span>
 
-<span class="d-md-none">
-  <%= link_to "/mypage" do %>
-    <span class="fas fa-reply my-color-reply pl-2 mt-3 text-center" aria-hidden="true"><br />
-      <small class="font-weight-bold text-secondary">マイ<br />ページ</small>
-    </span>
-  <% end %>
+<span class="d-md-none"><%# md未満で小さめボタン%>
+  <button type="button" class="btn btn-info">
+    <%= link_to "/mypage" do %>
+      <span class="fas fa-reply my-color-reply text-center" aria-hidden="true"><br />
+      <small class="text-white">マイ<br />ページ</small>
+      </span>
+    <% end %>
+  </button>
 </span>

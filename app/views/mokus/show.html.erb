@@ -45,7 +45,7 @@
     </div>
   </div>
 
-<hr />
+  <hr />
   <h2 class="text-center font-weight-bold my-3 py-2">このmokuの成果物</h2>
   <div class="row">
     <div class="col-12 col-md-7 mb-4 text-center mx-auto">
@@ -98,24 +98,24 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
- 
-  <%= render "my_shared/go_mypage" %>
+  <div class="row ml-2 mb-2">
+    <%= render "my_shared/go_mypage" %>
 
-  <span class="d-none d-md-block"><%# md以上で大きめアイコン%>
-    <%= link_to user_mokus_path(@user) do %>
-      <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
-        <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
-      </i>
-    <% end %>
-  </span>
-  <span class="d-md-none"><%# md未満で小さめアイコン %>
-    <%= link_to user_mokus_path(@user) do %>
-      <i class="fas fa-file-alt my-color-mokusIndex m-3 text-center"><br />
-        <small class="font-weight-bold text-secondary">moku<br />一覧</small>
-      </i>
-    <% end %>
-  </span>
-
+    <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
+      <%= link_to user_mokus_path(@user) do %>
+        <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
+          <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+        </i>
+      <% end %>
+    </span>
+    <span class="d-md-none"><%# md未満で小さめボタン %>
+      <button type="button" class="btn btn-info ml-1">
+        <%= link_to user_mokus_path(@user) do %>
+          <i class="fas fa-file-alt my-color-mokusIndex text-center"><br />
+            <small class="text-white">moku<br />一覧</small>
+          </i>
+        <% end %>
+      </button>
+    </span>
   </div>
 </div>

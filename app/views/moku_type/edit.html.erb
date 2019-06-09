@@ -17,9 +17,9 @@
     <%= render "my_shared/go_mypage" %>
 
     <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
-      <%= link_to user_mokus_path(@user) do %>
-        <i class="fas fa-file-alt my-color-mokusIndex fa-4x m-3 text-center">
-          <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+      <%= link_to user_moku_type_index_path(@user) do %>
+        <i class="fas fa-tag my-color-tag fa-4x m-3 text-center">
+          <h5 class="font-weight-bold text-secondary">mokuタグ一覧へ</h5>
         </i>
       <% end %>
     </span>

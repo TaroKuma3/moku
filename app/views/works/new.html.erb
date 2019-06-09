@@ -26,53 +26,53 @@
       method: :post,
       local: true) do |form| %>
 
-    <div class="row">
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>成果物タイトル</h3>
-        <%= form.text_field :title, hide_label: true %>
-      </div>
+      <div class="row">
+        <div class="col-12 col-md-7" style="margin:auto;">
+          <h3>成果物タイトル</h3>
+          <%= form.text_field :title, hide_label: true %>
+        </div>
 
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>画像の追加</h3>
-        <%= form.file_field :images, hide_label: true, multipart: true %>
-      </div>
+        <div class="col-12 col-md-7" style="margin:auto;">
+          <h3>画像の追加</h3>
+          <%= form.file_field :images, hide_label: true, multipart: true %>
+        </div>
 
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>memo</h3>
-        <%= form.text_area :memo, hide_label: true %>
-      </div>
+        <div class="col-12 col-md-7" style="margin:auto;">
+          <h3>memo</h3>
+          <%= form.text_area :memo, hide_label: true %>
+        </div>
 
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>成果物の公開設定&ensp;
-          <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
-            <ul>
-              <li>公開にすると、Pick Upに載る事があります。</li>
-              <li>非公開にすると、Pick Upには載りません。</li>
-              <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
-            </ul>
-            <b>【ブックマークについて】</b><br>
-            <ul>
-              <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
-              <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
-              <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
-            </ul>">?</a>
-        </h3>
-        <p><%= form.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
-      </div>
+        <div class="col-12 col-md-7" style="margin:auto;">
+          <h3>成果物の公開設定&ensp;
+            <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
+              <ul>
+                <li>公開にすると、Pick Upに載る事があります。</li>
+                <li>非公開にすると、Pick Upには載りません。</li>
+                <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
+              </ul>
+              <b>【ブックマークについて】</b><br>
+              <ul>
+                <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
+                <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
+                <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
+              </ul>">?</a>
+          </h3>
+          <p><%= form.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
+        </div>
 
 
-      <div class="col-12 col-md-7" style="margin:auto;">
-        <h3>memoの公開設定&ensp;
-          <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="コメントの公開設定" data-content="<b>【基本】</b><br>
-            <ul>
-              <li>成果物はPICK UPに乗りますが、コメントだけは非公開になります。</li>
-              <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
-              <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
-            </ul>">?</a>
-        </h3>
-        <%= form.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
+        <div class="col-12 col-md-7" style="margin:auto;">
+          <h3>memoの公開設定&ensp;
+            <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+              <ul>
+                <li>成果物はPICK UPに乗りますが、コメントだけは非公開になります。</li>
+                <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
+                <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
+              </ul>">?</a>
+          </h3>
+          <%= form.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
+        </div>
       </div>
-    </div>
 
       <div class="row">
         <div class="col-12 text-center">
@@ -81,18 +81,39 @@
       </div>
     <% end %>
 
-  <%= link_to user_mokus_path(@user) do %>
-    <i class="fas fa-file-alt my-color-mokusIndex text-center fa-4x m-3" aria-hidden="true">
-      <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
-    </i>
-  <% end %>
-  <%= link_to user_works_path(@user) do %>
-    <i class="fas fa-crown my-color-work fa-4x m-3 text-center" aria-hidden="true">
-      <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
-    </i>
-  <% end %>
+  <div class="row ml-2 my-2">
+    <%= render 'my_shared/go_mypage' %>
 
-  <%= render 'my_shared/go_mypage' %>
+    <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
+      <%= link_to user_mokus_path(@user) do %>
+        <i class="fas fa-file-alt my-color-mokusIndex text-center fa-3x m-3" aria-hidden="true">
+          <h5 class="font-weight-bold text-secondary">moku一覧へ</h5>
+        </i>
+      <% end %>
+      <%= link_to user_works_path(@user) do %>
+        <i class="fas fa-crown my-color-work fa-3x m-3 text-center" aria-hidden="true">
+          <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
+        </i>
+      <% end %>
+    </span>
+
+    <span class="d-md-none"><%# md未満で小さめボタン %>
+      <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
+        <%= link_to user_mokus_path(@user) do %>
+          <i class="fas fa-file-alt my-color-mokusIndex text-center" aria-hidden="true">
+            <small class="font-weight-bold text-secondary">moku<br />一覧</small>
+          </i>
+        <% end %>
+      </button>
+      <button type="button" class="btn btn-light border-info btn-sm my-mobile-btn-size">
+        <%= link_to user_works_path(@user) do %>
+          <i class="fas fa-crown my-color-work text-center" aria-hidden="true">
+            <small class="font-weight-bold text-secondary"><br/>成果物一覧</small>
+          </i>
+        <% end %>
+      </button>
+    </span>
+  </div>
 </div>
 
 <%# はてなアイコンのpop-over %>

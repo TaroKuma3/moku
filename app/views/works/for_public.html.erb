@@ -7,11 +7,11 @@
       <div class="col-12 text-right pb-3">
         <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
           <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-            <i class="fas fa-bookmark fa-4x un-bm-btn" aria-hidden="true"></i>
+            <i class="fas fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
           <% end %>
         <% else %>
           <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-            <i class="fas fa-bookmark fa-4x bm-btn" aria-hidden="true"></i>
+            <i class="fas fa-bookmark fa-3 bm-btn" aria-hidden="true"></i>
           <% end %>
         <% end %>
         <%= @bm_count %>

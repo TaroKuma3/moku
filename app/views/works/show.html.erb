@@ -7,11 +7,11 @@
     <div class="col-12 text-right pb-3">
       <% if bookmark = BookMark.find_by(user_id: current_user.id, work_id: @work.id )%>
         <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :delete}) do %>
-          <i class="fas fa-bookmark fa-4x un-bm-btn" aria-hidden="true"></i>
+          <i class="fas fa-bookmark fa-3x un-bm-btn" aria-hidden="true"></i>
         <% end %>
       <% else %>
         <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-          <i class="fas fa-bookmark fa-4x bm-btn" aria-hidden="true"></i>
+          <i class="fas fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
         <% end %>
       <% end %>
       <%= @bm_count %>
@@ -87,14 +87,14 @@
   <div class="row justify-content-end">
     <div clas="col-12">
       <%= link_to edit_user_work_path(@work.user_id, @work.id) do %>
-        <i class="fas fa-edit my-color-edit fa-4x text-center mr-5">
+        <i class="fas fa-edit my-color-edit fa-3x text-center mr-5">
           <h5 class="font-weight-bold text-secondary">編集</h5></i>
         </div>
       <% end %>
 
       <%= link_to "/users/#{@work.user_id}/works/#{@work.id}/check" do %>
         <span data-toggle="popover" data-content="画像の削除は編集からどうぞ！">
-          <i class="fas fa-trash-alt my-color-trash fa-4x text-center mr-2">
+          <i class="fas fa-trash-alt my-color-trash fa-3x text-center mr-2">
           <h5 class="font-weight-bold text-secondary">削除</h5></i>
         </span>
       <% end %>
@@ -104,7 +104,7 @@
     <div class="row">
       <div class="col-12">
         <%= link_to user_works_path(@user) do %>
-          <i class="fas fa-crown my-color-work fa-4x text-center">
+          <i class="fas fa-crown my-color-work fa-3x text-center">
             <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
           </i>
         <% end %>

@@ -86,25 +86,25 @@
       <tbody>
         <% @do_mokus.each do |do_moku| %>
           <tr>
-            <th scope="row"><%# 日時 %>
+            <th class="align-middle" scope="row"><%# 日時 %>
               <small><%= "#{do_moku.created_at}" %></small>
             </th>
-            <td><%# moku TIME %>
+            <td class="align-middle"><%# moku TIME %>
               <small><%= "#{distance_of_time_in_words(do_moku.moku_time)} " %></small>
             </td>
             <td><%# mokuタグ名 %>
               <% moku_type = MokuType.find(do_moku.moku_type_id) %>
               <% moku_type_initial = moku_type.name[0] %>
-              <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" data-content="<%= moku_type.name %>">
+              <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" data-content="<%= moku_type.name %>" >
                 <span class="font-weight-bold" ><%= "#{moku_type_initial}" %></span>
               </a>
             </td>
-            <td><%# moku詳細 %>
+            <td class="align-middle"><%# moku詳細 %>
               <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
                 <i class="fas fa-search my-color-search"></i>
               <% end %>
             </td>
-            <td><%# 成果物登録 %>
+            <td class="align-middle"><%# 成果物登録 %>
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
                <span class="fa-stack">
                   <small><small><i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i></small></small>
@@ -112,7 +112,7 @@
               </span>
               <% end %>
             </td>
-            <td><%# moku削除 %>
+            <td class="align-middle"> <%# moku削除 %>
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check" do %>
                 <i class="fas fa-trash-alt my-color-trash"></i>
               <% end %>

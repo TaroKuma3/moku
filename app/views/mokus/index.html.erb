@@ -92,7 +92,7 @@
             <td class="align-middle"><%# moku TIME %>
               <small><%= "#{distance_of_time_in_words(do_moku.moku_time)} " %></small>
             </td>
-            <td><%# mokuタグ名 %>
+            <td class="align-middle"><%# mokuタグ名 %>
               <% moku_type = MokuType.find(do_moku.moku_type_id) %>
               <% moku_type_initial = moku_type.name[0] %>
               <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" data-content="<%= moku_type.name %>" >

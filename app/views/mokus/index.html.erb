@@ -20,6 +20,7 @@
     <% end %>
   <% end %>
 
+  <%= will_paginate @do_mokus, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
   <%= "moku TIME合計:#{distance_of_time_in_words(@moku_time_sum)}" %>
 
   <div class="d-none d-md-block"><%# md以上で普通のテーブル%>
@@ -37,22 +38,22 @@
       <tbody>
         <% @do_mokus.each do |do_moku| %>
           <tr>
-            <th scope="row"><%# 日時 %>
+            <th scope="row" class="align-middle"><%# 日時 %>
               <%= "#{do_moku.created_at}" %>
             </th>
-            <td><%# moku TIME %>
+            <td class="align-middle"><%# moku TIME %>
               <%= "#{distance_of_time_in_words(do_moku.moku_time)} " %>
             </td>
-            <td><%# mokuタグ名 %>
+            <td class="align-middle"><%# mokuタグ名 %>
               <% moku_type = MokuType.find(do_moku.moku_type_id) %>
               <%= "#{moku_type.name}" %>
             </td>
-            <td><%# moku詳細 %>
+            <td class="align-middle"><%# moku詳細 %>
               <%= link_to user_moku_path(do_moku.user_id, do_moku.id) do %>
                 <i class="fas fa-search my-color-search fa-2x"></i>
               <% end %>
             </td>
-            <td><%# 成果物登録 %>
+            <td class="align-middle"><%# 成果物登録 %>
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
                 <span class="fa-stack">
                   <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>
@@ -60,7 +61,7 @@
                 </span>
               <% end %>
             </td>
-            <td><%# moku削除 %>
+            <td class="align-middle"><%# moku削除 %>
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/check" do %>
                 <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
               <% end %>
@@ -124,6 +125,7 @@
     </table>
   </div>
 
+  <%= will_paginate @do_mokus, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
 
   <%= render 'my_shared/go_mypage' %>
 </div>

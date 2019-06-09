@@ -5,7 +5,7 @@ class MokuTypeController < ApplicationController
   def index
     @user = current_user
     @moku_type = MokuType.new
-    @moku_types = MokuType.where(user_id: @user.id).where(deleted: false)
+    @moku_types = MokuType.where(user_id: @user.id).where(deleted: false).order(created_at: 'asc')
   end
 
   def show
@@ -15,7 +15,7 @@ class MokuTypeController < ApplicationController
 
   def create
     @user = current_user
-    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false)
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
 
     @moku_type = MokuType.new(
       name: params[:name],
@@ -30,7 +30,7 @@ class MokuTypeController < ApplicationController
   end
 
   def edit
-    @moku_types = MokuType.where(user_id: current_user.id)
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
     @moku_type = MokuType.find(params[:id])
   end
 

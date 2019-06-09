@@ -5,5 +5,5 @@ require_relative 'application'
 Rails.application.initialize!
 
 # will_paginationの日本語化
-WillPaginate::ViewHelpers.pagination_options[:previous_label] = '&laquo'
-WillPaginate::ViewHelpers.pagination_options[:next_label] = '&raquo'
+WillPaginate::ViewHelpers.pagination_options[:previous_label] = '&larr;'
+WillPaginate::ViewHelpers.pagination_options[:next_label] = '&rarr;'

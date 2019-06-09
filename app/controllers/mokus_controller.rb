@@ -5,15 +5,16 @@ class MokusController < ApplicationController
 
   def index
     if params[:moku_type] # 絞り込みされたら
-      @do_mokus = DoMoku.where(user_id: current_user.id).where(moku_type_id: params[:moku_type]).where(deleted: false).order(created_at: 'desc')
+      @do_mokus = DoMoku.where(user_id: current_user.id).where(moku_type_id: params[:moku_type]).where(deleted: false).order(created_at: 'desc').paginate(page: params[:page], per_page: 10)
     else #絞り込みされなかったら
-      @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc')
+      @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc').paginate(page: params[:page], per_page: 10)
     end
 
     @moku_time_sum = 0
     @do_mokus.each do |do_moku|
       @moku_time_sum += do_moku.moku_time
     end
+
   end
 
   def day_by_index

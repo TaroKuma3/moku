@@ -23,7 +23,6 @@
         <thead>
           <tr class="table-info text-center">
             <th scope="col" class="align-middle">mokuタグ</th>
-            <th scope="col" class="align-middle">このmokuタグの<br/>moku一覧</th>
             <th scope="col" class="align-middle">編集</th>
             <th scope="col" class="align-middle">削除</th>
           </tr>
@@ -34,11 +33,6 @@
               <th scope="row"><%# name %>
                 <%= moku_type.name %>
               </th>
-              <td><%# 一覧 %>
-                <%= link_to user_moku_type_path(moku_type.user_id, moku_type.id) do %>
-                  <i class="fas fa-file-alt my-color-mokusIndex fa-2x" aria-hidden="true"></i>
-                <% end %>
-              </td>
               <td><%# 編集 %>
                 <% if moku_type.name == Constants::DEFAULT_MOKU_TYPE_NAME %>
                   <span class="fas fa-ban my-color-ban" data-toggle="popover" data-content="このmokuタグは編集できません"></span>

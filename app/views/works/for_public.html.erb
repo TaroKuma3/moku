@@ -50,7 +50,7 @@
     <% if @work.memo_public == true %>
         <div class="row mb-3">
           <div class="col-12">
-            <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">成果物memo</h4>
+            <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">memo</h4>
               <h6 class="bg-white text-secondary rounded-bottom p-3 border border-info" style="min-width: 20rem;">
                 <% if @work.memo.blank? %>
                   memoはありませんでした。
@@ -61,7 +61,7 @@
           </div>
         </div>
     <% else %>
-      <h3>制作物のコメントは非公開です</h3>
+      <h3>memoは非公開です</h3>
     <% end %>
 
     <h2 class="text-center">画像</h2>

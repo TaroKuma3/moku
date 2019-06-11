@@ -38,7 +38,7 @@
     <div class="col-6 col-md-4">
       <div class="card mb-3 work-eq-height">
         <div class="card-header text-center bg-info text-white ">
-          <h5>成果物memoの<br/>公開設定</h5>
+          <h5>memoの<br/>公開設定</h5>
         </div>
         <% if @work.memo_public == Constants::PUBLIC %>
           <div class="card-body text-center bg-info text-white">
@@ -55,7 +55,7 @@
     <div class="col-6 col-md-4">
       <div class="card mb-3 work-eq-height">
         <div class="card-header text-center bg-info text-white">
-          <h5>pick upへの<br/>公開設定</h5>
+          <h5>pick upの<br/>公開設定</h5>
         </div>
         <% if @work.pickup_public == Constants::PUBLIC %>
           <div class="card-body text-center bg-info text-white">
@@ -72,7 +72,7 @@
 
   <div class="row mb-3">
     <div class="col-12">
-      <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">成果物memo</h4>
+      <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">memo</h4>
       <h6 class="bg-white text-secondary rounded-bottom p-3 border border-info" style="min-width: 20rem;">
         <% if @work.memo.blank? %>
           memoはありませんでした。
@@ -92,7 +92,7 @@
         </div>
       <% end %>
     <% else %>
-      <h5>画像の登録はありませんでした。よかったらなにか登録してみませんか？</h5>
+      <h5>画像の登録はありませんでした。なにか登録してみませんか？</h5>
     <% end %>
   </div>
 

@@ -68,14 +68,16 @@
                   <h3>moku JUST NOW</h3>
                     <% if @user.public %>
                       <div class="card bg-white text-dark mt-4">
-                        <div class="card-body">
-                          <%= "アカウントが#{public_to_s(@user.public)}なので"%><br><%="moku JUST NOWに載ります！"%>
+                        <div class="card-body text-center">
+                          <h4><%="載ります"%></h4>
+                          <%= "アカウント：#{public_to_s(@user.public)}"%>&ensp;<i class="fas fa-user"></i>
                         </div>
                       </div>
                     <% else %>
                       <div class="card bg-white text-dark mt-4">
-                        <div class="card-body">
-                          <%= "アカウントが#{public_to_s(@user.public)}なので" %><br><%= "moku JUST NOWに載りません。"%>
+                        <div class="card-body text-center">
+                          <h4><%= "載りません"%></h4>
+                          <%= "アカウント：#{public_to_s(@user.public)}" %>&ensp;<i class="fas fa-user-slash"></i>
                         </div>
                       </div>
                     <% end %>

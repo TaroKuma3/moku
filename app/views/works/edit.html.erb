@@ -39,32 +39,28 @@
 
       <div class="col-12 col-md-10" style="margin:auto;">
         <h3>成果物の公開設定<span style="margin-right: 7em;"></span>
-          <span class="fa fa-question-circle" aria-hidden="true" id="pickUpDescription" data-toggle="popover" title="Pick Upへの公開設定" data-content="<b>【基本】</b><br>
-          <ul>
-            <li>公開にすると、Pick Upに載る事があります。</li>
-            <li>非公開にすると、Pick Upには載りません。</li>
-            <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
+          <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="成果物の公開設定" data-content="<b>【基本】</b><br>
+            <ul>
+            <li>公開…Pick Upに載る事があります。</li>
+            <li>非公開…Pick Upには載りません。</li>
+            <li><b>アカウント自体非公開だと、公開にしても非公開となります。</b></li>
           </ul>
           <b>【ブックマークについて】</b><br>
           <ul>
-            <li>成果物が他の方にブックマークされていた場合、非公開にすると相手のブックマークにも表示されなくなります。</li>
-            <li>ブックマークが解除されるわけでは無いため、ブックマーク数は減りません。</li>
+            <li>他ユーザーにブックマークされた後非公開にすると、相手のブックマークに表示されなくなります。</li>
+            <li>ブックマークは解除されないので、ブックマーク数は減りません。</li>
             <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
-          </ul>">
-          </span>
+          </ul>">?</a>
         </h3>
         <p><%= f.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>
       </div>
 
       <div class="col-12 col-md-10" style="margin:auto;">
         <h3>コメントを公開しますか？<span style="margin-right: 3em;"></span>
-          <span class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="コメントの公開設定" data-content="<b>【基本】</b><br>
+          <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="コメントの公開設定" data-content="<b>【基本】</b><br>
           <ul>
-            <li>成果物は公開したいけれど、コメントの中身は非公開にしたい場合は【非公開】にしてください。</li>
-            <li>Pick Up自体が非公開ならば、成果物全体が非公開になるので、コメントも非公開扱いになります。</li>
-            <li><u>アカウント自体非公開だと、公開にしても非公開となります。</u></li>
-          </ul>">
-          </span>
+            <li>アカウント自体非公開だと、公開にしても非公開となります。</li>
+          </ul>">?</a>
         </h3>
         <%= f.select :memo_public, options_for_public, selected: @work.memo_public, hide_label: true %>
       </div>

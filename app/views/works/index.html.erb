@@ -2,9 +2,10 @@
 
   <h1><%= "#{@user.name}さんの成果物一覧" %></h1>
 
-    <div class="row">
+  <div class="row">
     <div class="col-12 col-md-4 text-center">
-      <div class="card border-info mb-4" style="width: 200px;" id="worksIndexCard">
+      <div class="d-none d-md-block"><%# md以上で大きめカード %>
+        <div class="card border-info mb-4" style="width: 200px;" id="worksIndexCard">
           <div class="card-body">
             <%= link_to user_mokus_path(@user) do %>
               <i class="fas fa-crown my-color-work fa-2x m-3 faa-bounce animated-hover">
@@ -14,9 +15,21 @@
             <% end %>
           </div>
         </div>
-      </div>
+      </div><%# /d-none d-md-block %>
 
-      <div class="col-12 col-md-8 text-center" style="margin: auto;">
+      <div class="d-md-none"><%# md未満でスマホ用ボタン %>
+        <button type="button" class="btn btn-light border-info ml-1 mb-3">
+          <%= link_to user_mokus_path(@user) do %>
+            <i class="fas fa-crown my-color-work text-center"><br />
+              <small class="font-weight-bold text-secondary">成果物を登録<br />（moku一覧に飛びます）</small>
+            </i>
+          <% end %>
+        </button>
+      </div><%# /d-md-none%>
+    </div>
+
+    <div class="col-12 col-md-8 text-center" style="margin: auto;">
+      <div class="d-none d-md-block"><%# md以上で普通のテーブル %>
         <table class="table table-hover text-center">
           <thead>
             <tr class="table-info text-center">
@@ -55,10 +68,47 @@
           </tbody>
         </table>
       </div>
+
+      <div class="d-md-none"><%# md未満でスマホ用テーブル %>
+        <table class="table table-hover text-center">
+          <thead>
+            <tr class="table-info text-center">
+              <th scope="col"><small>title<i class="fas fa-signature"></i></small></th>
+              <th scope="col"><small><i class="fas fa-search"></small></i></th>
+              <th scope="col"><small><i class="fas fa-edit"></i><small></th>
+              <th scope="col"><small><i class="fas fa-trash-alt"></i><small></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @works.each do |work| %>
+              <tr>
+                <th scope="row"><%# タイトル %>
+                  <%= work.title %>
+                </th>
+                <td><%# 詳細 %>
+                  <%= link_to user_work_path(work.user_id, work.id) do %>
+                    <i class="fas fa-search my-color-search"></i>
+                  <% end %>
+                </td>
+                <td><%# 編集　%>
+                  <%= link_to edit_user_work_path(work.user_id, work.id) do %>
+                    <i class="fas fa-edit my-color-edit"></i>
+                  <% end %>
+                </td>
+                <td><%# 削除 %>
+                  <%= link_to "/users/#{work.user_id}/works/#{work.id}/check" do %>
+                    <i class="fas fa-trash-alt my-color-trash"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-
-
-
-  <%= render 'my_shared/go_mypage' %>
+  </div>
+  <div class="row ml-2 my-2">
+    <%= render 'my_shared/go_mypage' %>
+  </div>
 </div>

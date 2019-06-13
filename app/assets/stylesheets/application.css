@@ -106,11 +106,6 @@ hr {
   text-align: right;
 }
 
-/* はてなアイコンのpop_over */
-/* .popover {
-  max-width: 400px !important;
-} */
-
 /* 編集するアイコン */
 .my-color-edit {
   color: mediumslateblue;
@@ -144,7 +139,7 @@ hr {
 /* copyright */
 .copyright {
   border-top: solid 3px rgb(105, 175, 255);
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* スマホ向けページリンクボタン */

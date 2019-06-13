@@ -38,7 +38,7 @@
       </div>
 
       <div class="col-12 col-md-10" style="margin:auto;">
-        <h3>成果物の公開設定<span style="margin-right: 7em;"></span>
+        <h3>成果物の公開設定&ensp;
           <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="成果物の公開設定" data-content="<b>【基本】</b><br>
             <ul>
             <li>公開…Pick Upに載る事があります。</li>
@@ -56,7 +56,7 @@
       </div>
 
       <div class="col-12 col-md-10" style="margin:auto;">
-        <h3>コメントを公開しますか？<span style="margin-right: 3em;"></span>
+        <h3>コメントを公開しますか？&ensp;
           <a class="btn btn-sm btn-info text-white" data-toggle="popover" data-placement="bottom" title="コメントの公開設定" data-content="<b>【基本】</b><br>
           <ul>
             <li>アカウント自体非公開だと、公開にしても非公開となります。</li>
@@ -68,12 +68,24 @@
 
     <p class="text-center"><%= f.submit "登録する", class: "btn btn-info btn-lg"%>
   <% end %>
-
-  <%= link_to user_works_path(@user) do %>
-    <i class="fas fa-crown my-color-work fa-3x m-3 text-center" aria-hidden="true">
-      <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
-    </i>
-  <% end %>
-
+</div>
+<div class="row ml-2 my-2">
   <%= render 'my_shared/go_mypage' %>
+
+  <div class="d-none d-md-block">
+    <%= link_to user_works_path(@user) do %>
+      <i class="fas fa-crown my-color-work fa-3x m-3 text-center" aria-hidden="true">
+        <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
+      </i>
+    <% end %>
+  </div>
+  <div class="d-md-none">
+    <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
+      <%= link_to user_works_path(@user) do %>
+        <i class="fas fa-crown my-color-work text-center"><br />
+          <small class="font-weight-bold text-secondary">成果物一覧</small>
+        </i>
+      <% end %>
+    </button>
+  </div>
 </div>

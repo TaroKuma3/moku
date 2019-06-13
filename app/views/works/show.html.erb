@@ -86,6 +86,9 @@
   <h2 class="text-center">画像</h2>
   <div class="row">
     <% if @work.images.attached? %>
+      <div class="col-12 text-center">
+        <h6>※画像の削除は編集からできます。</h6>
+      </div>
       <% @work.images.each do |image| %>
         <div class="col-12 col-md-6 mb-4 text-center">
           <%= image_tag image.variant(resize: '300x') %>
@@ -114,17 +117,16 @@
     </div>
   </div>
 
-
   <div class="row ml-2 my-2">
     <%= render 'my_shared/go_mypage' %>
 
-  <div class="d-none d-md-block">
-    <%= link_to user_works_path(@user) do %>
-      <i class="fas fa-crown my-color-work fa-3x m-3 text-center" aria-hidden="true">
-        <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
-      </i>
-    <% end %>
-  </div>
+    <div class="d-none d-md-block">
+      <%= link_to user_works_path(@user) do %>
+        <i class="fas fa-crown my-color-work fa-3x m-3 text-center" aria-hidden="true">
+          <h5 class="font-weight-bold text-secondary">成果物一覧へ</h5>
+        </i>
+      <% end %>
+    </div>
     <div class="d-md-none">
       <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
         <%= link_to user_works_path(@user) do %>

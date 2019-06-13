@@ -45,6 +45,10 @@ hr {
   border-color: rgb(70, 116, 254) !important;
 }
 
+footer {
+  font-size: xx-small;
+}
+
 .toast {
   background-color: rgb(252, 231, 2) !important;
   font-weight: bold;

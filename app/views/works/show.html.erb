@@ -85,12 +85,10 @@
 
   <h2 class="text-center">画像</h2>
   <div class="row">
-    <% if @work.images.attached? %>
-      <% @work.images.each do |image| %>
-        <div class="col-12 col-md-6 mb-4 text-center">
-          <%= image_tag image.variant(resize: '300x') %>
-        </div>
-      <% end %>
+    <% if @work.image.attached? %>
+      <div class="col-12 col-md-6 mb-4 text-center">
+        <%= image_tag @work.image.variant(resize: '300x') %>
+      </div>
     <% else %>
       <div class="col-12  mb-4 text-center">
         <h5>画像の登録はありませんでした。<br />なにか登録してみませんか？</h5>
@@ -100,7 +98,7 @@
 
   <div class="row">
     <div class="col-12 text-center">
-      <% if @work.images.attached? %>
+      <% if @work.image.attached? %>
         <small>※画像の削除は【編集<i class="fas fa-edit"></i>】からできます。</small>
       <% end %>
     </div>

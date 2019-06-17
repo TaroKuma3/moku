@@ -7,16 +7,16 @@
   local: true) do |f| %>
 
     <div class="row mb-5">
-      <% @work.images.each do |image| %>
+      <% if @work.image.attached? %>
         <div class="col-12 col-md-6 text-center" style="margin: auto;">
           <span class="card border-info" id="myWorksEditCard">
             <span class="card-body p-2">
-            <%= link_to "/works/#{@work.id}/images/#{image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} do %>
+            <%= link_to "/works/#{@work.id}/images/#{@work.image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} do %>
               <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
             <% end %><br />
             </span>
           </span>
-          <%= image_tag image.variant(resize: '150x') %>&emsp;
+          <%= image_tag @work.image.variant(resize: '150x') %>&emsp;
         </div>
       <% end %>
     </div>
@@ -29,8 +29,9 @@
       </div>
 
       <div class="col-12 col-md-10" style="margin:auto;">
-        <h3>画像の追加</h3>
-        <%= f.file_field :images, multipart: true, hide_label: true %>
+        <h3>画像</h3>
+        <%#= f.file_field :images, multipart: true, hide_label: true %>
+        <%= f.file_field :image, multipart: true, hide_label: true %>
       </div>
 
       <div class="col-12 col-md-10" style="margin:auto;">

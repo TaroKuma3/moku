@@ -66,12 +66,13 @@
 
     <h2 class="text-center">画像</h2>
     <div class="row">
-      <% if @work.images.attached? %>
-        <% @work.images.each do |image| %>
+      <%# if @work.images.attached? %>
+      <% if @work.image.attached? %>
+        <%# @work.images.each do |image| %>
           <div class="col-12 col-md-6 mb-4 text-center">
             <%= image_tag image.variant(resize: '300x') %>
           </div>
-        <% end %>
+        <%# end %>
       <% else %>
         <h5>画像の登録はありませんでした。</h5>
       <% end %>

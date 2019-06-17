@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   belongs_to :user
   has_many :book_marks
 
-  has_many_attached :images
+  has_one_attached :image
 
   validates :do_moku_id, presence: true
   validates :user_id, presence: true

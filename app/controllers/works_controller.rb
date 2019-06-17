@@ -79,8 +79,10 @@ class WorksController < ApplicationController
 
   def delete_image
     work = Work.find(params[:id])
-    image = work.images.find params[:image_id]
-    image.purge
+    # image = work.images.find params[:image_id]
+    # image = work.image.find params[:image_id]
+    # image.purge
+    work.image.purge
 
     redirect_to("/users/#{current_user.id}/works/#{work.id}")
 
@@ -110,6 +112,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:memo, :title, :images, :user_id, :do_moku_id, :memo_public, :pickup_public)
+    params.require(:work).permit(:memo, :title, :image, :user_id, :do_moku_id, :memo_public, :pickup_public)
   end
 end

@@ -79,13 +79,9 @@ class WorksController < ApplicationController
 
   def delete_image
     work = Work.find(params[:id])
-    # image = work.images.find params[:image_id]
-    # image = work.image.find params[:image_id]
-    # image.purge
     work.image.purge
 
     redirect_to("/users/#{current_user.id}/works/#{work.id}")
-
   end
 
   def check_delete

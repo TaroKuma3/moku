@@ -11,7 +11,7 @@
           <% end %>
         <% else %>
           <%= link_to("/users/#{current_user.id}/works/#{@work.id}/book_marks", {method: :post}) do %>
-            <i class="fas fa-bookmark fa-3 bm-btn" aria-hidden="true"></i>
+            <i class="fas fa-bookmark fa-3x bm-btn" aria-hidden="true"></i>
           <% end %>
         <% end %>
         <%= @bm_count %>
@@ -62,15 +62,18 @@
         </div>
     <% else %>
       <div class="row mb-3">
-        <div class="col-12">
-          <h3>memoは非公開です</h3>
+        <div class="col-12 text-center">
+          <h4 class="bg-info text-white text-center rounded-top py-4 mb-0" style="min-width: 20rem;">memo</h4>
+            <h6 class="bg-white text-secondary rounded-bottom p-3 border border-info" style="min-width: 20rem;">
+              memoは非公開です
+            </h6>
         </div>
       </div>
     <% end %>
 
     <h2 class="text-center">画像</h2>
     <div class="row">
-      <% if @work.image.attached? %> 
+      <% if @work.image.attached? %>
         <div class="col-12 col-md-6 mb-4 text-center">
           <%= image_tag @work.image.variant(resize: '300x') %>
         </div>

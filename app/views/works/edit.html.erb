@@ -10,7 +10,7 @@
       <% if @work.image.attached? %>
         <div class="col-12 col-md-6 text-center" style="margin: auto;">
           <span class="card border-info" id="myWorksEditCard">
-            <span class="card-body p-2">
+            <span class="card-body text-center p-2">
             <%= link_to "/works/#{@work.id}/images/#{@work.image.id}", method: :delete, data: {confirm: "削除してよろしいですか？"} do %>
               <i class="fas fa-trash-alt my-color-trash fa-2x"></i>
             <% end %><br />
@@ -44,13 +44,12 @@
             <ul>
             <li>公開…Pick Upに載る事があります。</li>
             <li>非公開…Pick Upには載りません。</li>
-            <li><b>アカウント自体非公開だと、公開にしても非公開となります。</b></li>
+            <li><b>アカウントが非公開だと、公開にしても非公開となります。</b></li>
           </ul>
-          <b>【ブックマークについて】</b><br>
+          <b>【ブックマークされていた場合】</b><br>
           <ul>
-            <li>他ユーザーにブックマークされた後非公開にすると、相手のブックマークに表示されなくなります。</li>
-            <li>ブックマークは解除されないので、ブックマーク数は減りません。</li>
-            <li>再度公開にすると、相手のブックマークに表示されるようになります。</li>
+            <li>非公開…他ユーザーのブックマーク一覧に表示されなくなります。</li>
+            <li>公開…相手のブックマークに表示されるようになります。</li>
           </ul>">?</a>
         </h3>
         <p><%= f.select :pickup_public, options_for_public, selected: @work.pickup_public, hide_label: true %></p>

@@ -73,13 +73,13 @@
 
     <h2 class="text-center">画像</h2>
     <div class="row">
-      <% if @work.image.attached? %>
-        <div class="col-12 col-md-6 mb-4 text-center">
+      <div class="col-12 col-md-6 mb-4 text-center">
+        <% if @work.image.attached? %>
           <%= image_tag @work.image.variant(resize: '300x') %>
-        </div>
-      <% else %>
-        <h5>画像の登録はありませんでした。</h5>
-      <% end %>
+        <% else %>
+          <h5>画像の登録はありませんでした。</h5>
+        <% end %>
+      </div>
     </div>
   <% else %>
     <h1>非公開です</h1>

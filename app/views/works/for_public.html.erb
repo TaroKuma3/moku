@@ -61,18 +61,19 @@
           </div>
         </div>
     <% else %>
-      <h3>memoは非公開です</h3>
+      <div class="row mb-3">
+        <div class="col-12">
+          <h3>memoは非公開です</h3>
+        </div>
+      </div>
     <% end %>
 
     <h2 class="text-center">画像</h2>
     <div class="row">
-      <%# if @work.images.attached? %>
-      <% if @work.image.attached? %>
-        <%# @work.images.each do |image| %>
-          <div class="col-12 col-md-6 mb-4 text-center">
-            <%= image_tag image.variant(resize: '300x') %>
-          </div>
-        <%# end %>
+      <% if @work.image.attached? %> 
+        <div class="col-12 col-md-6 mb-4 text-center">
+          <%= image_tag @work.image.variant(resize: '300x') %>
+        </div>
       <% else %>
         <h5>画像の登録はありませんでした。</h5>
       <% end %>
@@ -81,7 +82,7 @@
     <h1>非公開です</h1>
   <% end %>
 
-
-  <%= render 'my_shared/go_mypage' %>
-
+  <div class="row ml-2 my-2">
+    <%= render 'my_shared/go_mypage' %>
   </div>
+</div>

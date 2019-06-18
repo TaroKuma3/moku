@@ -2,6 +2,38 @@
   <h1>Q:<%= @faq.questions %></h1>
 
   <div class="row">
+    <div class="col-12 col-md-4 mb-3"> 
+      <div class="d-none d-md-block"><%# md以上でカードのカテゴリー%>
+        <div class="card text-dark bg-light my-3">
+          <div class="card-header text-center font-weight-bold">カテゴリー</div>
+          <div class="card-body">
+            <p class="card-text">
+            <div class="text-dark" id="tag_cloud">
+              <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+                  <%= link_to tag.name, tag_path(tag.name), class: css_class %><br />
+              <% end %>
+            </div>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="d-md-none"><%# md未満でaccordionのカテゴリー %>
+        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          カテゴリー&ensp;<i class="fas fa-caret-down"></i>
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body mb-3 border-info">
+            <div class="text-dark" id="tag_cloud">
+              <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
+                  <%= link_to tag.name, tag_path(tag.name), class: css_class %><br />
+              <% end %>
+            </div><%# /tag_cloud %>
+          </div><%# /card card-body%>
+        </div><%# /collapse%>
+      </div><%# /d-md-none%>
+      </div>
+    </div>
+
     <div class="col-12 col-md-8">
       <div class="card bg-light mb-3">
         <div class="card-body">
@@ -18,30 +50,9 @@
         </div>
       </div>
     </div>
-
-    <div class="col-12 col-md-4">
-      <div class="card text-white bg-info mb-3">
-        <div class="card-body font-weight-bold text-center">
-          <h4>カテゴリー</h4>
-        </div>
-      </div>
-
-      <div class="card bg-light mb-3">
-        <div class="card-body">
-          <div id="tag_cloud">
-            <% tag_cloud Faq.category_counts, %w{s m l} do |tag, css_class| %>
-                <%= link_to tag.name, tag_path(tag.name), class: css_class %><br/>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-
-
-
-  <div class="row">
+  <div class="row ml-2 my-2">
     <%= link_to faqs_path do %>
       <i class="fas fa-question my-color-question fa-3x pl-2 text-center">
         <h5 class="font-weight-bold text-secondary">よくある質問へ</h5>

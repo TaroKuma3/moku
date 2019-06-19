@@ -1,5 +1,6 @@
-<p>Welcome <%= @email %>!</p>
+<img src="/assets/moku_logo2.png" />
+<p>mokuへようこそ！<%= @email %>さん!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>下記のリンクよりアクセスいただき、ユーザー認証を完了させてください。</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

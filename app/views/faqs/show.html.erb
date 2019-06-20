@@ -37,10 +37,11 @@
       <div class="card bg-light mb-3">
         <div class="card-body">
           <h5>A:<%= simple_format(@faq.answer) %></h5>
-          <small>カテゴリー：<%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></small><br/><hr/>
+          <small>カテゴリー：<%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></small><br/>
             <% if current_user %>
               <% user = User.find_by(id: current_user.id) %>
               <% if user.admin? %>
+              <hr/>
                 <i class="fas fa-unlock-alt my-color-admin">管理者menu：</i>
                 <%= link_to("編集", "/faqs/#{@faq.id}/edit") %>
                 <%= link_to("削除", "/faqs/#{@faq.id}", {method: :delete}) %>

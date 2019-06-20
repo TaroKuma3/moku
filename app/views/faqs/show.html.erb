@@ -2,7 +2,7 @@
   <h1>Q:<%= @faq.questions %></h1>
 
   <div class="row">
-    <div class="col-12 col-md-4 mb-3"> 
+    <div class="col-12 col-md-4 order-md-1">
       <div class="d-none d-md-block"><%# md以上でカードのカテゴリー%>
         <div class="card text-dark bg-light my-3">
           <div class="card-header text-center font-weight-bold">カテゴリー</div>
@@ -31,13 +31,12 @@
           </div><%# /card card-body%>
         </div><%# /collapse%>
       </div><%# /d-md-none%>
-      </div>
     </div>
 
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 order-md-0 mt-3">
       <div class="card bg-light mb-3">
         <div class="card-body">
-          <h3>A:<%= simple_format(@faq.answer) %></h3>
+          <h5>A:<%= simple_format(@faq.answer) %></h5>
           <small>カテゴリー：<%= raw @faq.category_list.map { |t| link_to t, tag_path(t)}.join(',') %></small><br/><hr/>
             <% if current_user %>
               <% user = User.find_by(id: current_user.id) %>

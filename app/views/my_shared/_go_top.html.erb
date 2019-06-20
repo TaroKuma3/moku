@@ -1,7 +1,19 @@
 <%# topへ戻る%>
 
-<%= link_to "/" do %>
-  <span class="fas fa-reply fa-3x my-color-reply pl-2 text-center" aria-hidden="true"><br>
-    <h5 class="font-weight-bold text-secondary">トップへ</h5>
-  </span>
-<% end %>
+<span class="d-none d-md-block"><%# md以上で大きめアイコン%>
+  <%= link_to "/" do %>
+    <span class="fas fa-reply fa-3x my-color-reply pl-2 mt-3 text-center" aria-hidden="true"><br/>
+      <h5 class="font-weight-bold text-secondary">トップへ</h5>
+    </span>
+  <% end %>
+</span>
+
+<span class="d-md-none"><%# md未満で小さめボタン%>
+  <button type="button" class="btn btn-light border-info btn-sm my-mobile-btn-size">
+    <%= link_to "/" do %>
+      <span class="fas fa-reply my-color-reply text-center" aria-hidden="true"><br />
+      <small class="font-weight-bold text-secondary">トップ</small>
+      </span>
+    <% end %>
+  </button>
+</span>

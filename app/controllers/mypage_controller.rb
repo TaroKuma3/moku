@@ -4,7 +4,10 @@ class MypageController < ApplicationController
   def index
     @user = current_user
     public_users = User.where(public: true)
-    @work_pickups = Work.where(user_id: public_users.ids).where(pickup_public: true).where(deleted: false).order(created_at: 'desc').limit(5)
+    # @work_pickups = Work.where(user_id: public_users.ids).where(pickup_public: true).where(deleted: false).order(created_at: 'desc').limit(5)
+    only_public_targets = Work.where(pickup_public: true).where(deleted: false)
+    pickup_target_ids = only_public_targets.pluck(:id).sample(5)
+    @work_pickups = Work.find(pickup_target_ids)
     @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false) #カレンダーのために取得
     @default_mjns = DoMoku.where(user_id: public_users.ids).where(deleted: false).order(created_at: 'desc').limit(5)
   end

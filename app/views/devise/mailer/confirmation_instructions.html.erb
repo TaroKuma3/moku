@@ -1,5 +1,6 @@
-<p>mokuへようこそ！</p>
+<b>こんにちは、mokuです。</b>
+<p><%= @email %>さん、mokuからのお知らせです。</p>
 
-<p><%= @email %>さん、下記のリンクよりアクセスいただき、ユーザー認証を完了させてください。</p>
+<p>下記のリンクよりアクセスいただき、ユーザー認証を完了させてください。</p>
 
 <p><%= link_to '認証する', confirmation_url(@resource, confirmation_token: @token) %></p>

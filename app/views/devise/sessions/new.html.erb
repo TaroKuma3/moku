@@ -2,7 +2,7 @@
   <h1>ログイン</h1>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row mb-5">
+    <div class="row my-5">
       <div class="col-12 col-md-6">
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

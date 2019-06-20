@@ -53,6 +53,7 @@ hr {
   background-color: rgb(252, 231, 2) !important;
   font-weight: bold;
   width: 300px;
+  overflow: visible !important;
 }
 
 .my-color-important {

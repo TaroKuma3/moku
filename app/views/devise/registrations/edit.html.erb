@@ -31,7 +31,8 @@
 
     <div class="col-12 col-md-7" style="margin:auto;">
       <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <small>確認のためもう一度入力してください。</small>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", hide_label: true %>
       </div>
     </div>
 

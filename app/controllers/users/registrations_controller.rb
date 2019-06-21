@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     resource.skip_reconfirmation! # メアド更新時に認証メールを飛ばさない。
-    resource_updated = update_resource(resource, account_update_params) # 元々superだったところ
+    resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
       set_flash_message_for_update(resource, prev_unconfirmed_email)

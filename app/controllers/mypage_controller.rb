@@ -3,10 +3,9 @@ class MypageController < ApplicationController
 
   def index
     @user = current_user
-    public_users = User.where(public: true)
 
     # pick UP用
-    # @work_pickups = Work.where(user_id: public_users.ids).where(pickup_public: true).where(deleted: false).order(created_at: 'desc').limit(5)
+    public_users = User.where(public: true)
     only_public_targets = Work.where(user_id: public_users.ids).where(pickup_public: true).where(deleted: false)
     pickup_target_ids = only_public_targets.pluck(:id).sample(5)
     @work_pickups = Work.find(pickup_target_ids)

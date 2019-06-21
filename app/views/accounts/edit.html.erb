@@ -54,27 +54,50 @@
         </div>
       <% end %>
 
-      <div class="row md-3">
+      <div class="row ml-2 my-2">
         <div class="col-6">
           <%= render 'my_shared/go_mypage' %>
         </div>
 
-        <div class="col-6">
+        <div class="col-6"> 
           <div class="row text-right">
             <div class="col-7 text-right pr-0">
-              <%= link_to edit_user_registration_path do %>
-                <i class="fas fa-key fa-3x my-color-key text-center">
-                  <h5 class="font-weight-bold text-secondary">アカウント<br class="d-inline d-md-none" />情報</h5>
-                </i>
-              <% end %>
-            </div>
+              <span class="d-none d-md-block"><%# md以上で大きめアイコン%>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="fas fa-key fa-3x  my-color-key pl-2 mt-3 text-center" aria-hidden="true"><br/>
+                    <h5 class="font-weight-bold text-secondary">アカウント情報</h5>
+                  </i>
+                <% end %>
+              </span>
 
-            <div class="col-5">
-              <%= link_to "/accounts/#{current_user.id}/check" do %>
-                <i class="fas fa-door-open fa-3x my-color-door text-center"><br/>
-                  <h5 class="font-weight-bold text-secondary">mokuを<br class="d-inline d-sm-none" />退会</h5>
-                </i>
-              <% end %>
+              <span class="d-md-none"><%# md未満で小さめボタン%>
+                <button type="button" class="btn btn-light border-info btn-sm my-mobile-btn-size">
+                  <%= link_to edit_user_registration_path do %>
+                    <span class="fas fa-key  my-color-key text-center" aria-hidden="true"><br />
+                    <small class="font-weight-bold text-secondary">アカ<br />ウント</small>
+                    </span>
+                  <% end %>
+                </button>
+              </span>
+            </div>
+            <div class="col-5 pl-0 text-center">
+              <span class="d-none d-md-block"><%# md以上で大きめアイコン%>
+                <%= link_to "/accounts/#{current_user.id}/check" do %>
+                  <i class="fas fa-door-open fa-3x my-color-door pl-2 mt-3 text-center" aria-hidden="true"><br/>
+                    <h5 class="font-weight-bold text-secondary">mokuを退会</h5>
+                  </i>
+                <% end %>
+              </span>
+
+              <span class="d-md-none"><%# md未満で小さめボタン%>
+                <button type="button" class="btn btn-light border-info btn-sm my-mobile-btn-size">
+                  <%= link_to "/accounts/#{current_user.id}/check" do %>
+                    <span class="fas fa-door-open my-color-door text-center" aria-hidden="true"><br />
+                    <small class="font-weight-bold text-secondary">moku退会</small>
+                    </span>
+                  <% end %>
+                </button>
+              </span>
             </div>
           </div>
         </div>

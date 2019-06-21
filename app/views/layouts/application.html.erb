@@ -65,9 +65,9 @@
 				<div class="card text-white bg-info mx-3 mb-3">
 					<div class="card-body" id="greet">
 					<% if current_user.public %>
-						<span class="fas fa-unlock my-color-lock fa-2x" data-toggle="popover" data-placement="left" data-content="アカウント：公開"></span>
+						<span class="fas fa-unlock my-color-lock" data-toggle="popover" data-placement="left" data-content="アカウント：公開"></span>
 					<% else %>
-						<span class="fas fa-lock my-color-lock fa-2x" data-toggle="popover" data-placement="left" data-content="アカウント：非公開""></span>
+						<span class="fas fa-lock my-color-lock fa" data-toggle="popover" data-placement="left" data-content="アカウント：非公開""></span>
 					<% end %>
 						&ensp;<%= "#{greeting}、#{current_user.name}さん！" %>
 					</div>

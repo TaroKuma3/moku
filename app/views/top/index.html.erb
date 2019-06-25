@@ -1,38 +1,102 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-12 col-md-6" style="text-align: center;">
-      <img src="/assets/main_logo.jpg" class="img-fluid" width="400" height="400"/>
+    <div class="col-12" style="text-align: center;">
+      <img src="/assets/main_logo3.png" class="img-fluid" width="500"/>
     </div>
+  </div>
 
-    <div class="col-12 col-md-6" id="topMenu">
+  <div class="row mt-5">
+    <div class="col-12">
       <div class="row">
-        <div class="col-6">
-          <%= link_to new_user_registration_path do %>
-            <p class="bg-info text-white rounded-circle text-center p-3">新規登録</p>
-          <% end %>
+        <div class="col-6 text-right"><%# はじめよう %>
+          <span class="d-none d-md-block"><%# md以上でbt-lg %>
+            <button type="button" class="btn btn-info">
+              <%= link_to new_user_registration_path do %>
+                <h5 class="text-white font-weight-bold mt-2">ユーザー登録</h5>
+              <% end %>
+            </button>
+          </span>
+        </div>
+        <div class="col-6 text-left"><%# ログイン %>
+          <span class="d-none d-md-block"><%# md以上でbt-lg %>
+            <button type="button" class="btn btn-info">
+              <%= link_to new_user_session_path do %>
+                <h5 class="text-white font-weight-bold mt-2 mx-4">ログイン</h5>
+              <% end %>
+            </button>
+          </span>
         </div>
 
-        <div class="col-6">
-          <%= link_to new_user_session_path do %>
-            <p class="bg-info text-white rounded-circle text-center p-3">ログイン</p>
-          <% end %>
+        <div class="col-6 text-right"><%# はじめよう %>
+          <span class="d-md-none"><%# md未満でbt-sm %>
+            <button type="button" class="btn btn-info btn-sm">
+              <%= link_to new_user_registration_path do %>
+                <h6 class="text-white font-weight-bold mt-2">ユーザー登録</h6>
+              <% end %>
+            </button>
+          </span>
+        </div>
+        <div class="col-6 text-left"><%# ログイン %>
+          <span class="d-md-none"><%# md未満でbt-sm %>
+            <button type="button" class="btn btn-info btn-sm">
+              <%= link_to new_user_session_path do %>
+                <h6 class="text-white font-weight-bold mt-2 mx-4">ログイン</h6>
+              <% end %>
+            </button>
+          </span>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-6">
-          <%= link_to "top/about" do %>
-            <p class="bg-info text-white rounded-circle text-center p-3">moku?</p>
-          <% end %>
-        </div>
-
-        <div class="col-6">
-          <%= link_to faqs_path do %>
-            <p class="bg-info text-white rounded-circle text-center p-3">よくある質問</p>
-          <% end %>
-        </div>
     </div>
+  </div>
+
+<%= render "about_main" %>
+
+  <div class="row mb-4">
+    <div class="col-12" id="topMenu">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 text-right"><%# はじめよう %>
+              <span class="d-none d-md-block"><%# md以上でbt-lg %>
+                <button type="button" class="btn btn-info">
+                  <%= link_to new_user_registration_path do %>
+                    <h5 class="text-white font-weight-bold mt-2">ユーザー登録</h5>
+                  <% end %>
+                </button>
+              </span>
+            </div>
+            <div class="col-6 text-left"><%# ログイン %>
+              <span class="d-none d-md-block"><%# md以上でbt-lg %>
+                <button type="button" class="btn btn-info">
+                  <%= link_to new_user_session_path do %>
+                    <h5 class="text-white font-weight-bold mt-2 mx-4">ログイン</h5>
+                  <% end %>
+                </button>
+              </span>
+            </div>
+
+            <div class="col-6 text-right"><%# はじめよう %>
+              <span class="d-md-none"><%# md未満でbt-sm %>
+                <button type="button" class="btn btn-info btn-sm">
+                  <%= link_to new_user_registration_path do %>
+                    <h6 class="text-white font-weight-bold mt-2">ユーザー登録</h6>
+                  <% end %>
+                </button>
+              </span>
+            </div>
+            <div class="col-6 text-left"><%# ログイン %>
+              <span class="d-md-none"><%# md未満でbt-sm %>
+                <button type="button" class="btn btn-info btn-sm">
+                  <%= link_to new_user_session_path do %>
+                    <h6 class="text-white font-weight-bold mt-2 mx-4">ログイン</h6>
+                  <% end %>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

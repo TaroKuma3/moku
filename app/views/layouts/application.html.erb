@@ -53,7 +53,11 @@
 									<% else %>
 										<li class="nav-item"><span class="nav-link"><%= link_to 'ユーザー登録', new_user_registration_path %></span></li>
 										<li class="nav-item"><span class="nav-link"><%= link_to 'ログイン', new_user_session_path %></span></li>
-										<li class="nav-item"><span class="nav-link"><%= link_to("moku?", top_about_path) %></span></li>
+										<%
+=begin%>
+ <li class="nav-item"><span class="nav-link"><%= link_to("moku?", top_about_path) %></span></li> 
+<%
+=end%>
 										<li class="nav-item"><span class="nav-link" ><%= link_to("よくある質問", faqs_path) %></span></li>
 									<% end %>
 								</ul>
@@ -127,9 +131,13 @@
 						<%= link_to("利用規約", '/terms_of_service', class: :"text-secondary")%><br />
 						<%= link_to("プライバシーポリシー", '/privacy', class: :"text-secondary")%>
 					</div>
-					<div class="col-4 border-left"> 
-						<%= link_to("moku?", top_about_path, class: :"text-secondary")%><br />
-						<%= link_to("SpecialThanks", "/thanks", class: :"text-secondary")%>
+					<div class="col-4 border-left">
+						<% if user_signed_in? %>
+							<%= link_to("moku?", top_about_path, class: :"text-secondary")%><br />
+							<%= link_to("SpecialThanks", "/thanks", class: :"text-secondary")%>
+						<% else %>
+							<%= link_to("SpecialThanks", "/thanks", class: :"text-secondary")%>
+						<% end %>
 					</div>
 				</div>
 				<div class="row mt-4 mb-3">

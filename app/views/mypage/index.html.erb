@@ -163,9 +163,8 @@
             <%# md以上で普通のカード表示 pick up%>
             <div class="d-none d-md-block">
               <div class="card text-blue bg-info text-white">
-                <h4><div class="card-header text-center font-weight-bold"><h3>Pick UP</h3></div></h4>
+                <div class="card-header text-center font-weight-bold"><h3>Pick UP</h3><h6>みんなの成果物を見てみよう！</h6></div>
                 <div class="card-body">
-                  <h5 class="card-title">みんなの成果物を見てみよう！</h5>
                   <ul>
                     <% @work_pickups.each do |work_pickup| %>
                       <li>
@@ -174,14 +173,14 @@
                           <% if work.user_id == current_user.id %>
                             <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
                               <%= link_to user_work_path(@user, work) do %>
-                                <i class="fas fa-search my-color-search fa-2x"></i>
+                                <i class="fas fa-search my-color-search"></i>
                               <% end %>
                             </span>
                           <% else %>
                           <% work_user = User.find(work.user_id) %>
                             <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
                               <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
-                                <i class="fas fa-search my-color-search fa-2x"></i>
+                                <i class="fas fa-search my-color-search"></i>
                               <% end%>
                             </span>
                           <% end %>

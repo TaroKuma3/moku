@@ -2,71 +2,16 @@
 
   <div class="cover text-info py-5">
     <div class="d-none d-md-block"><%# md以上で文字をdisplay-2＋ボタン左4em+ボタンlg %>
-      <% if user_signed_in? %>
-        <div class="display-2 font-weight-bold mb-4">&emsp;こんにちは<br/>&emsp;mokuです</div>
-      <% else %>
-        <div class="display-2 font-weight-bold mb-4">&emsp;はじめまして<br/>&emsp;mokuです</div>
-        <span style="margin-right: 4em;"></span>
-        <button type="button" class="btn btn-info btn-lg">
-          <%= link_to new_user_registration_path do %>
-            <h4 class="text-white font-weight-bold">さっそく始めよう！</h4>
-          <% end %>
-        </button>
-      <% end %>
+      <div class="display-1 font-weight-bold mb-4">&emsp;こんにちは<br/>&emsp;mokuです</div>
     </div><%# /d-md-block%>
     <div class="d-md-none"><%# md未満で文字をh2+ボタン左2em+ボタンsm %>
-      <% if user_signed_in? %>
-        <h2 class="font-weight-bold mb-4">&emsp;こんにちは<br/>&emsp;mokuです</h2>
-      <% else %>
-        <h2 class="font-weight-bold mb-4"><h2>&emsp;はじめまして<br/>&emsp;mokuです</h2></h2>
-        <span style="margin-right: 2em;"></span>
-        <button type="button" class="btn btn-info btn-sm">
-          <%= link_to new_user_registration_path do %>
-            <h5 class="text-white font-weight-bold text-enter my-1">さっそく始めよう！</h5>
-          <% end %>
-        </button>
-      <% end %>
+      <h2 class="font-weight-bold mb-4">&emsp;こんにちは<br/>&emsp;mokuです</h2>
     </div>
   </div><%# /cover %>
 
-  <div class="row py-5"><%# moku? %>
-    <div class="col-12 col-md-6 mb-3 pl-5 d-none d-md-block"><%= render "about_message1" %></div><%# md以上でpl-5 %>
-    <div class="col-12 col-md-6 mb-3 ml-3 d-md-none"><%= render "about_message1" %></div><%# md未満でml-3%>
-    <div class="col-12 col-md-6 mt-2" style="text-align: center;">
-      <img src="/assets/sagyou459-201.jpg" class="img-fluid"/>
-    </div>
-  </div>
+  <%= render "about_main" %>
 
-  <div class="row py-5"><%# mokuで作業を記録しよう %>
-    <div class="col-12 col-md-6 mb-3 pl-5 order-md-2 d-none d-md-block"><%= render "about_message2" %></div><%# md以上でpl-5 %>
-    <div class="col-12 col-md-6 mb-3 ml-3 order-md-2 d-md-none"><%= render "about_message2" %></div><%# md未満でml-3%>
-    <div class="col-12 col-md-6 mt-2 order-md-1" style="text-align: center;">
-      <img src="/assets/desk459-201.jpg" class="img-fluid" />
-    </div>
+  <div class="row ml-2 my-2">
+    <%= render 'my_shared/go_mypage'%>
   </div>
-
-  <div class="row py-5"><%# 繋がりすぎない繋がり %>
-    <div class="col-12 col-md-6 mb-3 pl-5 d-none d-md-block"><%= render "about_message3" %></div><%# md以上でpl-5 %>
-    <div class="col-12 col-md-6 mb-3 ml-3 d-md-none"><%= render "about_message3" %></div><%# md未満でml-3%>
-      <div class="col-12 col-md-6 mt-2" style="text-align: center;">
-      <img src="/assets/friends459-201.jpg" class="img-fluid" />
-    </div>
-  </div>
-
-  <% if user_signed_in? %>
-    <div class="row ml-2 my-2">
-      <%= render 'my_shared/go_mypage'%>
-    </div>
-  <% else %>
-    <div class="text-center">
-      <button type="button" class="btn btn-info">
-        <%= link_to new_user_registration_path do %>
-          <h4 class="text-white font-weight-bold mt-2">さっそく始めよう！</h4>
-        <% end %>
-      </button>
-    </div>
-    <div class="row ml-2 my-2">
-      <%= render 'my_shared/go_top'%>
-    </div>
-  <% end %>
 </div>

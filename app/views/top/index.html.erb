@@ -6,19 +6,66 @@
     </div>
   </div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="row">
-        <div class="col-6 text-right"><%# はじめよう %>
+  <div class="row my-5">
+    <div class="col-6 text-right"><%# はじめよう bt-lg %>
+      <span class="d-none d-md-block"><%# md以上でbt-lg %>
+        <button type="button" class="btn btn-info">
+          <%= link_to new_user_registration_path do %>
+            <h5 class="text-white font-weight-bold m-2">ユーザー登録</h5>
+          <% end %>
+        </button>
+      </span>
+    </div>
+    <div class="col-6 text-left"><%# ログイン bt-lg%>
+      <span class="d-none d-md-block"><%# md以上でbt-lg %>
+        <button type="button" class="btn btn-info">
+          <%= link_to new_user_session_path do %>
+            <h5 class="text-white font-weight-bold mt-2 mx-4">ログイン</h5>
+          <% end %>
+        </button>
+      </span>
+    </div>
+
+    <div class="col-6 text-right"><%# はじめよう bt-sm %>
+      <span class="d-md-none"><%# md未満でbt-sm %>
+        <button type="button" class="btn btn-info btn-sm">
+          <%= link_to new_user_registration_path do %>
+            <h6 class="text-white font-weight-bold m-2">ユーザー登録</h6>
+          <% end %>
+        </button>
+      </span>
+    </div>
+    <div class="col-6 text-left"><%# ログイン bt-sm %>
+      <span class="d-md-none"><%# md未満でbt-sm %>
+        <button type="button" class="btn btn-info btn-sm">
+          <%= link_to new_user_session_path do %>
+            <h6 class="text-white font-weight-bold mt-2 mx-4">ログイン</h6>
+          <% end %>
+        </button>
+      </span>
+    </div>
+  </div>
+  <hr />
+</div>
+
+<div class="container-fluid">
+  <%= render "about_main" %>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12" id="topMenu">
+      <div class="row mt-5">
+        <div class="col-6 text-right"><%# はじめよう bt-lg %>
           <span class="d-none d-md-block"><%# md以上でbt-lg %>
             <button type="button" class="btn btn-info">
               <%= link_to new_user_registration_path do %>
-                <h5 class="text-white font-weight-bold mt-2">ユーザー登録</h5>
+                <h5 class="text-white font-weight-bold m-2">ユーザー登録</h5>
               <% end %>
             </button>
           </span>
         </div>
-        <div class="col-6 text-left"><%# ログイン %>
+        <div class="col-6 text-left"><%# ログイン bt-lg %>
           <span class="d-none d-md-block"><%# md以上でbt-lg %>
             <button type="button" class="btn btn-info">
               <%= link_to new_user_session_path do %>
@@ -27,17 +74,16 @@
             </button>
           </span>
         </div>
-
-        <div class="col-6 text-right"><%# はじめよう %>
+        <div class="col-6 text-right"><%# はじめよう bt-sm %>
           <span class="d-md-none"><%# md未満でbt-sm %>
             <button type="button" class="btn btn-info btn-sm">
               <%= link_to new_user_registration_path do %>
-                <h6 class="text-white font-weight-bold mt-2">ユーザー登録</h6>
+                <h6 class="text-white font-weight-bold m-2">ユーザー登録</h6>
               <% end %>
             </button>
           </span>
         </div>
-        <div class="col-6 text-left"><%# ログイン %>
+        <div class="col-6 text-left"><%# ログイン bt-sm %>
           <span class="d-md-none"><%# md未満でbt-sm %>
             <button type="button" class="btn btn-info btn-sm">
               <%= link_to new_user_session_path do %>
@@ -45,60 +91,6 @@
               <% end %>
             </button>
           </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <%= render "about_main" %>
-</div>
-
-<div class="container">
-  <div class="row mb-4">
-    <div class="col-12" id="topMenu">
-      <div class="row">
-        <div class="col-12">
-          <div class="row">
-            <div class="col-6 text-right"><%# はじめよう %>
-              <span class="d-none d-md-block"><%# md以上でbt-lg %>
-                <button type="button" class="btn btn-info">
-                  <%= link_to new_user_registration_path do %>
-                    <h5 class="text-white font-weight-bold mt-2">ユーザー登録</h5>
-                  <% end %>
-                </button>
-              </span>
-            </div>
-            <div class="col-6 text-left"><%# ログイン %>
-              <span class="d-none d-md-block"><%# md以上でbt-lg %>
-                <button type="button" class="btn btn-info">
-                  <%= link_to new_user_session_path do %>
-                    <h5 class="text-white font-weight-bold mt-2 mx-4">ログイン</h5>
-                  <% end %>
-                </button>
-              </span>
-            </div>
-
-            <div class="col-6 text-right"><%# はじめよう %>
-              <span class="d-md-none"><%# md未満でbt-sm %>
-                <button type="button" class="btn btn-info btn-sm">
-                  <%= link_to new_user_registration_path do %>
-                    <h6 class="text-white font-weight-bold mt-2">ユーザー登録</h6>
-                  <% end %>
-                </button>
-              </span>
-            </div>
-            <div class="col-6 text-left"><%# ログイン %>
-              <span class="d-md-none"><%# md未満でbt-sm %>
-                <button type="button" class="btn btn-info btn-sm">
-                  <%= link_to new_user_session_path do %>
-                    <h6 class="text-white font-weight-bold mt-2 mx-4">ログイン</h6>
-                  <% end %>
-                </button>
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -1,38 +1,13 @@
-<%
-=begin%>
- <div class="container-fluid">
-  <% if  @moku_type.errors.any? %>
-    <div aria-live="polite" aria-atomic="true" style="position: relative;">
-      <div class="toast" style="position: absolute; top: 10px; left: 20px;">
-        <div class="toast-header">
-        <img class="rounded mr-2" src="/assets/moku_logo3.png" width="15" height="15" alt="mokuのロゴ">
-          <strong class="mr-auto">moku</strong>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="閉じる">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          <% @moku_type.errors.full_messages.each do |message| %>
-            <div class="text-danger font-weight-bold"><%= message %></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<%
-=end%>
-
 <div class="container">
   <h1><%= "#{@user.name}さんのmokuタグ"%></h1>
   <div class="row">
-    <div class="col-12 col-md-6 mb-4">
+    <div class="col-12 col-md-6 mb-4 text-center">
       <%= bootstrap_form_with(model: @MokuYype,
                               url: {controller: :moku_type, action: :create, user_id: current_user.id},
                               method: :post,
                               local: true) do |f| %>
 
-        <h4 class="font-weight-bold mt-2">あたらしいmokuタグをつくる</h4>
+        <h4 class="font-weight-bold mt-2 text-left">あたらしいmokuタグをつくる</h4>
         <%= f.text_field :name, hide_label: true %>
           <% if @moku_type.errors.any? %>
             <% @moku_type.errors.full_messages.each do |message| %>

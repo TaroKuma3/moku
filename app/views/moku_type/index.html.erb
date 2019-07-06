@@ -7,7 +7,7 @@
                               method: :post,
                               local: true) do |f| %>
 
-        <h4 class="font-weight-bold mt-2 text-left">あたらしいmokuタグをつくる</h4>
+        <h6 class="font-weight-bold mt-2 text-left">あたらしいmokuタグをつくる</h6>
         <%= f.text_field :name, hide_label: true %>
           <% if @moku_type.errors.any? %>
             <% @moku_type.errors.full_messages.each do |message| %>

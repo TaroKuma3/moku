@@ -7,9 +7,11 @@
   local: true) do |f| %>
 
     <div class="row">
-      <div class="col-12 col-md-6 mb-4">
-      <%= "mokuタグの新しい名前を教えてください" %>
-      <%= render "form", f:f %>
+      <div class="col-12 col-md-6 mb-4 text-center">
+        <%#= "mokuタグの新しい名前を教えてください" %>
+         <h6 class="text-left">mokuタグの新しい名前を教えてください</h6>
+        <%= render "form", f:f %>
+      <%# /divはpartialの中にある %>
     </div>
   <% end %>
 

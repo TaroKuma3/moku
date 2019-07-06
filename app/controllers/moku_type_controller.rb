@@ -5,7 +5,7 @@ class MokuTypeController < ApplicationController
   def index
     @user = current_user
     @moku_type = MokuType.new
-    @moku_types = MokuType.where(user_id: @user.id).where(deleted: false).order(created_at: 'asc')
+    @moku_types = MokuType.where(user_id: @user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5)
   end
 
   def show

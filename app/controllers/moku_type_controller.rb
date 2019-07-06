@@ -50,7 +50,7 @@ class MokuTypeController < ApplicationController
 
   def check_delete
     @moku_type = MokuType.find(params[:moku_type_id])
-    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id)
+    @do_mokus = DoMoku.where(moku_type_id: @moku_type.id).paginate(page: params[:page], per_page: 5)
   end
 
   def delete

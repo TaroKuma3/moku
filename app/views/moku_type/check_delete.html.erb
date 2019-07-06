@@ -64,6 +64,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= will_paginate @do_mokus, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
     </div>
   </div>
   <% end %>

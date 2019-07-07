@@ -5,7 +5,7 @@ class MokuTypeController < ApplicationController
   def index
     @user = current_user
     @moku_type = MokuType.new
-    @moku_types = MokuType.where(user_id: @user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5)
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -15,14 +15,14 @@ class MokuTypeController < ApplicationController
 
   def create
     @user = current_user
-    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5).order(created_at: 'asc')
 
     @moku_type = MokuType.new(
       name: params[:name],
       user_id: params[:user_id],
     )
     if @moku_type.save
-      flash[:notice] = "新しいmokuタグを登しました！"
+      flash[:notice] = "新しいmokuタグを登録しました！"
       redirect_to(user_moku_type_index_path(@user))
     else
       render :index
@@ -30,12 +30,12 @@ class MokuTypeController < ApplicationController
   end
 
   def edit
-    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5)
     @moku_type = MokuType.find(params[:id])
   end
 
  def update
-    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc')
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5).order(created_at: 'asc')
     @moku_type = MokuType.find(params[:id])
     @moku_type.name = params[:moku_type][:name]
     @moku_type.user_id = current_user.id

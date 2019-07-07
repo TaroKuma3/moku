@@ -11,7 +11,7 @@
         <%= f.text_field :name, hide_label: true %>
           <% if @moku_type.errors.any? %>
             <% @moku_type.errors.full_messages.each do |message| %>
-              <small class="text-danger"><%= message %></small></br>
+              <small class="text-danger"><%= message %></small><br />
             <% end %>
           <% end %>
         <%= f.submit "登録する", class: "btn btn-info btn-lg"%>
@@ -64,6 +64,7 @@
       <%= will_paginate @moku_types, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
     </div>
   </div>
+  
   <div class="row ml-2 my-2">
     <%= render 'my_shared/go_mypage' %>
   </div>

@@ -5,7 +5,7 @@ class WorksController < ApplicationController
 
   def index
     @user = current_user
-    @works = Work.where(user_id: params[:user_id]).where(deleted: false)
+    @works = Work.where(user_id: params[:user_id]).where(deleted: false).paginate(page: params[:page], per_page: 5)
   end
 
   def show

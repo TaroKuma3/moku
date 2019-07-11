@@ -167,3 +167,8 @@
     <%= render 'my_shared/go_mypage' %>
   </div>
 </div>
+
+<%= @book_marks.size %><br/>
+<% @book_marks.each do |book_mark| %>
+<%= book_mark.work_id %>
+<% end %>

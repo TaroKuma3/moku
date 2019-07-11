@@ -15,7 +15,7 @@ class MokuTypeController < ApplicationController
 
   def create
     @user = current_user
-    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5).order(created_at: 'asc')
+    @moku_types = MokuType.where(user_id: current_user.id).where(deleted: false).order(created_at: 'asc').paginate(page: params[:page], per_page: 5)
 
     @moku_type = MokuType.new(
       name: params[:name],

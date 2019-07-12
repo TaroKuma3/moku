@@ -28,7 +28,7 @@ class MokusController < ApplicationController
     @user = current_user
     @do_moku = DoMoku.find(params[:id])
     @moku_type = MokuType.find(@do_moku.moku_type_id)
-    @works = Work.where(do_moku_id: @do_moku.id).where(deleted: false)
+    @works = Work.where(do_moku_id: @do_moku.id).where(deleted: false).order(created_at: 'desc').paginate(page: params[:page], per_page: 5)
   end
 
   def new

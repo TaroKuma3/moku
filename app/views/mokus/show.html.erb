@@ -95,6 +95,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= will_paginate @works, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
       <% end %>
     </div>
   </div>

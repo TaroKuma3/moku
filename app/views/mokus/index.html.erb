@@ -31,16 +31,16 @@
           <th scope="col" class="align-middle">moku TIME</th>
           <th scope="col" class="align-middle">moku<br class="d-inline d-sm-none" />タグ</th>
           <th scope="col" class="align-middle">moku詳細へ</th>
-          <th scope="col" class="align-middle">成果物登録</th>
+          <th scope="col" class="align-middle">成果物</th>
           <th scope="col" class="align-middle">moku削除</th>
         </tr>
       </thead>
       <tbody>
         <% @do_mokus.each do |do_moku| %>
           <tr>
-            <th scope="row" class="align-middle"><%# 日時 %>
+            <td scope="row" class="align-middle"><%# 日時 %>
               <%= "#{do_moku.created_at}" %>
-            </th>
+            </td>
             <td class="align-middle"><%# moku TIME %>
               <%= "#{distance_of_time_in_words(do_moku.moku_time)} " %>
             </td>
@@ -53,7 +53,9 @@
                 <i class="fas fa-search my-color-search fa-2x"></i>
               <% end %>
             </td>
-            <td class="align-middle"><%# 成果物登録 %>
+            <td class="align-middle"><%# 成果物 %>
+              <% works = Work.where(do_moku_id: do_moku.id) %>
+              <span class="text-info font-weight-bold"><%= "#{works.size}" %>件</span><br />
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
                 <span class="fa-stack">
                   <i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i>
@@ -80,16 +82,16 @@
           <th scope="col" class="align-middle"><small><i class="fas fa-stopwatch" data-toggle="popover" data-placement="top" data-content="moku TIME"></i></small></th>
           <th scope="col" class="align-middle"><small><i class="fas fa-tag" data-toggle="popover" data-placement="top" data-content="mokuタグ"></i></small></th>
           <th scope="col" class="align-middle"><small><i class="fas fa-search" data-toggle="popover" data-placement="top" data-content="詳細"></i></small></th>
-          <th scope="col" class="align-middle"><small><i class="fas fa-crown" data-toggle="popover" data-placement="top" data-content="成果物登録"></i></small></th>
+          <th scope="col" class="align-middle"><small><i class="fas fa-crown" data-toggle="popover" data-placement="top" data-content="成果物"></i></small></th>
           <th scope="col" class="align-middle"><small><i class="fas fa-trash-alt" data-toggle="popover" data-placement="top" data-content="削除"></i><small></th>
         </tr>
       </thead>
       <tbody>
         <% @do_mokus.each do |do_moku| %>
           <tr>
-            <th class="align-middle" scope="row"><%# 日時 %>
+            <td scope="row" class="align-middle" ><%# 日時 %>
               <small><%= "#{do_moku.created_at}" %></small>
-            </th>
+            </td>
             <td class="align-middle"><%# moku TIME %>
               <small><%= "#{distance_of_time_in_words(do_moku.moku_time)} " %></small>
             </td>
@@ -105,7 +107,9 @@
                 <i class="fas fa-search my-color-search"></i>
               <% end %>
             </td>
-            <td class="align-middle"><%# 成果物登録 %>
+            <td class="align-middle"><%# 成果物 %>
+              <% works = Work.where(do_moku_id: do_moku.id) %>
+              <small class="text-info font-weight-bold"><%= "#{works.size}" %>件<br /></small>
               <%= link_to "/users/#{do_moku.user_id}/mokus/#{do_moku.id}/works/new" do %>
                <span class="fa-stack">
                   <small><small><i class="fas fa-crown my-color-work fa-stack-2x" aria-hidden="true"></i></small></small>

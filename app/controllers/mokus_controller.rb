@@ -10,6 +10,7 @@ class MokusController < ApplicationController
       @do_mokus = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc').paginate(page: params[:page], per_page: 10)
     end
 
+    # moku_timeの合計時間表示
     @moku_time_sum = 0
     @do_mokus.each do |do_moku|
       @moku_time_sum += do_moku.moku_time

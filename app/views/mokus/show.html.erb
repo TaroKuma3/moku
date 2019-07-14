@@ -71,9 +71,9 @@
         <tbody>
           <% @works.each do |work| %>
             <tr>
-              <th scope="row"><%# タイトル %>
+              <td scope="row"><%# タイトル %>
                 <%= work.title %>
-              </th>
+              </td>
               <td><%# 詳細 %>
                 <%= link_to user_work_path(work.user_id, work.id) do %>
                   <i class="fas fa-search my-color-search fa-2x"></i>

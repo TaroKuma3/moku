@@ -151,3 +151,9 @@ hr {
 .my-mobile-btn-size {
   width: 52px;
 }
+
+.dashed-line {
+  border-style: dashed;
+  border-width: 1px;
+  border-color: darkgray;
+}

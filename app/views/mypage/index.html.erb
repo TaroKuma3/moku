@@ -258,7 +258,7 @@
           </button>
         </span>
         <div class="collapse show" id="calendarCollapse">
-          <div class="card card-body border-0 py-0">
+          <div class="card card-body border-0 p-0">
             <span class="card-text">
               <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
                   <span class="smallCalendarFontSize font-weight-bold"><%= "#{date.to_formatted_s(:only_date)} 日" %><br></span>

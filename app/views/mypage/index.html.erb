@@ -1,283 +1,388 @@
-<body>
-  <main>
-    <div class="container-fluid pb-4">
-      <h1><%= "#{@user.name}さんのマイページ" %></h1>
-      <div class="row">
-        <div class="col-12 col-md-6 mb-4">
-          <section>
-            <%# md以上でcard メニュー %>
-            <div class="d-none d-md-block">
-              <div class="card text-white bg-info">
-                <div class="card-header text-center"><h3>メニュー</h3></div>
-                  <div class="card-body text-center">
-                  <div class="card-body bg-white py-0">
-                    <%= link_to "/users/#{@user.id}/mokus/new" do %>
-                      <i class="fas fa-cloud fa-3x faa-bounce animated-hover my-color-moku pcMenuIconSize" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">mokuる</h5>
-                      </i>
-                    <% end %>
+<div class="container-fluid pb-4">
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <div class="d-none d-md-block"><%# md以上でcard おしらせ %>
+        <div class="card border-info mb-3">
+          <div class="card-header text-white border-info bg-info font-weight-bold"><i class="fas fa-bell myColorBell faa-shake animated"></i>&ensp;mokuからのおしらせ</div>
+          <div class="card-body">
+            <p class="card-text">mokuからのお知らせがご覧いただけるように調整中です。もう少々お待ちください。</p>
+          </div>
+        </div>
+      </div><%# /d-none d-md-block %>
+      <div class="d-md-none mb-3"><%# md未満でaccordion おしらせ %>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#announcementCollapse" aria-expanded="false" aria-controls="announcementCollapse">
+            <i class="fas fa-bell myColorBell faa-shake animated"></i>&ensp;mokuからのおしらせ&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="announcementCollapse">
+          <div class="card card-body border-info">
+            mokuからのお知らせがご覧いただけるように調整中です。<br />もう少々お待ちください。
+          </div>
+        </div>
+      </div><%# /d-md-none %>
+    </div>
 
-                    <%= link_to user_moku_type_index_path(@user) do %>
-                      <i class="fas fa-tag fa-3x faa-bounce animated-hover my-color-tag pcMenuIconSize" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">mokuタグ</h5>
-                      </i>
-                    <% end %>
+    <div class="col-12 col-md-6">
+      <div class="d-none d-md-block"><%# md以上でcard メニュー %>
+        <div class="card border-info">
+          <div class="card-header text-white bg-info font-weight-bold"><i class="fas fa-receipt myMenuIcon"></i>&ensp;メニュー</div>
+          <div class="card-body">
+            <div class="card-text text-center">
+              <%= link_to "/users/#{@user.id}/mokus/new" do %>
+                <i class="fas fa-cloud fa-2x faa-bounce animated-hover my-color-moku pcMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">mokuる</h6>
+                </i>
+              <% end %>
 
-                    <%= link_to user_mokus_path(@user) do %>
-                      <i class="fas fa-file-alt fa-3x faa-bounce animated-hover my-color-mokusIndex pcMenuIconSize" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">moku一覧</h5>
-                      </i>
-                    <% end %>
+              <%= link_to user_moku_type_index_path(@user) do %>
+                <i class="fas fa-tag fa-2x faa-bounce animated-hover my-color-tag pcMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">mokuタグ</h6>
+                </i>
+              <% end %>
 
-                    <%= link_to "users/#{@user.id}/book_marks" do %>
-                      <i class="fas fa-bookmark fa-3x faa-bounce animated-hover my-color-bookmark pcMenuIconSize" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">Book Mark</h5>
-                      </i>
-                    <% end %>
+              <%= link_to user_mokus_path(@user) do %>
+                <i class="fas fa-file-alt fa-2x faa-bounce animated-hover my-color-mokusIndex pcMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">moku一覧</h6>
+                </i>
+              <% end %>
 
-                    <%= link_to user_works_path(@user) do %>
-                      <i class="fas fa-crown fa-3x faa-bounce animated-hover my-color-work pcMenuIconSize" aria-hidden="true">
-                        <h5 class="font-weight-bold text-secondary">成果物</h5>
-                      </i>
-                    <% end %>
+              <%= link_to "users/#{@user.id}/book_marks" do %>
+                <i class="fas fa-bookmark fa-2x faa-bounce animated-hover my-color-bookmark pcMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">Book Mark</h6>
+                </i>
+              <% end %>
 
-                    <% if @user.admin? %>
-                      <hr/>
-                      <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
-                        <%= link_to(faqs_new_path) do %>
-                          <i class="fas fa-question fa-3x faa-bounce animated-hover my-color-question pcMenuIconSize" aria-hidden="true">
-                            <h5 class="font-weight-bold text-secondary">FAQ追加</h5>
-                          </i>
-                        <% end %>
+              <%= link_to user_works_path(@user) do %>
+                <i class="fas fa-crown fa-2x faa-bounce animated-hover my-color-work pcMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">成果物</h6>
+                </i>
+              <% end %>
 
-                        <%= link_to(faqs_path) do %>
-                          <i class="fas fa-edit my-color-faqedit fa-3x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
-                            <h5 class="font-weight-bold text-secondary">FAQ編集</h5>
-                          </i>
-                        <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+              <% if @user.admin? %>
+                <hr/>
+                <i class="fas fa-unlock-alt my-color-admin fa-2x">管理者menu</i><br/>
+                  <%= link_to(faqs_new_path) do %>
+                    <i class="fas fa-question fa-2x faa-bounce animated-hover my-color-question pcMenuIconSize" aria-hidden="true">
+                      <h6 class="font-weight-bold text-secondary">FAQ追加</h6>
+                    </i>
+                  <% end %>
+
+                  <%= link_to(faqs_path) do %>
+                    <i class="fas fa-edit my-color-faqedit fa-2x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
+                      <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
+                    </i>
+                  <% end %>
+              <% end %>
+            </div><%# /card-text %>
+          </div><%# /card-body %>
+        </div><%# /card %>
+      </div>
+      <div class="d-md-none"><%# md未満でaccordion メニュー %>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#menuCollapse" aria-expanded="false" aria-controls="menuCollapse">
+            <i class="fas fa-receipt myMenuIcon"></i>&ensp;メニュー&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="menuCollapse">
+          <div class="card card-body border-info">
+            <div class="card-text text-center">
+              <%= link_to "/users/#{@user.id}/mokus/new" do %><%# mokuる %>
+                <i class="fas fa-cloud fa-2x faa-bounce animated-hover px-1 my-color-moku mobileMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">mokuる</h6>
+                </i>
+              <% end %>
+
+              <%= link_to user_moku_type_index_path(@user) do %><%# mokuタグ %>
+                <i class="fas fa-tag fa-2x faa-bounce animated-hover px-1 my-color-tag mobileMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">mokuタグ</h6>
+                </i>
+              <% end %>
+
+              <%= link_to user_mokus_path(@user) do %><%# moku一覧 %>
+                <i class="fas fa-file-alt fa-2x faa-bounce animated-hover px-1 my-color-mokusIndex mobileMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">moku一覧</h6>
+                </i>
+              <% end %>
+
+              <%= link_to "users/#{@user.id}/book_marks" do %><%# bookmark %>
+                <i class="fas fa-bookmark fa-2x faa-bounce animated-hover px-1 my-color-bookmark mobileMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">Book Mark</h6>
+                </i>
+              <% end %>
+
+              <%= link_to user_works_path(@user) do %><%# 成果物 %>
+                <i class="fas fa-crown fa-2x faa-bounce animated-hover px-1 my-color-work mobileMenuIconSize" aria-hidden="true">
+                  <h6 class="font-weight-bold text-secondary">成果物</h6>
+                </i>
+              <% end %>
+
+              <% if @user.admin? %>
+                <hr/>
+                <h6><i class="fas fa-unlock-alt my-color-admin">管理者menu</i></h6>
+                <%= link_to(faqs_new_path) do %>
+                  <i class="fas fa-question fa-2x faa-bounce animated-hover px-1 my-color-question mobileMenuIconSize" aria-hidden="true">
+                    <h6 class="font-weight-bold text-secondary">FAQ追加</h6>
+                  </i>
+                <% end %>
+
+                <%= link_to(faqs_path) do %>
+                  <i class="fas fa-edit fa-2x faa-bounce animated-hover px-1 my-color-faqedit mobileMenuIconSize" aria-hidden="true">
+                    <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
+                  </i>
+                <% end %>
+              <% end %>
             </div>
-            <%# md未満でaccordion メニュー %>
-            <div class="d-md-none">
-              <div class="card text-white bg-info mb-3">
-                <div class="card-header text-center">
-                  <a class="btn btn-info border-0" data-toggle="collapse" href="#menuCollapse" role="button" aria-expanded="false" aria-controls="menuCollapse">
-                    メニュー&ensp;<i class="fas fa-caret-down"></i>
-                  </a>
-                </div>
+          </div>
+        </div>
+      </div><%# /d-md-none %>
+    </div><%# /col%>
+  </div><%# /row%>
 
-                <div class="card-body">
-                  <div class="collapse show" id="menuCollapse">
-                    <div class="card-body bg-white text-center">
-                    <span class="card-text">
-                      <%= link_to "/users/#{@user.id}/mokus/new" do %>
-                        <i class="fas fa-cloud fa-2x faa-bounce animated-hover my-color-moku mobileMenuIconSize" aria-hidden="true">
-                          <h6 class="font-weight-bold text-secondary">mokuる</h6>
-                        </i>
-                      <% end %>
-
-                      <%= link_to user_moku_type_index_path(@user) do %>
-                        <i class="fas fa-tag fa-2x faa-bounce animated-hover my-color-tag mobileMenuIconSize" aria-hidden="true">
-                          <h6 class="font-weight-bold text-secondary">mokuタグ</h6>
-                        </i>
-                      <% end %>
-
-                      <%= link_to user_mokus_path(@user) do %>
-                        <i class="fas fa-file-alt fa-2x faa-bounce animated-hover my-color-mokusIndex mobileMenuIconSize" aria-hidden="true">
-                          <h6 class="font-weight-bold text-secondary">moku一覧</h6>
-                        </i>
-                      <% end %>
-
-                      <%= link_to "users/#{@user.id}/book_marks" do %>
-                        <i class="fas fa-bookmark fa-2x faa-bounce animated-hover my-color-bookmark mobileMenuIconSize" aria-hidden="true">
-                          <h6 class="font-weight-bold text-secondary">Book Mark</h6>
-                        </i>
-                      <% end %>
-
-                      <%= link_to user_works_path(@user) do %>
-                        <i class="fas fa-crown fa-2x faa-bounce animated-hover my-color-work mobileMenuIconSize" aria-hidden="true">
-                          <h6 class="font-weight-bold text-secondary">成果物</h6>
-                        </i>
-                      <% end %>
-
-                      <% if @user.admin? %>
-                        <hr/>
-                        <h5><i class="fas fa-unlock-alt my-color-admin">管理者menu</i></h5>
-                        <%= link_to(faqs_new_path) do %>
-                          <i class="fas fa-question fa-2x faa-bounce animated-hover my-color-question mobileMenuIconSize" aria-hidden="true">
-                            <h6 class="font-weight-bold text-secondary">FAQ追加</h6>
-                          </i>
-                        <% end %>
-
-                        <%= link_to(faqs_path) do %>
-                          <i class="fas fa-edit fa-2x faa-bounce animated-hover my-color-faqedit mobileMenuIconSize" aria-hidden="true">
-                            <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
-                          </i>
-                        <% end %>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-4 align-self-center"><%# 最近のmoku/work recentLists %>
+      <div class="d-none d-md-block"><%# md以上でcard 最近のmoku %>
+        <div class="card border-info mb-3">
+          <div class="card-header text-white border-info bg-info font-weight-bold"><i class="fas fa-cloud faa-bounce animated-hover my-color-moku"></i>&ensp;最近のmoku</div>
+          <div class="card-body p-1">
+            <p class="card-text">
+              <% @mokus_announcements.each do |moku| %>
+                <ul>
+                  <li class="recentLists">
+                    <span class="recentDoingTextSize">
+                      <%= moku.created_at %>
+                      <%= moku.moku_type.name %>
+                      <%= link_to user_moku_path(current_user.id, moku.id) do %>
+                        <i class="fas fa-search my-color-search announceTextSize"></i>
                       <% end %>
                     </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><%# /d-md-none %>
-          </section>
-        </div><%# /col %>
+                  </li>
+                </ul>
+              <% end %>
+            </p>
+          </div><%# /card-body %>
+        </div><%# /card %>
+      </div><%# /d-none d-md-block %>
+      <div class="d-md-none mb-3"><%# md未満でaccordion 最近のmoku %>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#recentMokuListsCollapse" aria-expanded="false" aria-controls="recentMokuListsCollapse">
+            <i class="fas fa-cloud faa-bounce animated-hover my-color-moku"></i>&ensp;最近のmoku&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="recentMokuListsCollapse">
+          <div class="card card-body border-info p-1">
+              <p class="card-text">
+                <% @mokus_announcements.each do |moku| %>
+                  <ul>
+                    <li class="recentLists">
+                      <span class="recentDoingTextSize">
+                        <%= moku.created_at %>
+                        <%= moku.moku_type.name %>
+                        <%= link_to user_moku_path(current_user.id, moku.id) do %>
+                          <i class="fas fa-search my-color-search announceTextSize"></i>
+                        <% end %>
+                      </span>
+                    </li>
+                  </ul>
+                <% end %>
+              </p>
+            </div><%# /card-body %>
+        </div>
+      </div><%# /d-md-none %>
 
-        <div class="col-12 col-md-6 mb-4">
-          <section>
-            <%# md以上で月間カレンダー表示%>
-            <div class="d-none d-md-block">
+      <div class="d-none d-md-block"><%# md以上でcard 最近の成果物 %>
+        <div class="card border-info mb-3">
+          <div class="card-header text-white border-info bg-info font-weight-bold"><i class="fas fa-crown faa-bounce animated-hover my-color-work"></i>&ensp;最近の成果物</div>
+          <div class="card-body p-1">
+            <p class="card-text">
+              <% @works_announcements.each do |work| %>
+                <ul>
+                  <li class="recentLists">
+                    <span class="recentDoingTextSize">
+                      <%= work.created_at %>
+                      <%= work.title %>
+                      <%= link_to user_work_path(current_user.id, work.id) do %>
+                        <i class="fas fa-search my-color-search announceTextSize"></i>
+                      <% end %>
+                    </span>
+                  </li>
+                </ul>
+              <% end %>
+            </p>
+          </div><%# /card-body %>
+        </div><%# /card %>
+      </div><%# /d-none d-md-block %>
+      <div class="d-md-none"><%# md未満でaccordion 最近の成果物 %>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#recentWorkListsCollapse" aria-expanded="false" aria-controls="recentWorkListsCollapse">
+            <i class="fas fa-crown faa-bounce animated-hover my-color-work"></i>&ensp;最近の成果物&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="recentWorkListsCollapse">
+          <div class="card card-body border-info p-1">
+            <p class="card-text">
+              <% @works_announcements.each do |work| %>
+              <ul>
+                <li class="recentLists">
+                  <span class="recentDoingTextSize">
+                    <%= work.created_at %>
+                    <%= work.title %>
+                    <%= link_to user_work_path(current_user.id, work.id) do %>
+                      <i class="fas fa-search my-color-search announceTextSize"></i>
+                    <% end %>
+                  </span>
+                </li>
+              </ul>
+            <% end %>
+            </p>
+          </div><%# /card-body %>
+        </div>
+      </div><%# /d-md-none %>
+    </div><%# /col %>
+    <div class="col-12 col-md-6 mb-4">
+      <div class="d-none d-md-block"><%# md以上で通常　カレンダー%>
+        <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
+            <small class="font-weight-bold"><%= "#{date.to_formatted_s(:only_date)} 日" %><br></small>
+          <% if do_mokus.size > 0 %>
+            <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
+              <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
+              <small><%= "×" %><%= "#{do_mokus.size}" %></small>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="d-md-none"><%# md未満でccordion カレンダー%>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#calendarCollapse" aria-expanded="false" aria-controls="calendarCollapse">
+            <i class="fas fa-calendar-alt myCalendarColor"></i>&ensp;カレンダー&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="calendarCollapse">
+          <div class="card card-body border-0 py-0">
+            <span class="card-text">
               <%= month_calendar(attribute: :created_at, events: @do_mokus) do |date, do_mokus| %>
-                  <small class="font-weight-bold"><%= "#{date.to_formatted_s(:only_date)} 日" %><br></small>
+                  <span class="smallCalendarFontSize font-weight-bold"><%= "#{date.to_formatted_s(:only_date)} 日" %><br></span>
                 <% if do_mokus.size > 0 %>
                   <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
                     <i class="fas fa-cloud my-color-moku faa-bounce animated-hover"></i>
-                    <small><%= "×" %><%= "#{do_mokus.size}" %></small>
+                    <span class="smallCalendarFontSize"><%= "×" %><%= "#{do_mokus.size}" %></span>
                   <% end %>
                 <% end %>
               <% end %>
-            </div>
-            <%# md未満で週間カレンダー表示%>
-            <div class="d-md-none">
-              <%= week_calendar(attribute: :created_at, events: @do_mokus, number_of_weeks: 1) do |date, do_mokus| %>
-                  <small class="font-weight-bold"><%= "#{date.to_formatted_s(:only_date)} 日" %><br></small>
-                <% if do_mokus.size > 0 %>
-                  <%= link_to "/users/#{current_user.id}/mokus/#{do_mokus[0].id}/day" do %>
-                    <i class="fas fa-cloud my-color-moku"></i>
-                    <small><%= "×" %><%= "#{do_mokus.size}" %></small>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div><%# /d-md-none%>
-          </section>
-        </div><%# /col%>
-      </div><%# /row %>
-
-      <div class="row mb-4">
-        <div class="col-12 col-md-6 pb-4">
-          <section>
-            <%# md以上で普通のカード表示 pick up%>
-            <div class="d-none d-md-block">
-              <div class="card text-blue bg-info text-white">
-                <div class="card-header text-center font-weight-bold"><h3>Pick UP</h3><h6>みんなの成果物を見てみよう！</h6></div>
-                <div class="card-body">
-                  <ul>
-                    <% @work_pickups.each do |work_pickup| %>
-                      <li>
-                        <% work = Work.find(work_pickup.id)%>
-                        <% if work.user.public == true %>
-                          <% if work.user_id == current_user.id %>
-                            <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
-                              <%= link_to user_work_path(@user, work) do %>
-                                <i class="fas fa-search my-color-search"></i>
-                              <% end %>
-                            </span>
-                          <% else %>
-                          <% work_user = User.find(work.user_id) %>
-                            <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
-                              <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
-                                <i class="fas fa-search my-color-search"></i>
-                              <% end%>
-                            </span>
-                          <% end %>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div><%# /d-none d-md-block %>
-
-            <%# md未満でアコーディオン pick up %>
-            <div class="d-md-none">
-              <div class="card text-white bg-info mb-3">
-                <div class="card-header text-center">
-                  <a class="btn btn-info border-0" data-toggle="collapse" href="#pickUpCollapse" role="button" aria-expanded="false" aria-controls="pickUpCollapse">
-                    pick up - みんなの成果物 -&ensp;<i class="fas fa-caret-down"></i>
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <div class="collapse" id="pickUpCollapse">
-                    <p class="card-text">
-                      <ul>
-                        <% @work_pickups.each do |work_pickup| %>
-                          <li>
-                            <% work = Work.find(work_pickup.id)%>
-                            <% if work.user.public == true %>
-                              <% if work.user_id == current_user.id %>
-                                <span class="text-white"><%= "#{work_pickup.title}" %> <br/><span style="margin-right: 3em;"></span> by <%= "#{current_user.name}" %>さん
-                                  <%= link_to user_work_path(@user, work) do %>
-                                    <i class="fas fa-search my-color-search fa-2x"></i>
-                                  <% end %>
-                                </span>
-                              <% else %>
-                              <% work_user = User.find(work.user_id) %>
-                                <span class="text-white"><%= work_pickup.title %><br/><span style="margin-right: 3em;"></span> by <%= "#{work_user.name}"%>さん
-                                  <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
-                                    <i class="fas fa-search my-color-search fa-2x"></i>
-                                  <% end%>
-                                </span>
-                              <% end %>
-                            <% end %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div><%# /d-md-none %>
-          </section>
+            </span>
+          </div><%# /card-body %>
         </div>
+      </div><%# /d-md-none%>
+    </div><%# /col %>
+  </div><%# /row %>
 
-
-        <div class="col-12 col-md-6 pb-4">
-          <section>
-            <div class="d-none d-md-block"><%# md以上でcard MJN %>
-              <div class="card text-white bg-info">
-                <div class="card-header text-center font-weight-bold"><h3>moku Just Now<h3></div>
-                <div class="card-body">
-                  <ul id="justNowUl">
-                    <% @default_mjns.each do |mjn| %>
-                      <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
-                    <% end %>
-                  </ul>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="d-md-none"><%# md未満でaccordion MJN %>
-              <div class="card text-white bg-info mb-3">
-                <div class="card-header text-center">
-                  <a class="btn btn-info border-0" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    moku Just Now&ensp;<i class="fas fa-caret-down"></i>
-                  </a>
-                </div>
-
-                <div class="card-body">
-                  <div class="collapse" id="collapseExample">
-                    <ul id="justNowUl2">
-                      <% @default_mjns.each do |mjn| %>
-                        <li><%= mjn.format_created_at %><%= mjn.user.name %>さんがmokuを開始しました！</li>
+  <div class="row mb-4">
+    <div class="col-12 col-md-6 pb-4">
+      <div class="d-none d-md-block"><%# md以上で普通のカード表示 pick up%>
+        <div class="card border-info">
+          <div class="card-header text-white bg-info font-weight-bold"><h3>Pick UP</h3><h6>みんなの成果物を見てみよう！</h6></div>
+          <div class="card-body">
+            <div class="card-text">
+              <ul>
+                <% @work_pickups.each do |work_pickup| %>
+                  <li class="pb-3">
+                    <% work = Work.find(work_pickup.id)%>
+                    <% if work.user.public == true %>
+                      <% if work.user_id == current_user.id %>
+                        <span class="font-weight-bold"><%= "#{work_pickup.title}" %></span>&ensp;<button type="button" class="btn btn-sm btn-info px-1 disabled">my</button>
+                          <%= link_to user_work_path(@user, work) do %>
+                            <i class="fas fa-search my-color-search"></i>
+                          <% end %>
+                      <% else %>
+                      <% work_user = User.find(work.user_id) %>
+                        <span class="font-weight-bold"><%= work_pickup.title %>&ensp;by&thinsp;<%= "#{work_user.name}"%>さん</span>
+                          <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
+                            <i class="fas fa-search my-color-search"></i>
+                          <% end%>
                       <% end %>
-                    </ul>
-                    <%= javascript_include_tag "moku_just_now_pc.js" %>
-                    <script></script>
-                    <%= javascript_include_tag "moku_just_now_mobile.js" %>
-                    <script></script>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div><%# /col %>
-      </div><%# /row %>
-    </div><%# /conainer-fluid %>
-  </main>
-</body>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div><%# /card-text %>
+          </div><%# /card-body %>
+        </div><%# /card %>
+      </div><%# /d-none d-md-block %>
+      <div class="d-md-none"><%# md未満でアコーディオン pick up %>
+        <span>
+          <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#pickUpCollapse" aria-expanded="false" aria-controls="pickUpCollapse">
+            <i class="fas fa-archive myArchiveColor"></i>&ensp;pick up&ensp;<i class="fas fa-caret-down"></i>
+          </button>
+        </span>
+        <div class="collapse show" id="pickUpCollapse">
+          <div class="card card-body border-info p-1">
+            <p class="card-text">
+              <ul>
+                <% @work_pickups.each do |work_pickup| %>
+                  <li class="pb-3">
+                    <% work = Work.find(work_pickup.id)%>
+                    <% if work.user.public == true %>
+                      <% if work.user_id == current_user.id %>
+                        <span class="font-weight-bold"><%= "#{work_pickup.title}" %></span>&ensp;<button type="button" class="btn btn-sm btn-info px-1 disabled">my</button>
+                        <%= link_to user_work_path(@user, work) do %>
+                          <i class="fas fa-search my-color-search"></i>
+                        <% end %>
+                      <% else %>
+                        <% work_user = User.find(work.user_id) %>
+                          <span class="font-weight-bold"><%= work_pickup.title %>&ensp;by&thinsp;<%= "#{work_user.name}"%>さん</span>
+                          <%= link_to "/users/#{work.user_id}/works/#{work.id}/public" do %>
+                            <i class="fas fa-search my-color-search"></i>
+                          <% end%>
+                      <% end %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </p>
+          </div><%# /card-body %>
+        </div>
+      </div><%# /d-md-none %>
+    </div>
+
+    <div class="col-12 col-md-6 pb-4">
+      <section>
+        <div class="d-none d-md-block"><%# md以上でcard MJN %>
+          <div class="card  border-info">
+            <div class="card-header bg-info text-white font-weight-bold"><h3>moku Just Now<h3><h6>みんなでmokuろう！</h6></div>
+            <div class="card-body">
+              <ul id="justNowUl">
+                <% @default_mjns.each do |mjn| %>
+                  <li><small><%= mjn.format_created_at %></small><br /><span class="font-weight-bold"><%= mjn.user.name %>さん</span>が&ensp;mokuを開始しました！</li>
+                <% end %>
+              </ul>
+
+            </div><%# /card-body %>
+          </div><%# /card %>
+        </div><%# /d-none d-md-block %>
+
+        <div class="d-md-none"><%# md未満でaccordion MJN %>
+          <span>
+            <button class="btn btn-info p-3 w-50" type="button" data-toggle="collapse" data-target="#MJNCollapse" aria-expanded="false" aria-controls="MJNCollapse">
+              <i class="far fa-smile mySmileColor"></i>&ensp;moku Just Now&ensp;<i class="fas fa-caret-down"></i>
+            </button>
+          </span>
+          <div class="collapse show" id="MJNCollapse">
+            <div class="card card-body border-info p-1">
+              <p class="card-text">
+                <ul id="justNowUl2">
+                  <% @default_mjns.each do |mjn| %>
+                    <li><small><%= mjn.format_created_at %></small><br /><span class="font-weight-bold"><%= mjn.user.name %>さん</span>が&thinsp;mokuを開始しました！</li>
+                  <% end %>
+                </ul>
+                <%= javascript_include_tag "moku_just_now_pc.js" %>
+                <script></script>
+                <%= javascript_include_tag "moku_just_now_mobile.js" %>
+                <script></script>
+              </p>
+            </div><%# /card-body %>
+          </div>
+        </div><%# /d-md-none %>
+      </section>
+    </div><%# /col %>
+  </div><%# /row %>
+</div><%# /conainer-fluid %>

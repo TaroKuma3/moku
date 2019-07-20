@@ -45,6 +45,16 @@ hr {
   border-color: rgb(70, 116, 254) !important;
 }
 
+/* md未満でアイコンのmarginをm-1 = 0.25remで統一 */
+.mobileMenuIconSize {
+  margin: 0.25rem;
+}
+
+/* md以上でアイコンのmarginをm-3 = 1remで統一 */
+.pcMenuIconSize {
+  margin: 1rem;
+}
+
 .my-footer {
   font-size: xx-small;
 }
@@ -87,7 +97,7 @@ hr {
 
 /* workアイコン */
 .my-color-work {
-  color:#ffe200
+  color:#ffe200;
 }
 
 /* 管理者ニューアイコン */
@@ -128,7 +138,7 @@ hr {
 
 /* mypageへ戻るアイコン  */
 .my-color-reply {
-  color: #f472db
+  color: #f472db;
 }
 
 /* 退会アイコン */
@@ -157,3 +167,9 @@ hr {
   border-width: 1px;
   border-color: darkgray;
 }
+
+/* mokukからのお知らせのアイコン */
+.myColorBell {
+  color: #ffe200;
+}
+

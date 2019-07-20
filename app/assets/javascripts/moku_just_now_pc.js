@@ -8,7 +8,7 @@ function getJustNowDatas() {
       const mokus = response //responseは↑の第一引数。ブラウザから返ってきたデーター
       for (let i = 0; i < mokus.length; i++) { //変数iを定義　mokusの要素の数より小さいうちはインクリメント
           const moku = mokus[i] //定数mokuを定義　mokusに入っている要素のi番目を取得して定数mokuへ
-          const liElement = "<li>" + moku.format_created_at + moku.user.name + "さんがmokuを開始しました！" + "</li>" //定数liElementを定義　moku.idをリスト形式で出力
+          const liElement = "<li>" + "<small>" + moku.format_created_at + "</small>" + "<br />" + "<b>" + moku.user.name + "さん" + "</b>" + "が mokuを開始しました！" + "</li>" //定数liElementを定義　moku.idをリスト形式で出力
           $('#justNowUl').append(liElement) //justNowUlに対してliElementを追加　
       }
   })

@@ -4,7 +4,11 @@ class MypageController < ApplicationController
   def index
     @user = current_user
 
-    # pick UP用
+    # for announcements
+    @works_announcements = Work.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc').limit(3)
+    @mokus_announcements = DoMoku.where(user_id: current_user.id).where(deleted: false).order(created_at: 'desc').limit(3)
+
+    # for pick UP
     public_users = User.where(public: true)
     only_public_targets = Work.where(user_id: public_users.ids).where(pickup_public: true).where(deleted: false)
     pickup_target_ids = only_public_targets.pluck(:id).sample(5)

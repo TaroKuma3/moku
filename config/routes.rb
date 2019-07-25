@@ -16,12 +16,21 @@ Rails.application.routes.draw do
   get 'accounts/:user_id/check' => 'accounts#check_delete'
   patch 'accounts/:user_id/delete' => 'accounts#delete'
 
-  #book_mark
+  # annoucements
+  get 'annoucements' => 'annoucements#index'
+  get 'annoucements/new' => 'annoucements#new'
+  get 'annoucements/:id' => 'annoucements#show'
+  post 'annoucements/create' => 'annoucements#create'
+  get 'annoucements/:id/edit' => 'annoucements#edit'
+  patch 'annoucements/:id/update' => 'annoucements#update'
+  delete 'annoucements/:id' => 'annoucements#destroy'
+
+  #book_marks
   get 'users/:user_id/book_marks' => 'book_marks#index'
   post '/users/:user_id/works/:work_id/book_marks' => 'book_marks#create'
   delete '/users/:user_id/works/:work_id/book_marks' => 'book_marks#destroy'
 
-  #faq
+  #faqs
   get 'tags/:tag'=> 'faqs#index', as: :tag
   get 'faqs'          => 'faqs#index'
   get 'faqs/new'      => 'faqs#new'
@@ -31,7 +40,7 @@ Rails.application.routes.draw do
   patch 'faqs/:id'    => 'faqs#update'
   delete 'faqs/:id'   => 'faqs#destroy'
 
-  # moku
+  # mokus
   get '/users/:user_id/mokus/new' => 'mokus#new'
   get '/users/:user_id/mokus/:id/day' => "mokus#day_by_index"
   get '/ajax/justnow' => 'mokus#justnow'
@@ -41,7 +50,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/mokus/:moku_id/check' => 'mokus#check_delete'
   patch 'users/:user_id/mokus/:moku_id/delete' => 'mokus#delete'
 
-  #moku_type
+  #moku_types
   get 'users/:user_id/moku_type/:moku_type_id/check' => 'moku_type#check_delete'
   patch 'users/:user_id/moku_type/:moku_type_id/delete' => 'moku_type#delete'
 
@@ -52,7 +61,7 @@ Rails.application.routes.draw do
   # ↑application_controllerのafter_sign_in_path_for(resource)メソッドでログイン後はここがデフォになってるからuser_idはなくても大丈夫
   patch 'mypage/:user_id' => 'mypage#update'
 
-  #work
+  #works
   get '/users/:user_id/mokus/:moku_id/works/new' => 'works#new'
   post '/users/:user_id/mokus/:moku_id/works' => 'works#create'
 

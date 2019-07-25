@@ -5,7 +5,9 @@
         <div class="card border-info mb-3">
           <div class="card-header text-white border-info bg-info font-weight-bold"><i class="fas fa-bell myColorBell faa-shake animated"></i>&ensp;mokuからのおしらせ</div>
           <div class="card-body">
-            <p class="card-text">mokuからのお知らせがご覧いただけるように調整中です。もう少々お待ちください。</p>
+            <span class="card-text">
+              <%= link_to "mokuからのお知らせ", "/annoucements"%>
+            </span>
           </div>
         </div>
       </div><%# /d-none d-md-block %>
@@ -17,7 +19,7 @@
         </span>
         <div class="collapse show" id="announcementCollapse">
           <div class="card card-body border-info">
-            mokuからのお知らせがご覧いただけるように調整中です。<br />もう少々お待ちください。
+            <%= link_to "mokuからのお知らせ", "/annoucements"%>
           </div>
         </div>
       </div><%# /d-md-none %>
@@ -71,6 +73,12 @@
                   <%= link_to(faqs_path) do %>
                     <i class="fas fa-edit my-color-faqedit fa-2x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
                       <h6 class="font-weight-bold text-secondary">FAQ編集</h6>
+                    </i>
+                  <% end %>
+
+                  <%= link_to(annoucements_new_path) do %>
+                    <i class="fas fa-comment-dots my-color-annoucements fa-2x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
+                      <h6 class="font-weight-bold text-secondary">お知らせの登録</h6>
                     </i>
                   <% end %>
               <% end %>

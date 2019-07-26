@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :works
   has_many :book_marks
   has_many :faqs
+  has_many :announcements
 
   after_create :insert_default_moku_type
 

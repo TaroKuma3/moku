@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   get 'accounts/:user_id/check' => 'accounts#check_delete'
   patch 'accounts/:user_id/delete' => 'accounts#delete'
 
-  # annoucements
-  get 'annoucements' => 'annoucements#index'
-  get 'annoucements/new' => 'annoucements#new'
-  get 'annoucements/:id' => 'annoucements#show'
-  post 'annoucements/create' => 'annoucements#create'
-  get 'annoucements/:id/edit' => 'annoucements#edit'
-  patch 'annoucements/:id/update' => 'annoucements#update'
-  delete 'annoucements/:id' => 'annoucements#destroy'
+  # announcements
+  get 'announcements' => 'announcements#index'
+  get 'announcements/new' => 'announcements#new'
+  get 'announcements/:id' => 'announcements#show'
+  post 'announcements/create' => 'announcements#create'
+  get 'announcements/:id/edit' => 'announcements#edit'
+  patch 'announcements/:id/update' => 'announcements#update'
+  delete 'announcements/:id' => 'announcements#destroy'
 
   #book_marks
   get 'users/:user_id/book_marks' => 'book_marks#index'

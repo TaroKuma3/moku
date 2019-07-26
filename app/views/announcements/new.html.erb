@@ -1,0 +1,31 @@
+<div class="container">
+<h1>お知らせの登録</h1>
+<%= bootstrap_form_with(model: @announcement,
+                url: {controller: :announcements, action: :create},
+                method: :post,
+                local: true) do |form| %>
+
+    <div class="row">
+      <div class="col-12">
+        <p><%= form.text_field :title %></p>
+      </div>
+      <div class="col-12">
+        <p><%= form.text_area :body, size: "x15" %></p>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= form.submit "登録する", class: "btn btn-info btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to announcements_path do %>
+    <i class="fas fa-bell myColorBell fa-3x pl-2 text-center">
+      <h5 class="font-weight-bold text-secondary">お知らせ一覧へ</h5>
+    </i>
+  <% end %>
+
+  <%= render 'my_shared/go_mypage'%>
+</div>

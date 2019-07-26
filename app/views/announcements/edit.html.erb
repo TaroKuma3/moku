@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>お知らせの編集</h1>
+
+  <%= bootstrap_form_with(model: @announcement,
+                url: {controller: :announcements, action: :update, id: @announcement.id},
+                method: :patch,
+                local: true) do |form| %>
+
+    <% if @announcement.errors.any? %>
+      <% @announcement.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <div class="row">
+      <div class="col-12">
+        <p><%= form.text_field :title %></p>
+      </div>
+
+      <div class="col-12">
+        <p><%= form.text_area :body, size: "x15" %></p>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <%= form.submit "更新する", class: "btn btn-info btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row ml-2 my-2">
+    <%= render "my_shared/go_mypage" %>
+
+    <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
+      <%= link_to announcements_path do %>
+        <i class="fas fa-bell myColorBell fa-3x m-3 text-center">
+          <h5 class="font-weight-bold text-secondary">お知らせ一覧へ</h5>
+        </i>
+      <% end %>
+  </span>
+    <span class="d-md-none"><%# md未満で小さめボタン %>
+      <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
+        <%= link_to announcements_path do %>
+          <i class="fas fa-bell myColorBell text-center"><br />
+            <small class="font-weight-bold text-secondary">お知らせ一覧</small>
+          </i>
+        <% end %>
+      </button>
+    </span>
+  </div>
+</div>

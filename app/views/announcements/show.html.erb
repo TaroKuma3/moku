@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2><%= @announcement.title %></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card border-info mb-3">
+        <div class="card-body">
+          <h6><%= simple_format(@announcement.body) %></h6>
+            <% if current_user %>
+              <% user = User.find_by(id: current_user.id) %>
+              <% if user.admin? %>
+              <hr/>
+                <i class="fas fa-unlock-alt my-color-admin">管理者menu：</i>
+                <%= link_to("編集", "/announcements/#{@announcement.id}/edit") %>
+                <%= link_to"削除", "/announcements/#{@announcement.id}", method: :delete,data: {confirm: "削除してよろしいですか？"} %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ml-2 my-2">
+    <%= render "my_shared/go_mypage" %>
+
+    <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
+      <%= link_to announcements_path do %>
+        <i class="fas fa-bell myColorBell fa-3x m-3 text-center">
+          <h5 class="font-weight-bold text-secondary">お知らせ一覧へ</h5>
+        </i>
+      <% end %>
+  </span>
+    <span class="d-md-none"><%# md未満で小さめボタン %>
+      <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
+        <%= link_to announcements_path do %>
+          <i class="fas fa-bell myColorBell text-center"><br />
+            <small class="font-weight-bold text-secondary">お知らせ一覧</small>
+          </i>
+        <% end %>
+      </button>
+    </span>
+  </div>
+</div>

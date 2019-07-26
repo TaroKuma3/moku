@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>おしらせ一覧</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-10 ">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-info text-center">
+            <th scope="col" class="align-middle">日付</th>
+            <th scope="col" class="align-middle">タイトル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @announcement.each do |a| %>
+            <tr class="text-center">
+              <th scope="row">
+                <%= a.created_at.to_s(:date2) %>
+              </th>
+              <td>
+                <%= link_to(a.title, "/announcements/#{a.id}") %>
+              </td>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <% if @user.admin? %>
+    <div class="row">
+      <div class="col-12 text-center">
+      <hr />
+      <i class="fas fa-unlock-alt my-color-admin">管理者menu</i><br/>
+        <%= link_to(announcements_new_path) do %>
+          <i class="fas fa-bell myColorBell fa-2x faa-bounce animated-hover pcMenuIconSize" aria-hidden="true">
+            <h6 class="font-weight-bold text-secondary">お知らせ<br />登録</h6>
+          </i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row ml-2 my-2">
+    <%= render 'my_shared/go_mypage' %>
+  </div>
+</div>

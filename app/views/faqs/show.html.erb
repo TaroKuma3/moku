@@ -48,7 +48,7 @@
               <hr/>
                 <i class="fas fa-unlock-alt my-color-admin">管理者menu：</i>
                 <%= link_to("編集", "/faqs/#{@faq.id}/edit") %>
-                <%= link_to("削除", "/faqs/#{@faq.id}", {method: :delete}) %>
+                <%= link_to("削除", "/faqs/#{@faq.id}",  method: :delete, data: {confirm: "削除してよろしいですか？"}) %>
               <% end %>
             <% end %>
         </div>
@@ -57,11 +57,23 @@
   </div>
 
   <div class="row ml-2 my-2">
-    <%= link_to faqs_path do %>
-      <i class="fas fa-question my-color-question fa-3x pl-2 text-center">
-        <h5 class="font-weight-bold text-secondary">よくある質問へ</h5>
-      </i>
-    <% end %>
-    <%= render 'my_shared/go_top_or_mypage'%>
+    <%= render "my_shared/go_mypage" %>
+
+    <span class="d-none d-md-block"><%# md以上で大きめアイコン %>
+      <%= link_to faqs_path do %>
+        <i class="fas fa-question my-color-question fa-3x m-3 text-center">
+          <h5 class="font-weight-bold text-secondary">よくある質問一覧へ</h5>
+        </i>
+      <% end %>
+  </span>
+    <span class="d-md-none"><%# md未満で小さめボタン %>
+      <button type="button" class="btn btn-light border-info btn-sm ml-1 my-mobile-btn-size">
+        <%= link_to faqs_path do %>
+          <i class="fas fa-question my-color-question text-center"><br />
+            <small class="font-weight-bold text-secondary">よくある質問</small>
+          </i>
+        <% end %>
+      </button>
+    </span>
   </div>
 </div>

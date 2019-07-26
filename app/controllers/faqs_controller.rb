@@ -23,7 +23,7 @@ class FaqsController < ApplicationController
 
   def create
     @faq = Faq.new(faq_params)
-      @faq.user_id = current_user.id
+    @faq.user_id = current_user.id
 
     if @faq.save
       flash[:notice] = "FAQを登録しました！"

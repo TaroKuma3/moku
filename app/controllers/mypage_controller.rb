@@ -19,6 +19,9 @@ class MypageController < ApplicationController
 
     # mjn初回読み込み前のためのデフォルトデータ
     @default_mjns = DoMoku.where(user_id: public_users.ids).where(deleted: false).order(created_at: 'desc').limit(5)
+
+    # announcement
+    @announcement = Announcement.all.order(created_at: 'desc').limit(5)
   end
 
   #↓current_userにしてはいけない。pick upで成果物の作者を見にくる場合もアクセスされるから。

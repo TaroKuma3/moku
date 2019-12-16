@@ -14,10 +14,10 @@ amazon:
 #   region: us-east-1
 #   bucket: your_own_bucket
 
-  access_key_id: <%= ENV['MOKU_AWS_ID'] %>
-  secret_access_key: <%= ENV['MOKU_AWS_SECRET_ID'] %>
-  region: <%= ENV['MOKU_AWS_REGION'] %>
-  bucket: <%= ENV['MOKU_AWS_BUCKET'] %>
+  access_key_id: <%= ENV['WORKERS_AWS_ID'] %>
+  secret_access_key: <%= ENV['WORKERS_AWS_SECRET_ID'] %>
+  region: <%= ENV['WORKERS_AWS_REGION'] %>
+  bucket: <%= ENV['WORKERS_AWS_BUCKET'] %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

@@ -36,7 +36,7 @@ class User < ApplicationRecord
     end
   end
 
-  def active_moku_types
+  def active_moku_types 
     moku_types = MokuType.where(deleted: false).where(user_id: self.id)
   end
 

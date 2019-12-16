@@ -3,7 +3,7 @@ class MokusController < ApplicationController
   before_action :ensure_current_user, only:[:index, :show, :new, :create, :edit, :update]
   skip_before_action :verify_authenticity_token, only:[:ajax_create]
 
-  def index
+  def index 
     if params[:moku_type] # 絞り込みされたら
       @do_mokus = DoMoku.where(user_id: current_user.id).where(moku_type_id: params[:moku_type]).where(deleted: false).order(created_at: 'desc').paginate(page: params[:page], per_page: 10)
     else #絞り込みされなかったら

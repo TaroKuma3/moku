@@ -7,8 +7,13 @@
                                 method: :patch,
                                 local: true) do |f| %>
 
-        <h6 class="text-left text-left">mokuタグの新しい名前を教えてください</h6>
+        <h6 class="font-weight-bold mt-2 text-left">mokuタグの新しい名前を教えてください</h6>
         <%= f.text_field :name, hide_label: true %>
+          <% if @moku_type.errors.any? %>
+            <% @moku_type.errors.full_messages.each do |message| %>
+              <small class="text-danger"><%= message %></small><br />
+            <% end %>
+          <% end %>
         <%= f.submit "登録する", class: "btn btn-info btn-lg"%>
       </div>
 
